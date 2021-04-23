@@ -1,0 +1,25 @@
+{
+  "globals": {
+    "__PATH_PREFIX__": true
+  },
+  "extends": [
+    "airbnb",
+    "plugin:prettier/recommended",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier/react"
+  ],
+  "plugins": ["simple-import-sort"],
+  "parser": "babel-eslint",
+  "rules": {
+    "strict": 0,
+    "simple-import-sort/sort": "error",
+    "react/jsx-props-no-spreading": "off",
+    "react/display-name": "off",
+    "react/require-default-props": "off"
+  },
+  "ignorePatterns": [
+    "sync-requires.js",
+    "**/_this_is_virtual_fs_path_/**/*.js"
+  ]
+}
