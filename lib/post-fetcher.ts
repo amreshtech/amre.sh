@@ -12,11 +12,12 @@ const headers = {
 
 export const postFetcher = {
   fetchAllPostPaths: async (type: string) => {
-    const { data } = await axios(gitHubApi, {
-      method: 'post',
-      headers: headers,
-      data: JSON.stringify({
-        query: `query {
+    const data = await (
+      await fetch(gitHubApi, {
+        method: 'post',
+        headers: headers,
+        body: JSON.stringify({
+          query: `query {
                 repository(name: "personal-web-blog-posts", owner: "amreshtech") {
                    object(expression: "master:${type}") {
                     ... on Tree {
@@ -27,16 +28,19 @@ export const postFetcher = {
                   }
                 }
               }`
+        })
       })
-    });
+    ).json();
+
     return data?.data?.repository?.object?.entries.map(({ name }) => name);
   },
   fetchPost: async (path: string) => {
-    const { data } = await axios(gitHubApi, {
-      method: 'post',
-      headers: headers,
-      data: JSON.stringify({
-        query: `query {
+    const data = await (
+      await fetch(gitHubApi, {
+        method: 'post',
+        headers: headers,
+        body: JSON.stringify({
+          query: `query {
         repository(name: "personal-web-blog-posts", owner: "amreshtech") {
            object(expression: "master:${path}") {
             ... on Blob {
@@ -45,8 +49,10 @@ export const postFetcher = {
           }
         }
       }`
+        })
       })
-    });
+    ).json();
+
     return data?.data?.repository?.object?.text;
   }
 };
