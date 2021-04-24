@@ -4,64 +4,71 @@ import mdxPrism from 'mdx-prism';
 import path from 'path';
 import readingTime from 'reading-time';
 import renderToString from 'next-mdx-remote/render-to-string';
+import { postFetcher } from './post-fetcher';
 
 import MDXComponents from '@components/MDXComponents';
 
-const root = process.cwd();
-
 export async function getFiles(type) {
-  return fs.readdirSync(path.join(root, 'data', type));
+  try {
+    return postFetcher.fetchAllPostPaths(type);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 export async function getFileBySlug(type?: string, slug?: string) {
-  const source = slug
-    ? fs.readFileSync(path.join(root, 'data', type, `${slug}.mdx`), 'utf8')
-    : fs.readFileSync(path.join(root, 'data', `${type}.mdx`), 'utf8');
+  try {
+    const source = slug
+      ? await postFetcher.fetchPost(`${type}/${slug}.mdx`)
+      : await postFetcher.fetchPost(`${type}.mdx`);
 
-  const { data, content } = matter(source);
-  const mdxSource = await renderToString(content, {
-    components: MDXComponents,
-    mdxOptions: {
-      remarkPlugins: [
-        require('remark-autolink-headings'),
-        require('remark-slug'),
-        require('remark-code-titles')
-      ],
-      rehypePlugins: [mdxPrism]
-    }
-  });
+    const { data, content } = matter(source);
+    const mdxSource = await renderToString(content, {
+      components: MDXComponents,
+      mdxOptions: {
+        remarkPlugins: [
+          require('remark-autolink-headings'),
+          require('remark-slug'),
+          require('remark-code-titles')
+        ],
+        rehypePlugins: [mdxPrism]
+      }
+    });
 
-  const tweetMatches = content.match(/<StaticTweet\sid="[0-9]+"\s\/>/g);
-  const tweetIDs = tweetMatches?.map((tweet) => tweet.match(/[0-9]+/g)[0]);
+    const tweetMatches = content.match(/<StaticTweet\sid="[0-9]+"\s\/>/g);
+    const tweetIDs = tweetMatches?.map((tweet) => tweet.match(/[0-9]+/g)[0]);
 
-  return {
-    mdxSource,
-    tweetIDs: tweetIDs || [],
-    frontMatter: {
-      wordCount: content.split(/\s+/gu).length,
-      readingTime: readingTime(content),
-      slug: slug || null,
-      ...data
-    }
-  };
+    return {
+      mdxSource,
+      tweetIDs: tweetIDs || [],
+      frontMatter: {
+        wordCount: content.split(/\s+/gu).length,
+        readingTime: readingTime(content),
+        slug: slug || null,
+        ...data
+      }
+    };
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 export async function getAllFilesFrontMatter(type) {
-  const files = fs.readdirSync(path.join(root, 'data', type));
+  try {
+    const files = await postFetcher.fetchAllPostPaths(type);
+    return files.reduce(async (allPosts, postSlug) => {
+      const source = await postFetcher.fetchPost(`${type}/${postSlug}`);
+      const { data } = matter(source);
 
-  return files.reduce((allPosts, postSlug) => {
-    const source = fs.readFileSync(
-      path.join(root, 'data', type, postSlug),
-      'utf8'
-    );
-    const { data } = matter(source);
-
-    return [
-      {
-        ...data,
-        slug: postSlug.replace('.mdx', '')
-      },
-      ...allPosts
-    ];
-  }, []);
+      return [
+        {
+          ...data,
+          slug: postSlug.replace('.mdx', '')
+        },
+        ...(await allPosts)
+      ];
+    }, []);
+  } catch (error) {
+    console.error(error);
+  }
 }

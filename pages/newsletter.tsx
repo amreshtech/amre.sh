@@ -2,10 +2,10 @@ import Container from '@components/Container';
 import Subscribe from '@components/Subscribe';
 import NewsletterLink from '@components/NewsletterLink';
 import { getAllFilesFrontMatter } from '@lib/mdx';
-import type { Newsletter } from '../types';
+import type { Newsletter as NewsletterType } from '../types';
 
 interface Props {
-  newsletters: Newsletter[];
+  newsletters: NewsletterType[];
 }
 
 const Newsletter: React.FC<Props> = ({ newsletters }) => {
