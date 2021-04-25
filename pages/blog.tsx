@@ -4,21 +4,20 @@ import Container from '@components/Container';
 import BlogPost from '@components/BlogPost';
 import { getAllFilesFrontMatter } from '@lib/mdx';
 import type { Post } from '../types';
+import { getSearchResults } from 'scripts/getSearchResults';
 
 interface Props {
   posts: Post[];
 }
 
 const Blog: React.FC<Props> = ({ posts }) => {
-  const [searchValue, setSearchValue] = useState('');
-  const filteredBlogPosts = posts
-    .sort(
-      (a, b) =>
-        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
-    )
-    .filter((frontMatter) =>
-      frontMatter.title.toLowerCase().includes(searchValue.toLowerCase())
-    );
+  const [isSearching, setIsSearching] = useState(false);
+  const [filteredBlogPosts, setFilteredBlogPosts] = useState(posts);
+
+  const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsSearching(true);
+    setFilteredBlogPosts((await getSearchResults(e.target.value)) as any);
+  };
 
   return (
     <Container
@@ -38,7 +37,7 @@ const Blog: React.FC<Props> = ({ posts }) => {
           <input
             aria-label="Search articles"
             type="text"
-            onChange={(e) => setSearchValue(e.target.value)}
+            onChange={handleSearch}
             placeholder="Search articles"
             className="px-4 py-2 border border-gray-300 dark:border-gray-900 focus:ring-blue-500 focus:border-blue-500 block w-full rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
           />
@@ -57,7 +56,7 @@ const Blog: React.FC<Props> = ({ posts }) => {
             />
           </svg>
         </div>
-        {!searchValue && (
+        {!isSearching && (
           <>
             <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
               Most Popular
@@ -83,9 +82,7 @@ const Blog: React.FC<Props> = ({ posts }) => {
           All Posts
         </h3>
         {!filteredBlogPosts.length && (
-          <p className="text-gray-600 dark:text-gray-400 mb-4">
-            No posts found.
-          </p>
+          <p className="text-gray-600 dark:text-gray-400 mb-4">Searching...</p>
         )}
         {filteredBlogPosts.map((frontMatter) => (
           <BlogPost key={frontMatter.title} {...frontMatter} />
@@ -97,6 +94,7 @@ const Blog: React.FC<Props> = ({ posts }) => {
 
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog');
+
   return { props: { posts } };
 }
 

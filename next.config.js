@@ -3,6 +3,10 @@ module.exports = {
     webpack5: true,
     strictPostcssConfiguration: true
   },
+  publicRuntimeConfig: {
+    ALGOLIA_ADMIN_KEY: process.env.ALGOLIA_ADMIN_KEY,
+    ALGOLIA_APPLICATION_ID: process.env.ALGOLIA_APPLICATION_ID
+  },
   images: {
     domains: [
       'i.scdn.co', // Spotify Album Art

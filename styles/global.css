@@ -173,3 +173,7 @@ table {
   display: block;
   overflow-y: scroll;
 }
+
+em {
+  @apply bg-green-200 dark:bg-red-900;
+}

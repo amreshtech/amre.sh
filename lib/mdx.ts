@@ -7,6 +7,7 @@ import renderToString from 'next-mdx-remote/render-to-string';
 import { postFetcher } from './post-fetcher';
 
 import MDXComponents from '@components/MDXComponents';
+import { createSearchRecords } from 'scripts/createSearchRecords';
 
 export async function getFiles(type) {
   try {
@@ -56,7 +57,7 @@ export async function getFileBySlug(type?: string, slug?: string) {
 export async function getAllFilesFrontMatter(type) {
   try {
     const files = await postFetcher.fetchAllPostPaths(type);
-    return files.reduce(async (allPosts, postSlug) => {
+    const allFilesFrontMatter = files.reduce(async (allPosts, postSlug) => {
       const source = await postFetcher.fetchPost(`${type}/${postSlug}`);
       const { data } = matter(source);
 
@@ -68,6 +69,10 @@ export async function getAllFilesFrontMatter(type) {
         ...(await allPosts)
       ];
     }, []);
+    if (process.env.NODE_ENV === 'production') {
+      createSearchRecords(await allFilesFrontMatter);
+    }
+    return allFilesFrontMatter;
   } catch (error) {
     console.error(error);
   }

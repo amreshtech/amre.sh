@@ -21,5 +21,6 @@
   "ignorePatterns": [
     "sync-requires.js",
     "**/_this_is_virtual_fs_path_/**/*.js"
-  ]
+  ],
+  "max-len": 70
 }

@@ -1,2 +1,9 @@
+# *
 User-agent: *
-Sitemap: https://leerob.io/sitemap.xml
+Allow: /
+
+# Host
+Host: https://amre.sh
+
+# Sitemaps
+Sitemap: https://amre.sh/sitemap.xml
