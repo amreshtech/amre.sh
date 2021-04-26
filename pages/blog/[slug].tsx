@@ -25,7 +25,6 @@ const Blog: React.FC<Props> = ({ mdxSource, tweets, frontMatter }) => {
       StaticTweet
     }
   });
-  console.log(content);
   return <BlogLayout frontMatter={frontMatter}>{content}</BlogLayout>;
 };
 
