@@ -11,7 +11,7 @@ interface Props {
 }
 
 const editUrl = (slug) =>
-  `https://github.com/leerob/amre.sh/edit/main/data/blog/${slug}.mdx`;
+  `https://github.com/amreshtech/amre.sh/edit/main/data/blog/${slug}.mdx`;
 const discussUrl = (slug) =>
   `https://mobile.twitter.com/search?q=${encodeURIComponent(
     `https://amre.sh/blog/${slug}`

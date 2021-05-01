@@ -1,4 +1,4 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fleerob%2Famre.sh)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Famreshtech%2Famre.sh)
 
 # amre.sh
 
@@ -16,13 +16,13 @@ If you want to understand this repo better, I did a [one-hour live stream](https
 ## Running Locally
 
 ```bash
-$ git clone https://github.com/leerob/amre.sh.git
+$ git clone https://github.com/amreshtech/amre.sh.git
 $ cd amre.sh
 $ yarn
 $ yarn dev
 ```
 
-Create a `.env.local` file similar to [`.env.example`](https://github.com/leerob/amre.sh/blob/master/.env.example).
+Create a `.env.local` file similar to [`.env.example`](https://github.com/amreshtech/amre.sh/blob/master/.env.example).
 
 ## Built Using
 

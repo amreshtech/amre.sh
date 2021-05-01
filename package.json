@@ -10,7 +10,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leerob/amre.sh.git"
+    "url": "git+https://github.com/amreshtech/amre.sh.git"
   },
   "scripts": {
     "build": "next build",
