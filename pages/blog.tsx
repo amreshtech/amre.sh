@@ -21,7 +21,7 @@ const Blog: React.FC<Props> = ({ posts }) => {
 
   return (
     <Container
-      title="Blog – Lee Robinson"
+      title="Blog – Amresh"
       description="Thoughts on the software industry, programming, tech, videography, music, and my personal life."
     >
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">

@@ -11,7 +11,7 @@ interface Props {
 const Newsletter: React.FC<Props> = ({ newsletters }) => {
   return (
     <Container
-      title="Newsletter – Lee Robinson"
+      title="Newsletter – Amresh"
       description="Thoughts on the software industry, programming, tech, videography, music, and my personal life."
     >
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">

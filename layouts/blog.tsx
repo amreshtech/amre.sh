@@ -11,18 +11,18 @@ interface Props {
 }
 
 const editUrl = (slug) =>
-  `https://github.com/leerob/leerob.io/edit/main/data/blog/${slug}.mdx`;
+  `https://github.com/leerob/amre.sh/edit/main/data/blog/${slug}.mdx`;
 const discussUrl = (slug) =>
   `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `https://leerob.io/blog/${slug}`
+    `https://amre.sh/blog/${slug}`
   )}`;
 
 const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
   return (
     <Container
-      title={`${frontMatter.title} – Lee Robinson`}
+      title={`${frontMatter.title} – Amresh`}
       description={frontMatter.summary}
-      image={`https://leerob.io${frontMatter.image}`}
+      image={`https://amre.sh${frontMatter.image}`}
       date={new Date(frontMatter.publishedAt).toISOString()}
       type="article"
     >
@@ -33,7 +33,7 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-2">
           <div className="flex items-center">
             <Image
-              alt="Lee Robinson"
+              alt="Amresh"
               height={24}
               width={24}
               src="/avatar.jpg"
@@ -41,7 +41,7 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
             />
             <p className="text-sm text-gray-700 dark:text-gray-300 ml-2">
               {frontMatter.by}
-              {'Lee Robinson / '}
+              {'Amresh / '}
               {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
             </p>
           </div>
