@@ -10,13 +10,6 @@ interface Props {
   frontMatter: FrontMatter;
 }
 
-const editUrl = (slug) =>
-  `https://github.com/amreshtech/amre.sh/edit/main/data/blog/${slug}.mdx`;
-const discussUrl = (slug) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `https://amre.sh/blog/${slug}`
-  )}`;
-
 const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
   return (
     <Container
@@ -45,34 +38,17 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
               {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
             </p>
           </div>
-          <p className="text-sm text-gray-500 min-w-32 mt-2 md:mt-0">
-            {frontMatter.readingTime.text}
+          <p className="inline-flex gap-1 text-sm text-gray-500 min-w-32 mt-2 md:mt-0">
+            <div>{frontMatter.readingTime.text}</div>
             {` • `}
             <ViewCounter slug={frontMatter.slug} />
           </p>
         </div>
-        <div className="prose dark:prose-dark max-w-none w-full">
+        <div className="prose dark:prose-dark max-w-none w-full pt-3">
           {children}
         </div>
         <div className="mt-8">
           <Subscribe />
-        </div>
-        <div className="text-sm text-gray-700 dark:text-gray-300">
-          <a
-            href={discussUrl(frontMatter.slug)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {'Discuss on Twitter'}
-          </a>
-          {` • `}
-          <a
-            href={editUrl(frontMatter.slug)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {'Edit on GitHub'}
-          </a>
         </div>
       </article>
     </Container>
