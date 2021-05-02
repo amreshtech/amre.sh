@@ -24,20 +24,9 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
           {frontMatter.title}
         </h1>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-2">
-          <div className="flex items-center">
-            <Image
-              alt="Amresh"
-              height={24}
-              width={24}
-              src="/avatar.png"
-              className="rounded-full"
-            />
-            <p className="text-sm text-gray-700 dark:text-gray-300 ml-2">
-              {frontMatter.by}
-              {'Amresh / '}
-              {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
-            </p>
-          </div>
+          <p className="text-sm text-gray-700 dark:text-gray-300">
+            {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
+          </p>
           <p className="inline-flex gap-1 text-sm text-gray-500 min-w-32 mt-2 md:mt-0">
             <div>{frontMatter.readingTime.text}</div>
             {` • `}
