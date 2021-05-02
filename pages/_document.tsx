@@ -47,6 +47,11 @@ class MyDocument extends Document {
             content="eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw"
             name="google-site-verification"
           />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Permanent+Marker&family=Quicksand:wght@400;500&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body className="bg-white dark:bg-black text-white dark:text-black">
           <Main />
