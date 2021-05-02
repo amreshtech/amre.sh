@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import NextLink from 'next/link';
-import Image from 'next/image';
 
 import Footer from '@components/Footer';
 
@@ -17,9 +16,8 @@ export default function Container(props) {
   const { children, ...customMeta } = props;
   const router = useRouter();
   const meta = {
-    title: 'Amresh – Developer, writer, creator.',
-    description: `Front-end developer, JavaScript enthusiast, and course creator.`,
-    image: 'https://amre.sh/static/images/banner.png',
+    title: 'Amresh – Developer, photographer, travel freak',
+    description: `Front-end developer`,
     type: 'website',
     ...customMeta
   };
@@ -48,7 +46,7 @@ export default function Container(props) {
       </Head>
       <nav className="sticky-nav flex justify-between items-center max-w-4xl w-full p-8 my-0 md:my-8 mx-auto bg-white dark:bg-black bg-opacity-60 dark:bg-opacity-60">
         <div className="font-qc text-4xl text-black font-bold">
-          <div>amresh mishra</div>
+          {router.pathname !== '/' ? 'amresh mishra' : ''}
         </div>
         <div>
           <NextLink href="/blog">
