@@ -8,7 +8,7 @@ const Home = () => {
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           Hey, I’m Amresh 👋
         </h1>
-        <div className="flex justify-start items-center gap-2 max-w-2xl mx-auto">
+        <div className="flex justify-start items-center gap-2">
           <h1 className="font-bold text-3xl md:text-5xl tracking-tight text-black dark:text-white">
             I’m a
           </h1>
