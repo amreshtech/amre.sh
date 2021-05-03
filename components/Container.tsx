@@ -45,18 +45,24 @@ export default function Container(props) {
         )}
       </Head>
       <nav className="sticky-nav flex justify-between items-center max-w-4xl w-full p-8 my-0 md:my-8 mx-auto bg-white dark:bg-black bg-opacity-60 dark:bg-opacity-60">
-        <div className="font-qc text-4xl text-black font-bold">
-          {router.pathname !== '/' ? 'amresh mishra' : ''}
-        </div>
+        <NextLink href="/">
+          <>
+            <a className="font-qc text-4xl text-black dark:text-white font-bold hidden sm:block">
+              {router.pathname !== '/' ? 'amresh mishra' : ''}
+            </a>
+            <a className="font-qc text-4xl text-black dark:text-white font-bold block sm:hidden">
+              {router.pathname !== '/' ? 'amresh' : ''}
+            </a>
+          </>
+        </NextLink>
         <div>
           <NextLink href="/blog">
             <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">Blog</a>
           </NextLink>
           <NextLink href="/about">
-            <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">About</a>
-          </NextLink>
-          <NextLink href="/">
-            <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">Home</a>
+            <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100 mr-2">
+              About
+            </a>
           </NextLink>
           <button
             aria-label="Toggle Dark Mode"

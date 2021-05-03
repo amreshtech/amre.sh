@@ -11,20 +11,18 @@ interface Props {
 }
 
 const Blog: React.FC<Props> = ({ posts }) => {
-  const [isSearching, setIsSearching] = useState(false);
   const [filteredBlogPosts, setFilteredBlogPosts] = useState(posts);
 
   const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    setIsSearching(true);
     setFilteredBlogPosts((await getSearchResults(e.target.value)) as any);
   };
 
   return (
     <Container
       title="Blog – Amresh"
-      description="Thoughts on the software industry, programming, tech, videography, music, and my personal life."
+      description="Thoughts on the software industry, programming, tech, and my personal life."
     >
-      <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
+      <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           Blog
         </h1>
@@ -56,37 +54,16 @@ const Blog: React.FC<Props> = ({ posts }) => {
             />
           </svg>
         </div>
-        {!isSearching && (
-          <>
-            <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
-              Most Popular
-            </h3>
-            <BlogPost
-              title="Everything I Know About Style Guides, Design Systems, and Component Libraries"
-              summary="A deep-dive on everything I've learned in the past year building style guides, design systems, component libraries, and their best practices."
-              slug="style-guides-component-libraries-design-systems"
-            />
-            <BlogPost
-              title="How Stripe Designs Beautiful Websites"
-              summary="Examining the tips and tricks used to make Stripe's website design a notch above the rest."
-              slug="how-stripe-designs-beautiful-websites"
-            />
-            <BlogPost
-              title="Creating a Monorepo with Lerna & Yarn Workspaces"
-              summary="In this guide, you will learn how to create a Monorepo to manage multiple packages with a shared build, test, and release process."
-              slug="monorepo-lerna-yarn-workspaces"
-            />
-          </>
-        )}
-        <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
-          All Posts
-        </h3>
-        {!filteredBlogPosts.length && (
-          <p className="text-gray-600 dark:text-gray-400 mb-4">Searching...</p>
-        )}
-        {filteredBlogPosts.map((frontMatter) => (
-          <BlogPost key={frontMatter.title} {...frontMatter} />
-        ))}
+        <div className="mt-8">
+          {!filteredBlogPosts.length && (
+            <p className="text-gray-600 dark:text-gray-400 mb-4">
+              Searching...
+            </p>
+          )}
+          {filteredBlogPosts.map((frontMatter) => (
+            <BlogPost key={frontMatter.title} {...frontMatter} />
+          ))}
+        </div>
       </div>
     </Container>
   );
