@@ -95,3 +95,7 @@ a > div > div > h4 > em {
 pre {
   @apply shadow-xl;
 }
+
+.Typewriter__cursor {
+  color: red;
+}

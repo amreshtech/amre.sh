@@ -1,6 +1,5 @@
-import Link from 'next/link';
-
 import NowPlaying from '@components/NowPlaying';
+import { useRouter } from 'next/router';
 
 interface Props {
   href: string;
@@ -19,11 +18,14 @@ const ExternalLink: React.FC<Props> = ({ href, children }) => (
 );
 
 const Footer = () => {
+  const router = useRouter();
   return (
-    <footer className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full mb-8">
-      <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
-      <NowPlaying />
-    </footer>
+    router.pathname !== '/' && (
+      <footer className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full mb-8">
+        <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
+        <NowPlaying />
+      </footer>
+    )
   );
 };
 
