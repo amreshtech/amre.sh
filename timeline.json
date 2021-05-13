@@ -1,0 +1,100 @@
+[
+  {
+    "year": "1992",
+    "content": [
+      {
+        "title": "Born 👶🏼🍼"
+      }
+    ]
+  },
+  {
+    "year": "2005",
+    "content": [
+      {
+        "title": "First Computer 🖥️",
+        "description": "It was an assembled computer powered by Intel Pentium IV. This was my first step into the world of magic."
+      }
+    ]
+  },
+  {
+    "year": "2007",
+    "content": [
+      {
+        "title": "Became a beyblade team member 💥",
+        "description": "I was a hard-core beyblade fan. The day I saw it on TV, I asked my father to get me one. We all did. And he actually did buy me one."
+      }
+    ]
+  },
+  {
+    "year": "2009",
+    "content": [
+      {
+        "title": "Passed Secondary School 🤩"
+      }
+    ]
+  },
+  {
+    "year": "2011",
+    "content": [
+      {
+        "title": "Passed Senior Secondary School 🤩🤩"
+      },
+      {
+        "title": "Enrolled into B.Tech in Computer Science & Engg at KIIT University 🏫"
+      }
+    ]
+  },
+  {
+    "year": "2014",
+    "content": [
+      {
+        "title": "Became Training & Placement Coordinator at my university"
+      },
+      {
+        "title": "Got placed in-campus in Cognizant, Wipro, Infosys and Accenture"
+      }
+    ]
+  },
+  {
+    "year": "2015",
+    "content": [
+      {
+        "title": "Graduated from KIIT University 🎓",
+        "description": "A big achievement for me, since I was the first in my family to have a B.Tech degree."
+      },
+      {
+        "title": "Joined Accenture"
+      },
+      {
+        "title": "Started working for large investment banking client",
+        "description": "Well this was new. I had no idea how capital markets work, how private equities function, how and why share market goes up and down. Well now I know. Now I know the code that works in background to make all of this happen. This was my first intro to the world of Angular JS!"
+      }
+    ]
+  },
+  {
+    "year": "2018",
+    "content": [
+      {
+        "title": "Enrolled in MSC. in Business Analytics at NUI Galway, Ireland",
+        "description": "This was a dream come true. Add to that the beauty of Ireland. Never ceases to amaze you. Never! No matter wherever you go. ☘️"
+      },
+      {
+        "title": "Auditor, NUIG CompSoc",
+        "description": "Well, that's sweet! Isn't it ? This helped me meet many innovative minds, interact with them and even better, organise events with them."
+      }
+    ]
+  },
+  {
+    "year": "2019",
+    "content": [
+      {
+        "title": "Graduated from NUI Galway, Ireland 🎓",
+        "description": "This could be unreal, but it isn't. Trust me. A big, very big achievement for me. Loads, and I mean loads of hardwork has gone to make this happen. Grateful to all who helped make this happen."
+      },
+      {
+        "title": "Joined Overstock Labs 🤩",
+        "description": "I found my place. Amazing team and amazing work culture. Now I build resilient front-end apps that serve millions of customers with NextJS, Storybook, Fela and a lot more. "
+      }
+    ]
+  }
+]
