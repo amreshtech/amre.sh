@@ -18,38 +18,27 @@ const About = () => {
           />
         </div>
         <div className="flex justify-center items-center gap-5 mt-5">
-          <Link href="https://www.facebook.com/amreshm/">
-            <a>
-              <FaFacebook
-                size="1.3em"
-                className="text-blue-500 dark:text-white"
-              />
-            </a>
-          </Link>
-          <Link href="https://www.twitter.com/amreshtech">
-            <a>
-              <FaTwitter
-                className="text-blue-500 dark:text-white"
-                size="1.3em"
-              />
-            </a>
-          </Link>
-          <Link href="https://www.instagram.com/amresh.m">
-            <a>
-              <FaInstagram
-                className="text-fuchsia-500 dark:text-white"
-                size="1.3em"
-              />
-            </a>
-          </Link>
-          <Link href="https://www.linkedin.com/in/amreshm/">
-            <a>
-              <FaLinkedin
-                className="text-blue-500 dark:text-white"
-                size="1.3em"
-              />
-            </a>
-          </Link>
+          <a href="https://www.facebook.com/amreshm/" target="_blank">
+            <FaFacebook
+              size="1.3em"
+              className="text-blue-500 dark:text-white"
+            />
+          </a>
+          <a href="https://www.twitter.com/amreshtech" target="_blank">
+            <FaTwitter className="text-blue-500 dark:text-white" size="1.3em" />
+          </a>
+          <a href="https://www.instagram.com/amresh.m" target="_blank">
+            <FaInstagram
+              className="text-blue-500 dark:text-white"
+              size="1.3em"
+            />
+          </a>
+          <a href="https://www.linkedin.com/in/amreshm/" target="_blank">
+            <FaLinkedin
+              className="text-blue-500 dark:text-white"
+              size="1.3em"
+            />
+          </a>
         </div>
         <div className="flex flex-col gap-2 mt-16 text-black dark:text-white">
           <p>
