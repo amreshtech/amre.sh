@@ -1,7 +1,7 @@
 import hydrate from 'next-mdx-remote/hydrate';
 
 import { getFileBySlug } from '@lib/mdx';
-import UsesLayout from '@layouts/uses';
+import UsesLayout from '@layouts/UsesLayout';
 import MDXComponents from '@components/MDXComponents';
 import type { MDXSource } from '../types';
 

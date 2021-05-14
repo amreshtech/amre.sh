@@ -36,7 +36,7 @@ const Step: React.FC<Props> = ({ title, children }) => {
     </li>
   );
 };
-const reversedTimeline = timeline.reverse();
+const reversedTimeline = [...timeline].reverse();
 const getTimeline = (start: number, end: number = timeline.length) =>
   reversedTimeline
     .slice(start, end)
@@ -54,7 +54,7 @@ const getTimeline = (start: number, end: number = timeline.length) =>
         <div key={year}>
           <Year>{year}</Year>
           <ul>
-            {content.reverse().map(({ title, description = '' }) => (
+            {[...content].reverse().map(({ title, description = '' }) => (
               <Step title={title} key={title}>
                 {description}
               </Step>

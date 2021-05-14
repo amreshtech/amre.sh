@@ -44,6 +44,22 @@ const Subscribe: React.FC = () => {
     });
   };
 
+  const Message = () => {
+    if (form.state === 'error')
+      return <ErrorMessage>{form.message}</ErrorMessage>;
+    else if (form.state === 'success')
+      return <SuccessMessage>{form.message}</SuccessMessage>;
+    else
+      return (
+        <p className="text-sm text-gray-800 dark:text-gray-200">
+          {`${subscriberCount || '-'} subscribers – `}
+          <Link href="/newsletter">
+            <a>29 issues</a>
+          </Link>
+        </p>
+      );
+  };
+
   return (
     <div className="border border-blue-200 rounded p-6 my-4 w-full dark:border-gray-800 bg-blue-50 dark:bg-blue-opaque">
       <p className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100">
@@ -70,18 +86,7 @@ const Subscribe: React.FC = () => {
           {form.state === 'loading' ? <LoadingSpinner /> : 'Subscribe'}
         </button>
       </form>
-      {form.state === 'error' ? (
-        <ErrorMessage>{form.message}</ErrorMessage>
-      ) : form.state === 'success' ? (
-        <SuccessMessage>{form.message}</SuccessMessage>
-      ) : (
-        <p className="text-sm text-gray-800 dark:text-gray-200">
-          {`${subscriberCount || '-'} subscribers – `}
-          <Link href="/newsletter">
-            <a>29 issues</a>
-          </Link>
-        </p>
-      )}
+      <Message />
     </div>
   );
 };

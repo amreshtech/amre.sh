@@ -1,7 +1,7 @@
 import hydrate from 'next-mdx-remote/hydrate';
 
 import { getFiles, getFileBySlug } from '@lib/mdx';
-import NewsletterLayout from '@layouts/newsletter';
+import NewsletterLayout from '@layouts/NewsletterLayout';
 import MDXComponents from '@components/MDXComponents';
 import type { FrontMatter, MDXSource } from 'types';
 

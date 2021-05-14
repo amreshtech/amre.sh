@@ -2,7 +2,7 @@ import hydrate from 'next-mdx-remote/hydrate';
 
 import { getFiles, getFileBySlug } from '@lib/mdx';
 import { getTweets } from '@lib/twitter';
-import BlogLayout from '@layouts/blog';
+import BlogLayout from '@layouts/BlogLayout';
 import Tweet from '@components/Tweet';
 import MDXComponents from '@components/MDXComponents';
 import type { FrontMatter, MDXSource } from 'types';
