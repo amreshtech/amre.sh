@@ -1,7 +1,6 @@
 import Container from '@components/Container';
 import Timeline from '@components/Timeline';
 import Image from 'next/image';
-import Link from 'next/link';
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const About = () => {

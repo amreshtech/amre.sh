@@ -15,7 +15,7 @@ interface Props {
 
 const Blog: React.FC<Props> = ({ mdxSource, tweets, frontMatter }) => {
   const StaticTweet = ({ id }) => {
-    const tweet = tweets.find((tweet) => tweet.id === id);
+    const tweet = tweets.find((t) => t.id === id);
     return <Tweet {...tweet} />;
   };
 
