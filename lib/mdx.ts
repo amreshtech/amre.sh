@@ -11,7 +11,7 @@ import { createSearchRecords } from 'scripts/createSearchRecords';
 
 export async function getFiles(type) {
   try {
-    return postFetcher.fetchAllPostPaths(type);
+    return await postFetcher.fetchAllPostPaths(type);
   } catch (error) {
     console.error(error);
   }

@@ -7,9 +7,10 @@
     "plugin:prettier/recommended",
     "eslint:recommended",
     "plugin:react/recommended",
-    "prettier/react"
+    "prettier/react",
+    "plugin:sonarjs/recommended"
   ],
-  "plugins": ["simple-import-sort"],
+  "plugins": ["simple-import-sort", "sonarjs"],
   "parser": "babel-eslint",
   "rules": {
     "strict": 0,
