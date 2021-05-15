@@ -1,5 +1,3 @@
-const fetchFileFromGitHub =
-  'https://raw.githubusercontent.com/amreshtech/personal-web-blog-posts/master';
 const gitHubApi = 'https://api.github.com/graphql';
 const headers = {
   Accept: 'application/vnd.github.v3+json',
