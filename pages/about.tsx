@@ -9,7 +9,7 @@ const About = () => {
       <div className="max-w-3xl mx-auto mb-16">
         <div className="flex justify-center items-center">
           <Image
-            src="/avatar.png"
+            src="https://res.cloudinary.com/amreshtech/image/upload/v1621232133/photos/avatar_m79ssw.png"
             alt="avatar"
             width={100}
             height={100}
