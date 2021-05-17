@@ -44,7 +44,7 @@ export default function Container(props) {
           <meta property="article:published_time" content={meta.date} />
         )}
       </Head>
-      <nav className="sticky-nav flex justify-between items-center max-w-4xl w-full p-8 my-0 md:my-8 mx-auto bg-white dark:bg-black bg-opacity-60 dark:bg-opacity-60">
+      <nav className="sticky-nav flex justify-between items-center max-w-4xl w-full px-16 py-8 my-0 md:my-8 mx-auto bg-white dark:bg-black bg-opacity-60 dark:bg-opacity-60">
         <NextLink href="/">
           <a>
             <div className="font-qc text-4xl text-black dark:text-white font-bold hidden sm:block">
