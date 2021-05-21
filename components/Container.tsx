@@ -44,7 +44,7 @@ export default function Container(props) {
           <meta property="article:published_time" content={meta.date} />
         )}
       </Head>
-      <nav className="sticky-nav flex justify-between items-center max-w-4xl w-full px-16 py-8 my-0 md:my-8 mx-auto bg-white dark:bg-black bg-opacity-60 dark:bg-opacity-60">
+      <nav className="sticky-nav flex justify-between items-center max-w-4xl w-full p-4 sm:px-16 sm:py-8 my-0 md:my-8 mx-auto bg-white dark:bg-black bg-opacity-60 dark:bg-opacity-60">
         <NextLink href="/">
           <a>
             <div className="font-qc text-4xl text-black dark:text-white font-bold hidden sm:block">
@@ -58,6 +58,11 @@ export default function Container(props) {
         <div>
           <NextLink href="/blog">
             <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">Blog</a>
+          </NextLink>
+          <NextLink href="/travel">
+            <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">
+              Travel
+            </a>
           </NextLink>
           <NextLink href="/about">
             <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100 mr-2">
@@ -102,7 +107,7 @@ export default function Container(props) {
       </nav>
       <main
         id="skip"
-        className="flex flex-col justify-center bg-white dark:bg-black px-8"
+        className="flex flex-col justify-center bg-white dark:bg-black px-4"
       >
         {children}
         <Footer />
