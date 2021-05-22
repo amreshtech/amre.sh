@@ -27,7 +27,8 @@ export async function getFileBySlug(type?: string, slug?: string) {
       mdxOptions: {
         remarkPlugins: [
           require('remark-autolink-headings'),
-          require('remark-slug')
+          require('remark-slug'),
+          require('remark-code-titles')
         ],
         rehypePlugins: [mdxPrism]
       }
