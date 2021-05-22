@@ -24,6 +24,7 @@ const TravelImageLayout: React.FC<Props> = ({ location, images }) => {
                 alt={location}
                 layout="responsive"
                 key={image.url}
+                className="cursor-pointer"
               />
             ))}
           </Masonry>
