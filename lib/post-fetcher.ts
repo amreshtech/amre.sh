@@ -1,8 +1,7 @@
 const gitHubApi = 'https://api.github.com/graphql';
 const headers = {
   Accept: 'application/vnd.github.v3+json',
-  Authorization:
-    'Basic YW1yZXNodGVjaDpnaHBfRW8zcWRIUjFXOFlQTUdsMUI0ZFJ6N2F5VE44OUVaMWtRMnpY',
+  Authorization: `Basic ${process.env.GITHUB_AUTH_HEADER}`,
   'Content-Type': 'application/json'
 };
 
@@ -14,7 +13,7 @@ export const postFetcher = {
         headers: headers,
         body: JSON.stringify({
           query: `query {
-                repository(name: "personal-web-blog-posts", owner: "amreshtech") {
+                repository(name: "${process.env.GITHUB_BLOG_REPO}", owner: "${process.env.GITHUB_REPO_OWNER}") {
                    object(expression: "master:${type}") {
                     ... on Tree {
                       entries {
@@ -37,7 +36,7 @@ export const postFetcher = {
         headers: headers,
         body: JSON.stringify({
           query: `query {
-        repository(name: "personal-web-blog-posts", owner: "amreshtech") {
+        repository(name: "${process.env.GITHUB_BLOG_REPO}", owner: "${process.env.GITHUB_REPO_OWNER}") {
            object(expression: "master:${path}") {
             ... on Blob {
                 text

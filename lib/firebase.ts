@@ -5,10 +5,9 @@ if (!admin.apps.length) {
     credential: admin.credential.cert({
       clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
       privateKey: process.env.FIREBASE_PRIVATE_KEY,
-      projectId: 'personal-blog-amresh'
+      projectId: process.env.FIREBASE_PROJECT_ID
     }),
-    databaseURL:
-      'https://personal-blog-amresh-default-rtdb.europe-west1.firebasedatabase.app'
+    databaseURL: process.env.FIREBASE_DATABASE_URL
   });
 }
 
