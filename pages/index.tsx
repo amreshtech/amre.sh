@@ -1,8 +1,12 @@
 import Container from '../components/Container';
 import Typewriter from 'typewriter-effect';
 import SpotifyWidget from '@components/SpotifyWidget';
+import { getAllFilesFrontMatter } from '@lib/mdx';
+import orderBy from 'lodash/orderBy';
+import { Post } from 'types';
+import LatestPost from '@components/LatestPost';
 
-const Home = () => {
+const Home: React.FC<{ latestPosts: Post[] }> = ({ latestPosts }) => {
   return (
     <Container>
       <div className="max-w-3xl mx-auto mb-16 flex justify-center items-center">
@@ -44,10 +48,17 @@ const Home = () => {
         </div>
         <div className="md:w-1/2">
           <SpotifyWidget />
+          <LatestPost latestPosts={latestPosts} />
         </div>
       </div>
     </Container>
   );
 };
+
+export async function getStaticProps() {
+  const posts = await getAllFilesFrontMatter('blog');
+  const orderedPosts = orderBy(posts, ['publishedAt'], ['desc']);
+  return { props: { latestPosts: orderedPosts.slice(0, 3) } };
+}
 
 export default Home;
