@@ -5,6 +5,8 @@ import { useTheme } from 'next-themes';
 import NextLink from 'next/link';
 
 import Footer from '@components/Footer';
+import Particles from 'react-particles-js';
+import particlesJson from 'particles.json';
 
 export default function Container(props) {
   const [mounted, setMounted] = useState(false);
@@ -24,6 +26,7 @@ export default function Container(props) {
 
   return (
     <div className="bg-white dark:bg-black">
+      <Particles params={particlesJson as any} />
       <Head>
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
