@@ -1,7 +1,7 @@
 import matter from 'gray-matter';
 import mdxPrism from 'mdx-prism';
 import readingTime from 'reading-time';
-import renderToString from 'next-mdx-remote/render-to-string';
+import { serialize } from 'next-mdx-remote/serialize';
 import { postFetcher } from './post-fetcher';
 
 import MDXComponents from '@components/MDXComponents';
@@ -22,8 +22,7 @@ export async function getFileBySlug(type?: string, slug?: string) {
       : await postFetcher.fetchPost(`${type}.mdx`);
 
     const { data, content } = matter(source);
-    const mdxSource = await renderToString(content, {
-      components: MDXComponents,
+    const mdxSource = await serialize(content, {
       mdxOptions: {
         remarkPlugins: [
           require('remark-autolink-headings'),
