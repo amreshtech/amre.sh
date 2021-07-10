@@ -8,7 +8,7 @@ import LatestPost from '@components/LatestPost';
 
 const Home: React.FC<{ latestPosts: Post[] }> = ({ latestPosts }) => {
   return (
-    <Container>
+    <Container hideNav>
       <div className="max-w-3xl mb-2 mt-5 sm:mx-2 md:ml-96 font-qc">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           Hey, I’m Amresh 👋

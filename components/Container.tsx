@@ -15,7 +15,7 @@ export default function Container(props) {
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
 
-  const { children, ...customMeta } = props;
+  const { children, hideNav, ...customMeta } = props;
   const router = useRouter();
   const meta = {
     title: 'Amresh – Developer, photographer, travel freak',
@@ -26,7 +26,7 @@ export default function Container(props) {
 
   return (
     <div className="bg-white dark:bg-black">
-      <Particles params={particlesJson as any} />
+      <Particles params={particlesJson as any} />\
       <Head>
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
@@ -47,31 +47,52 @@ export default function Container(props) {
           <meta property="article:published_time" content={meta.date} />
         )}
       </Head>
-      <nav className="sticky-nav flex justify-between items-center max-w-4xl w-full p-4 sm:px-16 sm:py-8 my-0 md:my-8 mx-auto bg-white dark:bg-black bg-opacity-60 dark:bg-opacity-60">
-        <NextLink href="/">
-          <a>
-            <div className="font-qc text-4xl text-black dark:text-white font-bold hidden sm:block">
-              {router.pathname !== '/' ? 'amresh mishra' : ''}
-            </div>
-            <div className="font-qc text-4xl text-black dark:text-white font-bold block sm:hidden">
-              {router.pathname !== '/' ? 'amresh' : ''}
-            </div>
-          </a>
-        </NextLink>
+      <nav
+        className={`sticky-nav flex justify-between items-center max-w-4xl w-full p-4 sm:px-16 sm:py-8 my-0 md:my-8 mx-auto  ${
+          !hideNav
+            ? 'bg-white dark:bg-black bg-opacity-60 dark:bg-opacity-60'
+            : 'bg-transparent'
+        }`}
+        style={{
+          ...(!hideNav && {
+            backdropFilter: 'saturate(180%) blur(20px)'
+          })
+        }}
+      >
         <div>
-          <NextLink href="/blog">
-            <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">Blog</a>
-          </NextLink>
-          <NextLink href="/travel">
-            <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">
-              Travel
-            </a>
-          </NextLink>
-          <NextLink href="/about">
-            <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100 mr-2">
-              About
-            </a>
-          </NextLink>
+          {!hideNav && (
+            <NextLink href="/">
+              <a>
+                <div className="font-qc text-4xl text-black dark:text-white font-bold hidden sm:block">
+                  amresh mishra
+                </div>
+                <div className="font-qc text-4xl text-black dark:text-white font-bold block sm:hidden">
+                  amresh
+                </div>
+              </a>
+            </NextLink>
+          )}
+        </div>
+        <div>
+          {!hideNav && (
+            <>
+              <NextLink href="/blog">
+                <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">
+                  Blog
+                </a>
+              </NextLink>
+              <NextLink href="/travel">
+                <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">
+                  Travel
+                </a>
+              </NextLink>
+              <NextLink href="/about">
+                <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100 mr-2">
+                  About
+                </a>
+              </NextLink>
+            </>
+          )}
           <button
             aria-label="Toggle Dark Mode"
             type="button"
