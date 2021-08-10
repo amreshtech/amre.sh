@@ -26,7 +26,7 @@ export default function Container(props) {
 
   return (
     <div className="bg-white dark:bg-black">
-      <Particles params={particlesJson as any} />\
+      <Particles params={particlesJson as any} />
       <Head>
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
@@ -48,16 +48,11 @@ export default function Container(props) {
         )}
       </Head>
       <nav
-        className={`sticky-nav flex justify-between items-center max-w-4xl w-full p-4 sm:px-16 sm:py-8 my-0 md:my-8 mx-auto  ${
+        className={`sticky-nav flex justify-between items-center w-full p-4 sm:px-16 sm:py-8 my-0 md:my-8 mx-auto  ${
           !hideNav
-            ? 'bg-white dark:bg-black bg-opacity-60 dark:bg-opacity-60'
+            ? 'bg-white dark:bg-black bg-opacity-60 dark:bg-opacity-60 max-w-4xl saturate-200 backdrop-blur-lg'
             : 'bg-transparent'
         }`}
-        style={{
-          ...(!hideNav && {
-            backdropFilter: 'saturate(180%) blur(20px)'
-          })
-        }}
       >
         <div>
           {!hideNav && (
@@ -76,7 +71,7 @@ export default function Container(props) {
         <div>
           {!hideNav && (
             <>
-              <NextLink href="/blog">
+              <NextLink href="/">
                 <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">
                   Blog
                 </a>

@@ -38,32 +38,30 @@ const Step: React.FC<Props> = ({ title, children }) => {
 };
 const reversedTimeline = [...timeline].reverse();
 const getTimeline = (start: number, end: number = timeline.length) =>
-  reversedTimeline
-    .slice(start, end)
-    .map(
-      ({
-        year,
-        content
-      }: {
-        year: string;
-        content: {
-          title: string;
-          description: string;
-        }[];
-      }) => (
-        <div key={year}>
-          <Year>{year}</Year>
-          <ul>
-            {[...content].reverse().map(({ title, description = '' }) => (
-              <Step title={title} key={title}>
-                {description}
-              </Step>
-            ))}
-          </ul>
-          <Divider />
-        </div>
-      )
-    );
+  reversedTimeline.slice(start, end).map(
+    ({
+      year,
+      content
+    }: {
+      year: string;
+      content: {
+        title: string;
+        description: string;
+      }[];
+    }) => (
+      <div key={year}>
+        <Year>{year}</Year>
+        <ul>
+          {[...content].reverse().map(({ title, description = '' }) => (
+            <Step title={title} key={title}>
+              {description}
+            </Step>
+          ))}
+        </ul>
+        <Divider />
+      </div>
+    )
+  );
 
 export default function Timeline() {
   const [isShowingFullTimeline, showFullTimeline] = useState(false);

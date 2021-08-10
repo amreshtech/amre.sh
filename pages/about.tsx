@@ -6,7 +6,7 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 const About = () => {
   return (
     <Container title="About – Amresh">
-      <div className="max-w-3xl mx-auto mb-16">
+      <div className="max-w-3xl mx-auto mb-16 z-10">
         <div className="flex justify-center items-center">
           <Image
             src="https://res.cloudinary.com/amreshtech/image/upload/v1621232133/photos/avatar_m79ssw.png"

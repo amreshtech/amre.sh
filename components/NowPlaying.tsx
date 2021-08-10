@@ -10,7 +10,7 @@ const NowPlaying: React.FC = () => {
       {data?.albumImageUrl && (
         <Image width={24} height={24} layout="fixed" src={data.albumImageUrl} />
       )}
-      <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate">
+      <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate z-10">
         {data?.songUrl && (
           <a
             className="text-gray-800 dark:text-gray-200 font-medium  max-w-max truncate"
