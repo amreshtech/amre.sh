@@ -22,7 +22,7 @@ const Blog: React.FC<Props> = ({ posts }) => {
       title="Blog – Amresh"
       description="Thoughts on the software industry, programming, tech, and my personal life."
     >
-      <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 z-10">
+      <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 z-10 w-full">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           Blog
         </h1>
@@ -49,7 +49,7 @@ const Blog: React.FC<Props> = ({ posts }) => {
             />
           </svg>
         </div>
-        <div className="mt-8">
+        <div className="mt-8 w-full">
           {!filteredBlogPosts.length && (
             <p className="text-gray-600 dark:text-gray-400 mb-4">
               Searching...
