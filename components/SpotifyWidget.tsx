@@ -14,6 +14,7 @@ const SpotifyWidget: React.FC = () => {
             layout="fixed"
             src={data.albumImageUrl}
             className="rounded-sm drop-shadow-lg"
+            alt="Now playing album image"
           />
         )}
       </div>

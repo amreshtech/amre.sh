@@ -17,22 +17,22 @@ const About = () => {
           />
         </div>
         <div className="flex justify-center items-center gap-5 mt-5">
-          <a href="https://www.facebook.com/amreshm/" target="_blank">
+          <a href="https://www.facebook.com/amreshm/" target="_blank" rel="noreferrer">
             <FaFacebook
               size="1.3em"
               className="text-blue-500 dark:text-white"
             />
           </a>
-          <a href="https://www.twitter.com/amreshtech" target="_blank">
+          <a href="https://www.twitter.com/amreshtech" target="_blank" rel="noreferrer">
             <FaTwitter className="text-blue-500 dark:text-white" size="1.3em" />
           </a>
-          <a href="https://www.instagram.com/amresh.m" target="_blank">
+          <a href="https://www.instagram.com/amresh.m" target="_blank" rel="noreferrer">
             <FaInstagram
               className="text-blue-500 dark:text-white"
               size="1.3em"
             />
           </a>
-          <a href="https://www.linkedin.com/in/amreshm/" target="_blank">
+          <a href="https://www.linkedin.com/in/amreshm/" target="_blank" rel="noreferrer">
             <FaLinkedin
               className="text-blue-500 dark:text-white"
               size="1.3em"

@@ -8,7 +8,7 @@ const NowPlaying: React.FC = () => {
   return (
     <div className="flex flex-row-reverse sm:flex-row mb-8 space-x-0 sm:space-x-2 w-full">
       {data?.albumImageUrl && (
-        <Image width={24} height={24} layout="fixed" src={data.albumImageUrl} />
+        <Image width={24} height={24} layout="fixed" src={data.albumImageUrl} alt="Now playing album image" />
       )}
       <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate z-10">
         {data?.songUrl && (
