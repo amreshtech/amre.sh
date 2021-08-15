@@ -20,8 +20,7 @@ const ViewCounter: React.FC<Props> = ({ slug }) => {
 
     registerView();
   }, [slug]);
-
-  return <div>{views ? format(views) : '–––'} views</div>;
+  return views && <div>{format(views)} view{views > 1 && 's'}</div>;
 };
 
 export default ViewCounter;
