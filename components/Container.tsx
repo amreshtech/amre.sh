@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes';
 import NextLink from 'next/link';
 
 import Footer from '@components/Footer';
-import Particles from "react-tsparticles";
+import Particles from 'react-tsparticles';
 import particlesJson from '../particles.json';
 
 export default function Container(props) {
@@ -48,9 +48,9 @@ export default function Container(props) {
         )}
       </Head>
       <nav
-        className={`sticky-nav flex justify-between items-center w-full p-4 sm:px-16 sm:py-8 my-0 md:my-8 mx-auto  ${
+        className={`sticky-nav flex justify-between items-center max-w-4xl p-4 sm:px-16 sm:py-8 my-0 md:my-8 mx-auto  ${
           !hideNav
-            ? 'bg-white dark:bg-black bg-opacity-60 dark:bg-opacity-60 max-w-4xl saturate-200 backdrop-blur-lg'
+            ? 'bg-white dark:bg-black bg-opacity-60 dark:bg-opacity-60 saturate-200 backdrop-blur-lg'
             : 'bg-transparent'
         }`}
       >
@@ -71,7 +71,7 @@ export default function Container(props) {
         <div>
           {!hideNav && (
             <>
-              <NextLink href="/">
+              <NextLink href="/blog">
                 <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">
                   Blog
                 </a>

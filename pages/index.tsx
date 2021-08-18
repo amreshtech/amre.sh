@@ -1,63 +1,67 @@
-import { useState } from 'react';
-
 import Container from '@components/Container';
-import BlogPost from '@components/BlogPost';
 import { getAllFilesFrontMatter } from '@lib/mdx';
 import type { Post } from '../types';
-import { getSearchResults } from 'scripts/getSearchResults';
+import Button from '@components/Button';
+import Typewriter from 'typewriter-effect';
+import Link from 'next/link';
 
 interface Props {
   posts: Post[];
 }
 
 const Blog: React.FC<Props> = ({ posts }) => {
-  const [filteredBlogPosts, setFilteredBlogPosts] = useState(posts);
-
-  const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFilteredBlogPosts((await getSearchResults(e.target.value)) as any);
-  };
-
   return (
     <Container
       title="Blog – Amresh"
       description="Thoughts on the software industry, programming, tech, and my personal life."
+      hideNav
     >
       <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 z-10 w-full">
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-          Blog
+        <h1 className="font-bold text-3xl pt-24 md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+          Hey, I&apos;m Amresh 👋
         </h1>
         <div className="relative w-full mb-4">
-          <input
-            aria-label="Search articles"
-            type="text"
-            onChange={handleSearch}
-            placeholder="Search articles"
-            className="px-4 py-2 border border-gray-300 dark:border-gray-900 focus:ring-blue-500 focus:border-blue-500 block w-full rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
-          />
-          <svg
-            className="absolute right-3 top-3 h-5 w-5 text-gray-400 dark:text-gray-300"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          <h1 className="flex gap-2 pb-24 font-bold text-3xl md:text-5xl tracking-tight text-black dark:text-white">
+            I&apos;m a
+            <Typewriter
+              options={{ loop: true }}
+              onInit={(typewriter) => {
+                typewriter
+                  .typeString('Developer')
+                  .pauseFor(1000)
+                  .deleteAll()
+                  .typeString('Travel Freak')
+                  .pauseFor(1000)
+                  .deleteAll()
+                  .typeString('Foodie')
+                  .pauseFor(1000)
+                  .deleteAll()
+                  .typeString('UI/UX Designer')
+                  .pauseFor(1000)
+                  .deleteAll()
+                  .typeString('Photographer')
+                  .pauseFor(1000)
+                  .deleteAll()
+                  .typeString('GraphQL Dev')
+                  .pauseFor(1000)
+                  .start();
+              }}
             />
-          </svg>
+          </h1>
         </div>
-        <div className="mt-8 w-full">
-          {!filteredBlogPosts.length && (
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
-              Searching...
-            </p>
-          )}
-          {filteredBlogPosts.map((frontMatter) => (
-            <BlogPost key={frontMatter.title} {...frontMatter} />
-          ))}
+        <div className="relative w-full mb-4">
+          <div className="flex flex-col md:flex-row gap-4">
+            <Button>
+              <Link href="/blog">
+                <a>Blogs →</a>
+              </Link>
+            </Button>
+            <Button>
+              <Link href="/travel">
+                <a>Travel Pics →</a>
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     </Container>
