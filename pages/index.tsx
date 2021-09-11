@@ -22,27 +22,30 @@ const Blog: React.FC<Props> = ({ posts }) => {
         </h1>
         <div className="relative w-full mb-4">
           <h1 className="flex gap-2 pb-24 font-bold text-3xl md:text-5xl tracking-tight text-black dark:text-white">
-            I&apos;m a
+            I&apos;m
             <Typewriter
               options={{ loop: true }}
               onInit={(typewriter) => {
                 typewriter
-                  .typeString('Developer')
+                  .typeString('a Developer')
                   .pauseFor(1000)
                   .deleteAll()
-                  .typeString('Travel Freak')
+                  .typeString('an Investor')
                   .pauseFor(1000)
                   .deleteAll()
-                  .typeString('Foodie')
+                  .typeString('a Travel Freak')
                   .pauseFor(1000)
                   .deleteAll()
-                  .typeString('UI/UX Designer')
+                  .typeString('a Foodie')
                   .pauseFor(1000)
                   .deleteAll()
-                  .typeString('Photographer')
+                  .typeString('a UI/UX Designer')
                   .pauseFor(1000)
                   .deleteAll()
-                  .typeString('GraphQL Dev')
+                  .typeString('a Photographer')
+                  .pauseFor(1000)
+                  .deleteAll()
+                  .typeString('a GraphQL Dev')
                   .pauseFor(1000)
                   .start();
               }}
@@ -70,7 +73,6 @@ const Blog: React.FC<Props> = ({ posts }) => {
 
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog');
-
   return { props: { posts } };
 }
 

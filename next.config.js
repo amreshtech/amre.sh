@@ -54,6 +54,8 @@ const ContentSecurityPolicy = `
   media-src 'none';
   connect-src *;
   font-src 'self' *.gstatic.com;
+  object-src 'self' res.cloudinary.com;
+  frame-src 'self' res.cloudinary.com;
 `;
 
 const securityHeaders = [
