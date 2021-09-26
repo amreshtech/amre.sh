@@ -31,7 +31,7 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
             <ViewCounter slug={frontMatter.slug} />
           </p>
         </div>
-        <div className="prose dark:prose-dark max-w-none w-full pt-3">
+        <div className="prose dark:prose-dark max-w-none w-full pt-8">
           {children}
         </div>
       </article>
