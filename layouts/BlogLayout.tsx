@@ -2,6 +2,7 @@ import { parseISO, format } from 'date-fns';
 import Container from '@components/Container';
 import ViewCounter from '@components/ViewCounter';
 import type { FrontMatter } from 'types';
+import Badge from '@components/Badge';
 
 interface Props {
   children: React.ReactNode;
@@ -18,6 +19,11 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
       type="article"
     >
       <article className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 w-full bg-white dark:bg-black z-10">
+        <div className="flex flex-row items-center gap-2 pb-3">
+          {frontMatter.tags?.map((tag) => (
+            <Badge text={tag} key={tag} />
+          ))}
+        </div>
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           {frontMatter.title}
         </h1>

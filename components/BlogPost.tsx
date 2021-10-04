@@ -3,11 +3,13 @@ import useSWR from 'swr';
 import format from 'comma-number';
 import fetcher from '@lib/fetcher';
 import * as React from 'react';
+import Badge from './Badge';
 
 interface Props {
   title: string;
   summary: string;
   slug: string;
+  tags: string[];
   _highlightResult?: { title: any; summary: any; slug: any };
 }
 
@@ -15,6 +17,7 @@ const BlogPost: React.FC<Props> = ({
   title,
   summary,
   slug,
+  tags,
   _highlightResult
 }) => {
   const { data } = useSWR(`/api/views/${slug}`, fetcher);
@@ -40,6 +43,11 @@ const BlogPost: React.FC<Props> = ({
               __html: _highlightResult?.summary?.value || summary
             }}
           ></p>
+          <div className="flex flex-row items-center gap-2 pt-2">
+            {tags?.map((tag) => (
+              <Badge text={tag} key={tag} />
+            ))}
+          </div>
         </div>
       </a>
     </Link>
