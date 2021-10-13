@@ -47,9 +47,9 @@ module.exports = {
 // https://securityheaders.com
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' *.youtube.com *.twitter.com cdn.usefathom.com *.vercel-insights.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com *.vercel-insights.com;
   child-src *.youtube.com *.google.com *.twitter.com;
-  style-src 'self' *.googleapis.com *.gstatic.com;
+  style-src 'self' 'unsafe-inline' *.googleapis.com *.gstatic.com;
   img-src * blob: data:;
   media-src 'none';
   connect-src *;
@@ -67,7 +67,7 @@ const securityHeaders = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
   {
     key: 'Referrer-Policy',
-    value: 'no-referrer'
+    value: 'origin-when-cross-origin'
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
   {
