@@ -3,6 +3,7 @@ import Container from '@components/Container';
 import ViewCounter from '@components/ViewCounter';
 import type { FrontMatter } from 'types';
 import Badge from '@components/Badge';
+import { ClipboardEventHandler } from 'react';
 
 interface Props {
   children: React.ReactNode;
@@ -10,6 +11,16 @@ interface Props {
 }
 
 const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
+  const preventPlagiarism: ClipboardEventHandler<HTMLDivElement> = (e) => {
+    e.clipboardData.setData(
+      'text/plain',
+      `${document
+        .getSelection()
+        .toString()
+        .substring(0, 50)}...Visit amre.sh to read more!`
+    );
+    e.preventDefault();
+  };
   return (
     <Container
       title={`${frontMatter.title} – Amresh`}
@@ -37,7 +48,10 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
             <ViewCounter slug={frontMatter.slug} />
           </p>
         </div>
-        <div className="prose dark:prose-dark max-w-none w-full pt-8">
+        <div
+          className="prose dark:prose-dark max-w-none w-full pt-8"
+          onCopy={preventPlagiarism}
+        >
           {children}
         </div>
       </article>
