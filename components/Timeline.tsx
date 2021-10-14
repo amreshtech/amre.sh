@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { FaChevronDown } from 'react-icons/fa';
-import { FcOk } from 'react-icons/fc';
+import { FaChevronDown } from '@react-icons/all-files/fa/FaChevronDown';
+import { FcOk } from '@react-icons/all-files/fc/FcOk';
 import timeline from 'timeline.json';
 
 const Divider = () => {

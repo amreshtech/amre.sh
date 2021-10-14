@@ -81,11 +81,6 @@ input[type='email'] {
   font-weight: inherit;
 }
 
-table {
-  display: block;
-  overflow-y: scroll;
-}
-
 a > div > p > em,
 a > div > div > h4 > em {
   @apply bg-green-200 dark:bg-red-900;

@@ -3,9 +3,9 @@
   "description": "My personal website.",
   "version": "0.1.0",
   "author": {
-    "name": "Amresh",
-    "email": "me@amre.sh",
-    "url": "https://amre.sh"
+    "name": "Amresh Mishra",
+    "email": "to@amre.sh",
+    "url": "https://www.amre.sh"
   },
   "license": "MIT",
   "repository": {
@@ -22,7 +22,9 @@
   "dependencies": {
     "@mdx-js/loader": "1.6.22",
     "@mdx-js/react": "1.6.22",
+    "@next/bundle-analyzer": "^11.1.2",
     "@next/mdx": "11.0.1",
+    "@react-icons/all-files": "^4.1.0",
     "@tailwindcss/typography": "^0.4.1",
     "@types/react-lottie": "^1.2.6",
     "algoliasearch": "^4.10.3",
@@ -42,7 +44,6 @@
     "preact": "^10.5.14",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-icons": "^4.2.0",
     "react-lottie": "^1.2.3",
     "react-particles-js": "^3.5.3",
     "react-responsive-masonry": "^2.1.3",

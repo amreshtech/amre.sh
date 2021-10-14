@@ -1,7 +1,10 @@
 import Container from '@components/Container';
 import Timeline from '@components/Timeline';
 import Image from 'next/image';
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaFacebook } from '@react-icons/all-files/fa/FaFacebook';
+import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram';
+import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin';
+import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
 
 const About = () => {
   return (
@@ -17,22 +20,38 @@ const About = () => {
           />
         </div>
         <div className="flex justify-center items-center gap-5 mt-5">
-          <a href="https://www.facebook.com/amreshm/" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.facebook.com/amreshm/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaFacebook
               size="1.3em"
               className="text-blue-500 dark:text-white"
             />
           </a>
-          <a href="https://www.twitter.com/amreshtech" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.twitter.com/amreshtech"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaTwitter className="text-blue-500 dark:text-white" size="1.3em" />
           </a>
-          <a href="https://www.instagram.com/amresh.m" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.instagram.com/amresh.m"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaInstagram
               className="text-blue-500 dark:text-white"
               size="1.3em"
             />
           </a>
-          <a href="https://www.linkedin.com/in/amreshm/" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.linkedin.com/in/amreshm/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaLinkedin
               className="text-blue-500 dark:text-white"
               size="1.3em"
