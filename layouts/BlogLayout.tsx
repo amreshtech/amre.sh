@@ -14,9 +14,10 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
   const preventPlagiarism: ClipboardEventHandler<HTMLDivElement> = (e) => {
     e.clipboardData.setData(
       'text/plain',
-      `${document.getSelection().toString().substring(0, 50)}...Visit ${
-        frontMatter.slug
-      }`
+      `${document
+        .getSelection()
+        .toString()
+        .substring(0, 50)}...Visit https://amre.sh/blog/${frontMatter.slug}`
     );
     e.preventDefault();
   };
