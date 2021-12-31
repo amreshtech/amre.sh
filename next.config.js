@@ -1,10 +1,11 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
+  enabled: process.env.ANALYZE === 'true'
+});
 
 module.exports = withBundleAnalyzer({
   experimental: {
-    serverComponents: true
+    serverComponents: true,
+    concurrentFeatures: true
   },
   swcMinify: true,
   future: {
@@ -49,7 +50,7 @@ module.exports = withBundleAnalyzer({
     }
 
     return config;
-  },
+  }
 });
 
 // https://securityheaders.com
