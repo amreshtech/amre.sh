@@ -3,6 +3,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 module.exports = withBundleAnalyzer({
+  experimental: {
+    serverComponents: true
+  },
+  swcMinify: true,
   future: {
     strictPostcssConfiguration: true
   },

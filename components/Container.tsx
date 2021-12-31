@@ -1,12 +1,11 @@
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import NextLink from 'next/link';
-
 import Footer from '@components/Footer';
 import Particles from 'react-tsparticles';
 import particlesJson from '../particles.json';
+import { BlogJsonLd, NextSeo } from 'next-seo';
 
 export default function Container(props) {
   const [mounted, setMounted] = useState(false);
@@ -27,26 +26,43 @@ export default function Container(props) {
   return (
     <div className="bg-white dark:bg-black">
       <Particles options={particlesJson as any} />
-      <Head>
-        <title>{meta.title}</title>
-        <meta name="robots" content="follow, index" />
-        <meta content={meta.description} name="description" />
-        <meta property="og:url" content={`https://amre.sh${router.asPath}`} />
-        <link rel="canonical" href={`https://amre.sh${router.asPath}`} />
-        <meta property="og:type" content={meta.type} />
-        <meta property="og:site_name" content="Amresh" />
-        <meta property="og:description" content={meta.description} />
-        <meta property="og:title" content={meta.title} />
-        <meta property="og:image" content={meta.image} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@amreshtech" />
-        <meta name="twitter:title" content={meta.title} />
-        <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image" content={meta.image} />
-        {meta.date && (
-          <meta property="article:published_time" content={meta.date} />
-        )}
-      </Head>
+      <NextSeo
+        title={meta.title}
+        noindex={true}
+        nofollow={true}
+        robotsProps={{
+          nosnippet: true,
+          notranslate: false,
+          noimageindex: true,
+          noarchive: true,
+          maxSnippet: 100,
+          maxImagePreview: 'none',
+          maxVideoPreview: -1
+        }}
+        description={meta.description}
+        canonical={`https://amre.sh${router.asPath}`}
+        openGraph={{
+          url: `https://amre.sh${router.asPath}`,
+          type: meta.type,
+          site_name: 'Amresh Mishra',
+          description: meta.description,
+          title: meta.title
+        }}
+        twitter={{
+          cardType: 'summary_large_image',
+          site: '@amreshtech',
+          handle: '@amreshtech'
+        }}
+      />
+      <BlogJsonLd
+        url={`https://amre.sh${router.asPath}`}
+        title={meta.title}
+        datePublished={meta.date}
+        dateModified={meta.date}
+        authorName="Amresh Mishra"
+        description={meta.description}
+        images={meta.images}
+      />
       <nav
         className={`sticky-nav flex justify-between items-center max-w-4xl p-4 sm:px-16 sm:py-8 my-0 md:my-8 mx-auto  ${
           !hideNav
