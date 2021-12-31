@@ -17,7 +17,7 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
       `${document
         .getSelection()
         .toString()
-        .substring(0, 50)}...Visit amre.sh to read more!`
+        .substring(0, 50)}...Visit https://amre.sh/blog/${frontMatter.slug}`
     );
     e.preventDefault();
   };

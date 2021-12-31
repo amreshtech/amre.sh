@@ -59,11 +59,11 @@ const Blog: React.FC<Props> = ({ posts }) => {
                 <a>Blogs →</a>
               </Link>
             </Button>
-            <Button>
+            {/* <Button>
               <Link href="/travel">
                 <a>Travel Pics →</a>
               </Link>
-            </Button>
+            </Button> */}
           </div>
         </div>
       </div>
