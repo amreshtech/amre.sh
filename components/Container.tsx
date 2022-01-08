@@ -28,13 +28,13 @@ export default function Container(props) {
       <Particles options={particlesJson as any} />
       <NextSeo
         title={meta.title}
-        noindex={true}
-        nofollow={true}
+        noindex={false}
+        nofollow={false}
         robotsProps={{
-          nosnippet: true,
+          nosnippet: false,
           notranslate: false,
           noimageindex: true,
-          noarchive: true,
+          noarchive: false,
           maxSnippet: 100,
           maxImagePreview: 'none',
           maxVideoPreview: -1
