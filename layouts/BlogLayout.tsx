@@ -4,6 +4,8 @@ import ViewCounter from '@components/ViewCounter';
 import type { FrontMatter } from 'types';
 import Badge from '@components/Badge';
 import { ClipboardEventHandler } from 'react';
+import { BlogJsonLd } from 'next-seo';
+import { useRouter } from 'next/router';
 
 interface Props {
   children: React.ReactNode;
@@ -21,6 +23,7 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
     );
     e.preventDefault();
   };
+  const router = useRouter();
   return (
     <Container
       title={`${frontMatter.title} – Amresh`}
@@ -29,6 +32,15 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
       date={new Date(frontMatter.publishedAt).toISOString()}
       type="article"
     >
+      <BlogJsonLd
+        url={`https://amre.sh${router.asPath}`}
+        title={frontMatter.title}
+        datePublished={new Date(frontMatter.publishedAt).toISOString()}
+        dateModified={new Date(frontMatter.publishedAt).toISOString()}
+        authorName="Amresh Mishra"
+        description={frontMatter.summary}
+        images={[`https://amre.sh${frontMatter.image}`]}
+      />
       <article className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 w-full bg-white dark:bg-black z-10">
         <div className="flex flex-row items-center gap-2 pb-3">
           {frontMatter.tags?.map((tag) => (

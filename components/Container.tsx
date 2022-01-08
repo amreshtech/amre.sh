@@ -5,7 +5,7 @@ import NextLink from 'next/link';
 import Footer from '@components/Footer';
 import Particles from 'react-tsparticles';
 import particlesJson from '../particles.json';
-import { BlogJsonLd, NextSeo } from 'next-seo';
+import { NextSeo } from 'next-seo';
 
 export default function Container(props) {
   const [mounted, setMounted] = useState(false);
@@ -53,15 +53,6 @@ export default function Container(props) {
           site: '@amreshtech',
           handle: '@amreshtech'
         }}
-      />
-      <BlogJsonLd
-        url={`https://amre.sh${router.asPath}`}
-        title={meta.title}
-        datePublished={meta.date}
-        dateModified={meta.date}
-        authorName="Amresh Mishra"
-        description={meta.description}
-        images={meta.images}
       />
       <nav
         className={`sticky-nav flex justify-between items-center max-w-4xl p-4 sm:px-16 sm:py-8 my-0 md:my-8 mx-auto  ${
