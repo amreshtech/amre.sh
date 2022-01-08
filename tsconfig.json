@@ -1,7 +1,12 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["es6", "dom", "dom.iterable", "esnext"],
+    "lib": [
+      "es6",
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -15,18 +20,39 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "test-utils": ["./test-utils"],
-      "@components/*": ["./components/*"],
-      "@hooks/*": ["./hooks/*"],
-      "@public/*": ["./public/*"],
-      "@utils/*": ["./utils/*"],
-      "@assets/*": ["./assets/*"],
-      "@lib/*": ["./lib/*"],
-      "@styles/*": ["./styles/*"],
-      "@layouts/*": ["./layouts/*"]
-    }
+      "test-utils": [
+        "./test-utils"
+      ],
+      "@components/*": [
+        "./components/*"
+      ],
+      "@hooks/*": [
+        "./hooks/*"
+      ],
+      "@public/*": [
+        "./public/*"
+      ],
+      "@utils/*": [
+        "./utils/*"
+      ],
+      "@assets/*": [
+        "./assets/*"
+      ],
+      "@lib/*": [
+        "./lib/*"
+      ],
+      "@styles/*": [
+        "./styles/*"
+      ],
+      "@layouts/*": [
+        "./layouts/*"
+      ]
+    },
+    "incremental": true
   },
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules"
+  ],
   "include": [
     "**/*.ts",
     "**/*.tsx",

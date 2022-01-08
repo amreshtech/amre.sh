@@ -1,11 +1,13 @@
 import matter from 'gray-matter';
-import mdxPrism from 'mdx-prism';
 import readingTime from 'reading-time';
 import { serialize } from 'next-mdx-remote/serialize';
 import { postFetcher } from './post-fetcher';
-
-import MDXComponents from '@components/MDXComponents';
 import { createSearchRecords } from 'scripts/createSearchRecords';
+import remarkGfm from 'remark-gfm';
+import rehypeSlug from 'rehype-slug';
+import rehypeCodeTitles from 'rehype-code-titles';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypePrism from 'rehype-prism-plus';
 
 export async function getFiles(type) {
   try {
@@ -24,12 +26,20 @@ export async function getFileBySlug(type?: string, slug?: string) {
     const { data, content } = matter(source);
     const mdxSource = await serialize(content, {
       mdxOptions: {
-        remarkPlugins: [
-          require('remark-autolink-headings'),
-          require('remark-slug'),
-          require('remark-code-titles')
-        ],
-        rehypePlugins: [mdxPrism]
+        remarkPlugins: [remarkGfm],
+        rehypePlugins: [
+          rehypeSlug,
+          rehypeCodeTitles,
+          rehypePrism,
+          [
+            rehypeAutolinkHeadings,
+            {
+              properties: {
+                className: ['anchor']
+              }
+            }
+          ]
+        ]
       }
     });
 
