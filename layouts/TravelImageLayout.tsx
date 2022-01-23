@@ -1,6 +1,7 @@
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import { SingleImage } from 'types';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface Props {
   location: string;
@@ -24,19 +25,29 @@ const TravelImageLayout: React.FC<Props> = ({ location, images }) => {
       <div className="w-full mb-5">
         <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
           <Masonry gutter="10px">
-            {images[location].map((image: SingleImage) => (
-              <Image
-                src={transformImageUrl(image.url)}
-                height={image.height}
-                width={image.width}
-                alt={location}
-                layout="responsive"
-                key={image.url}
-                className="cursor-pointer"
-                onContextMenu={(e) => {
-                  e.preventDefault();
-                }}
-              />
+            {images[location].map(({ width, height, url, nft }) => (
+              <figure
+                key={url}
+                className="travel-image relative cursor-pointer"
+              >
+                <Image
+                  src={transformImageUrl(url)}
+                  height={height}
+                  width={width}
+                  alt={location}
+                  layout="responsive"
+                  onContextMenu={(e) => {
+                    e.preventDefault();
+                  }}
+                />
+                {nft && (
+                  <figcaption className="text-md text-center text-white bg-blue-600 z-10 absolute -mt-9 h-9 w-full py-1 hidden">
+                    <Link href={nft} passHref>
+                      <a>Buy Now</a>
+                    </Link>
+                  </figcaption>
+                )}
+              </figure>
             ))}
           </Masonry>
         </ResponsiveMasonry>

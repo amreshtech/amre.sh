@@ -93,6 +93,12 @@ export interface CloudinaryImage {
   etag: string;
   created_by: Createdby;
   uploaded_by: Createdby;
+  context: Context;
+}
+
+interface Context {
+  alt: string;
+  caption: string;
 }
 
 interface Createdby {
@@ -106,4 +112,5 @@ export type SingleImage = {
   width: number;
   height: number;
   folder: string;
+  nft: string;
 };

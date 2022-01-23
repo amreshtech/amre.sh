@@ -27,14 +27,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const result = await (
     await cloudinary.v2.search
       .expression('folder:photos/Travel/*')
+      .with_field('context')
       .sort_by('public_id', 'desc')
       .execute()
   ).resources.map((imageAsset: CloudinaryImage) => ({
     folder: imageAsset.folder.split('/')[2],
     url: imageAsset.secure_url,
     width: imageAsset.width,
-    height: imageAsset.height
+    height: imageAsset.height,
+    nft: imageAsset?.context?.alt || ''
   }));
+
   return { props: { images: groupBy(result, (i: SingleImage) => i.folder) } };
 };
 
