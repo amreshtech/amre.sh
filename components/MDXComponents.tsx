@@ -7,6 +7,7 @@ import Analytics from '@components/metrics/Analytics';
 import Step from '@components/Step';
 import Document from '@components/Document';
 import TldrCard from './TldrCard';
+import ConsultationCard from './ConsultationCard';
 
 const CustomLink = (props) => {
   const href = props.href;
@@ -31,7 +32,8 @@ const MDXComponents = {
   ProsCard,
   Step,
   Document,
-  TldrCard
+  TldrCard,
+  ConsultationCard
 };
 
 export default MDXComponents;
