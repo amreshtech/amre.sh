@@ -60,7 +60,7 @@ const ContentSecurityPolicy = `
   connect-src *;
   font-src 'self' *.gstatic.com;
   object-src 'self' res.cloudinary.com;
-  frame-src 'self' res.cloudinary.com *.calendly.com;
+  frame-src 'self' res.cloudinary.com https://calendly.com/*;
 `;
 
 const securityHeaders = [
