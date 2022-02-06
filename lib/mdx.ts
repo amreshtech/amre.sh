@@ -26,13 +26,13 @@ export async function getFileBySlug(type?: string, slug?: string) {
     const { data, content } = matter(source);
     const mdxSource = await serialize(content, {
       mdxOptions: {
-        remarkPlugins: [remarkGfm],
+        remarkPlugins: [remarkGfm as any],
         rehypePlugins: [
           rehypeSlug,
           rehypeCodeTitles,
-          rehypePrism,
+          rehypePrism as any,
           [
-            rehypeAutolinkHeadings,
+            rehypeAutolinkHeadings as any,
             {
               properties: {
                 className: ['anchor']
