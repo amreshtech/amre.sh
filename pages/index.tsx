@@ -4,12 +4,14 @@ import type { Post } from '../types';
 import Button from '@components/Button';
 import Typewriter from 'typewriter-effect';
 import Link from 'next/link';
+import Map from '@components/widgets/Map';
 
 interface Props {
   posts: Post[];
+  map_url: string;
 }
 
-const Blog: React.FC<Props> = ({ posts }) => {
+const Blog: React.FC<Props> = ({ posts, map_url }) => {
   return (
     <Container
       title="Blog – Amresh"
@@ -54,18 +56,20 @@ const Blog: React.FC<Props> = ({ posts }) => {
         </div>
         <div className="relative w-full mb-4">
           <div className="flex flex-col md:flex-row gap-4">
-            <Button>
-              <Link href="/blog">
-                <a>Blogs →</a>
-              </Link>
-            </Button>
-            <Button>
-              <Link href="/travel">
-                <a>Travel Pics →</a>
-              </Link>
-            </Button>
+            <Link href="/blog">
+              <a className="flex flex-row justify-center items-center w-full h-16 text-2xl font-bold text-black dark:text-white border-2 rounded-md border-black dark:border-white">
+                Blogs →
+              </a>
+            </Link>
+
+            <Link href="/travel">
+              <a className="flex flex-row justify-center items-center w-full h-16 text-2xl font-bold text-black dark:text-white border-2 rounded-md border-black dark:border-white">
+                Travel Pics →
+              </a>
+            </Link>
           </div>
         </div>
+        <Map url={map_url} />
       </div>
     </Container>
   );
@@ -73,7 +77,8 @@ const Blog: React.FC<Props> = ({ posts }) => {
 
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog');
-  return { props: { posts } };
+  const map_url = `https://maps.googleapis.com/maps/api/staticmap?center=Galway&zoom=13&size=200x200&maptype=roadmap&key=${process.env.GOOGLE_MAPS_API}`;
+  return { props: { posts, map_url } };
 }
 
 export default Blog;

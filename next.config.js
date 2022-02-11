@@ -15,7 +15,8 @@ module.exports = withBundleAnalyzer({
     domains: [
       'i.scdn.co', // Spotify Album Art
       'pbs.twimg.com', // Twitter Profile Picture
-      'res.cloudinary.com' // Cloudinary image storage
+      'res.cloudinary.com', // Cloudinary image storage
+      'maps.googleapis.com' // Google Static Map
     ]
   },
   async headers() {
