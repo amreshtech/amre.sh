@@ -19,12 +19,16 @@ const ExternalLink: React.FC<Props> = ({ href, children }) => (
 
 const Footer = () => {
   const router = useRouter();
+  const currentYear = new Date().getFullYear();
   return (
-    router.pathname !== '/' && (
-      <footer className="flex flex-col justify-center items-start max-w-3xl mx-auto w-full mb-8">
+    <footer className="flex flex-col justify-center items-center max-w-3xl mx-auto w-full mb-8">
+      {router.pathname !== '/' && (
         <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
-      </footer>
-    )
+      )}
+      <div className="text-sm text-black dark:text-white">
+        &copy; {currentYear} Amresh Mishra
+      </div>
+    </footer>
   );
 };
 

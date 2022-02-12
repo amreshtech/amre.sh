@@ -8,8 +8,8 @@ const Map: React.FC<Props> = ({ url }) => (
   <Image
     src={url}
     alt="My Current Location"
-    width={200}
-    height={200}
+    width={220}
+    height={225}
     className="rounded-2xl shadow-md"
   />
 );

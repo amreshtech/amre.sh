@@ -23,29 +23,26 @@ const Tweet: React.FC<TweetType> = ({
 
   const formattedText = text.replace(/https:\/\/[\n\S]+/g, '');
 
+  const handleClick = () => {
+    window.open(tweetUrl, '_newtab');
+  };
+
   return (
-    <a href={tweetUrl}>
-      <div className="tweet rounded-2xl border border-gray-300 dark:border-gray-800 p-4 my-4 w-1/2 bg-black z-10">
-        <div className="flex justify-end">
-          <div className="w-4/5"></div>
-          <FaTwitter className="text-sky-500" size="1.5em" />
-        </div>
-        <div className="mt-4 mb-1 leading-normal whitespace-pre-wrap text-lg !text-gray-700 dark:!text-gray-300">
+    <button
+      onClick={handleClick}
+      className="tweet rounded-2xl border border-gray-300 dark:border-gray-800 p-3 bg-black z-10 flex flex-row items-start text-left"
+    >
+      <div className="w-11/12">
+        <div className="mb-1 leading-normal whitespace-pre-wrap text-sm !text-gray-700 dark:!text-gray-300">
           {formattedText}
         </div>
-        <a
-          className="!text-gray-500 text-sm hover:!underline"
-          href={tweetUrl}
-          target="_blank"
-          rel="noopener noreferrer"
+        <time
+          title={`Time Posted: ${createdAt.toUTCString()}`}
+          dateTime={createdAt.toISOString()}
+          className="!text-gray-500 text-sm"
         >
-          <time
-            title={`Time Posted: ${createdAt.toUTCString()}`}
-            dateTime={createdAt.toISOString()}
-          >
-            {format(createdAt, 'h:mm a - MMM d, y')}
-          </time>
-        </a>
+          {format(createdAt, 'h:mm a - MMM d, y')}
+        </time>
         <div className="flex !text-gray-700 dark:!text-gray-300 mt-2">
           <a
             className="flex items-center mr-4 !text-gray-500 hover:!text-blue-600 transition hover:!underline"
@@ -91,7 +88,8 @@ const Tweet: React.FC<TweetType> = ({
           </a>
         </div>
       </div>
-    </a>
+      <FaTwitter className="text-sky-500 w-1/12" size="1.5em" />
+    </button>
   );
 };
 

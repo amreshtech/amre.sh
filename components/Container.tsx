@@ -14,7 +14,7 @@ export default function Container(props) {
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
 
-  const { children, hideNav, ...customMeta } = props;
+  const { children, hideNav = false, ...customMeta } = props;
   const router = useRouter();
   const meta = {
     title: 'Amresh – Developer, photographer, travel freak',
@@ -71,7 +71,7 @@ export default function Container(props) {
         }`}
       >
         <div>
-          {!hideNav && (
+          {router.pathname !== '/' && (
             <NextLink href="/">
               <a>
                 <div className="font-qc text-4xl text-black dark:text-white font-bold hidden sm:block">
