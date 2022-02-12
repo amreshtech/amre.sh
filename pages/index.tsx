@@ -1,17 +1,19 @@
 import Container from '@components/Container';
 import { getAllFilesFrontMatter } from '@lib/mdx';
-import type { Post } from '../types';
+import type { Post, Tweet as TweetType } from '../types';
 import Button from '@components/Button';
 import Typewriter from 'typewriter-effect';
 import Link from 'next/link';
 import Map from '@components/widgets/Map';
-
+import { getTweet } from '@lib/twitter';
+import Tweet from '@components/widgets/Tweet';
+import { getMap } from '@lib/map';
 interface Props {
-  posts: Post[];
   map_url: string;
+  tweetData: TweetType;
 }
 
-const Blog: React.FC<Props> = ({ posts, map_url }) => {
+const Blog: React.FC<Props> = ({ map_url, tweetData }) => {
   return (
     <Container
       title="Blog – Amresh"
@@ -70,6 +72,12 @@ const Blog: React.FC<Props> = ({ posts, map_url }) => {
           </div>
         </div>
         <Map url={map_url} />
+        <Tweet
+          id={tweetData.id}
+          created_at={tweetData.created_at}
+          text={tweetData.text}
+          public_metrics={tweetData.public_metrics}
+        />
       </div>
     </Container>
   );
@@ -77,8 +85,9 @@ const Blog: React.FC<Props> = ({ posts, map_url }) => {
 
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog');
-  const map_url = `https://maps.googleapis.com/maps/api/staticmap?center=Galway&zoom=13&size=200x200&maptype=roadmap&key=${process.env.GOOGLE_MAPS_API}`;
-  return { props: { posts, map_url } };
+  const map_url = getMap();
+  const tweetData = await getTweet();
+  return { props: { posts, map_url, tweetData } };
 }
 
 export default Blog;

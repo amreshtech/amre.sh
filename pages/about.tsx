@@ -35,7 +35,7 @@ const About = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <FaTwitter className="text-blue-500 dark:text-white" size="1.3em" />
+            <FaTwitter className="text-sky-500 dark:text-white" size="1.3em" />
           </a>
           <a
             href="https://www.instagram.com/amresh.m"

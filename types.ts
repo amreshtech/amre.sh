@@ -44,11 +44,8 @@ export type Newsletter = {
 export type Tweet = {
   text: string;
   id: string;
-  author: Author;
-  media: any[];
   created_at: string;
   public_metrics: Publicmetrics;
-  referenced_tweets: any[];
 };
 
 type Publicmetrics = {
@@ -56,16 +53,6 @@ type Publicmetrics = {
   reply_count: number;
   like_count: number;
   quote_count: number;
-};
-
-type Author = {
-  name: string;
-  url: string;
-  id: string;
-  verified: boolean;
-  username: string;
-  profile_image_url: string;
-  protected: boolean;
 };
 
 export interface CloudinaryImage {
