@@ -7,5 +7,6 @@ export const getTweet = async () => {
     }
   });
   const result = await response.json();
-  return result.data[0] || {};
+  const { data =  [{}]} = result;
+  return data[0];
 };
