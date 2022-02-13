@@ -14,11 +14,12 @@ export default function Container(props) {
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
 
-  const { children, hideNav = false, ...customMeta } = props;
+  const { children, hideNav = false, posts, ...customMeta } = props;
   const router = useRouter();
   const meta = {
-    title: 'Amresh – Developer, photographer, travel freak',
-    description: `Front-end developer`,
+    title: 'Amresh – Developer, photographer, travel freak, investor',
+    description:
+      'My thoughts on front end development, programming, tech, and my personal life.',
     type: 'website',
     ...customMeta
   };

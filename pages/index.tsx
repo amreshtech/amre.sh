@@ -17,10 +17,7 @@ interface Props {
 
 const Blog: React.FC<Props> = ({ map_url, tweetData }) => {
   return (
-    <Container
-      title="Blog – Amresh"
-      description="Thoughts on the software industry, programming, tech, and my personal life."
-    >
+    <Container>
       <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 z-10 w-full">
         <div className="flex flex-row w-full gap-4">
           <div className="w-2/3">
