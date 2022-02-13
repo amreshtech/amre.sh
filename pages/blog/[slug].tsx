@@ -1,6 +1,5 @@
 import { MDXRemote } from 'next-mdx-remote';
 import { getFiles, getFileBySlug } from '@lib/mdx';
-import { getTweets } from '@lib/twitter';
 import BlogLayout from '@layouts/BlogLayout';
 import Tweet from '@components/widgets/Tweet';
 import MDXComponents from '@components/MDXComponents';
@@ -13,15 +12,11 @@ interface Props {
 }
 
 const Blog: React.FC<Props> = ({ mdxSource, tweets, frontMatter }) => {
-  const StaticTweet = ({ id }) => {
-    const tweet = tweets.find((t) => t.id === id);
-    return <Tweet {...tweet} />;
-  };
-
-  return <BlogLayout frontMatter={frontMatter}><MDXRemote {...mdxSource} components={
-    {...MDXComponents,
-    StaticTweet
-  }} /></BlogLayout>;
+  return (
+    <BlogLayout frontMatter={frontMatter}>
+      <MDXRemote {...mdxSource} components={{ ...MDXComponents }} />
+    </BlogLayout>
+  );
 };
 
 export async function getStaticPaths() {
@@ -39,9 +34,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const post = await getFileBySlug('blog', params.slug);
-  const tweets = await getTweets(post.tweetIDs);
 
-  return { props: { ...post, tweets } };
+  return { props: { ...post } };
 }
 
 export default Blog;
