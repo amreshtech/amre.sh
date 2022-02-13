@@ -68,12 +68,14 @@ const Blog: React.FC<Props> = ({ map_url, tweetData }) => {
             <Map url={map_url} />
           </div>
           <div className="w-2/4">
-            <Tweet
-              id={tweetData.id}
-              created_at={tweetData.created_at}
-              text={tweetData.text}
-              public_metrics={tweetData.public_metrics}
-            />
+            {tweetData?.id && (
+              <Tweet
+                id={tweetData.id}
+                created_at={tweetData.created_at}
+                text={tweetData.text}
+                public_metrics={tweetData.public_metrics}
+              />
+            )}
           </div>
           <div className="w-1/4">
             <Chat />
