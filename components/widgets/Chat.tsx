@@ -1,4 +1,4 @@
-import { TiArrowRightOutline } from '@react-icons/all-files/Ti/TiArrowRightOutline';
+import { TiArrowRightOutline } from 'react-icons/ti';
 import { openPopupWidget } from 'react-calendly';
 
 const Chat: React.FC = () => {

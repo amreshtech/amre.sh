@@ -1,10 +1,7 @@
 import Container from '@components/Container';
 import Timeline from '@components/Timeline';
 import Image from 'next/image';
-import { FaFacebook } from '@react-icons/all-files/fa/FaFacebook';
-import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram';
-import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin';
-import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const About = () => {
   return (

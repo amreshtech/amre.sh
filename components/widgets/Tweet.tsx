@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import comma from 'comma-number';
 import type { Tweet as TweetType } from 'types';
-import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
+import { FaTwitter } from 'react-icons/fa';
 
 /**
  * Supports plain text tweets.
