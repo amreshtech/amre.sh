@@ -5,7 +5,7 @@ interface Props {
 }
 
 const ConsultationCard: React.FC<Props> = ({ text }) => (
-  <div className="text-white z-10">
+  <div className="text-black dark:text-white z-10">
     {text}{' '}
     <PopupButton
       text={`Let's chat`}
