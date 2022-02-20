@@ -1,4 +1,4 @@
-import Maintenance from '@components/maintenance';
+import Maintenance from '@components/Maintenance';
 import '@styles/global.css';
 
 import { ThemeProvider } from 'next-themes';
