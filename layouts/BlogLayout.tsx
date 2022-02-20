@@ -54,11 +54,11 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
           <p className="text-sm text-gray-700 dark:text-gray-300">
             {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
           </p>
-          <p className="inline-flex gap-1 text-sm text-gray-500 min-w-32 mt-2 md:mt-0">
+          <div className="inline-flex gap-1 text-sm text-gray-500 min-w-32 mt-2 md:mt-0">
             <div>{frontMatter.readingTime.text}</div>
             {` • `}
             <ViewCounter slug={frontMatter.slug} />
-          </p>
+          </div>
         </div>
         <div
           className="prose dark:prose-dark max-w-none w-full pt-8"

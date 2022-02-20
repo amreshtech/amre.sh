@@ -18,7 +18,7 @@ const ConsultationCard: React.FC<Props> = ({ text }) => (
         textColor: '4d5055',
         hideGdprBanner: true
       }}
-      className="bg-gradient-to-tl from-rose-700 via-rose-600 to-rose-600 p-1 px-3 font-bold rounded-full"
+      className="text-white bg-gradient-to-tl from-rose-700 via-rose-600 to-rose-600 p-1 px-3 font-bold rounded-full"
     />
   </div>
 );
