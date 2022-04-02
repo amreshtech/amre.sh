@@ -53,6 +53,7 @@ export async function getFileBySlug(type?: string, slug?: string) {
         wordCount: content.split(/\s+/gu).length,
         readingTime: readingTime(content),
         slug: slug || null,
+        shortUrl: await getShortUrl(slug),
         ...data
       }
     };
@@ -83,4 +84,21 @@ export async function getAllFilesFrontMatter(type) {
   } catch (error) {
     console.error(error);
   }
+}
+
+export async function getShortUrl(slug: string) {
+  const options = {
+    method: 'POST',
+    headers: {
+      authorization: process.env.SHORT_IO_API,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      originalURL: `https://amre.sh/blog/${slug}`,
+      domain: 'blog.amre.sh'
+    })
+  };
+  const response = await fetch('https://api.short.io/links', options);
+  const data = await response.json();
+  return data.shortURL;
 }

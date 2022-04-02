@@ -1,12 +1,12 @@
-import Maintenance from '@components/Maintenance';
 import '@styles/global.css';
-
 import { ThemeProvider } from 'next-themes';
+import dynamic from 'next/dynamic';
 import Script from 'next/script';
 import SimpleReactLightbox from 'simple-react-lightbox';
 
 export default function App({ Component, pageProps }) {
   const isMaintenanceMode = true;
+  const Maintenance = dynamic(() => import('../components/Maintenance'));
   return isMaintenanceMode ? (
     <Maintenance />
   ) : (
