@@ -62,8 +62,8 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
       />
       <article className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 w-full bg-white dark:bg-black z-10">
         <div className="flex flex-row items-center gap-2 pb-3">
-          {frontMatter.tags?.map((tag) => (
-            <Badge text={tag} key={tag} />
+          {frontMatter.tags?.map((tag, index) => (
+            <Badge text={tag} key={tag} index={index} />
           ))}
         </div>
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">

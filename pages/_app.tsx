@@ -23,6 +23,7 @@ export default function App({ Component, pageProps }) {
             gtag('js', new Date());
             gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
               page_path: window.location.pathname,
+              cookie_flags: 'SameSite=None;Secure',
             });
           `
         }}

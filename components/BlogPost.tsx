@@ -44,8 +44,8 @@ const BlogPost: React.FC<Props> = ({
             }}
           ></p>
           <div className="flex flex-row items-center gap-2 pt-2">
-            {tags?.map((tag) => (
-              <Badge text={tag} key={tag} />
+            {tags?.map((tag, index) => (
+              <Badge text={tag} key={tag} index={index} />
             ))}
           </div>
         </div>
