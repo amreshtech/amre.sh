@@ -1,9 +1,6 @@
 import Container from '@components/Container';
-import { getAllFilesFrontMatter } from '@lib/mdx';
-import type { Post, Tweet as TweetType } from '../types';
-import Button from '@components/Button';
+import type { Tweet as TweetType } from '../types';
 import Typewriter from 'typewriter-effect';
-import Link from 'next/link';
 import Map from '@components/widgets/Map';
 import { getTweet } from '@lib/twitter';
 import Tweet from '@components/widgets/Tweet';
