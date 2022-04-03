@@ -4,7 +4,7 @@ import ViewCounter from '@components/ViewCounter';
 import type { FrontMatter } from 'types';
 import Badge from '@components/Badge';
 import { ClipboardEventHandler, MouseEventHandler } from 'react';
-import { BlogJsonLd } from 'next-seo';
+import { ArticleJsonLd } from 'next-seo';
 import { useRouter } from 'next/router';
 import { FaShareSquare } from 'react-icons/fa';
 import SuccessMessage from '@components/SuccessMessage';
@@ -50,7 +50,8 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
       date={new Date(frontMatter.publishedAt).toISOString()}
       type="article"
     >
-      <BlogJsonLd
+      <ArticleJsonLd
+        type="Blog"
         url={`https://amre.sh${router.asPath}`}
         title={frontMatter.title}
         datePublished={new Date(frontMatter.publishedAt).toISOString()}
