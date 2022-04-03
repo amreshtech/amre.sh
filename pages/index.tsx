@@ -16,7 +16,7 @@ interface Props {
   tweetData: TweetType;
 }
 
-const Blog: React.FC<Props> = ({ map_url, tweetData }) => {
+const Home: React.FC<Props> = ({ map_url, tweetData }) => {
   return (
     <Container>
       <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 z-10 w-full">
@@ -105,10 +105,9 @@ const Blog: React.FC<Props> = ({ map_url, tweetData }) => {
 };
 
 export async function getStaticProps() {
-  const posts = await getAllFilesFrontMatter('blog');
   const map_url = getMap();
   const tweetData = await getTweet();
-  return { props: { posts, map_url, tweetData } };
+  return { props: { map_url, tweetData } };
 }
 
-export default Blog;
+export default Home;
