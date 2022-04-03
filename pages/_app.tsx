@@ -1,10 +1,9 @@
 import '@styles/global.css';
-
 import { ThemeProvider } from 'next-themes';
 import Script from 'next/script';
 import SimpleReactLightbox from 'simple-react-lightbox';
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps, maintenance_mode }) {
   return (
     <ThemeProvider attribute="class">
       <SimpleReactLightbox>

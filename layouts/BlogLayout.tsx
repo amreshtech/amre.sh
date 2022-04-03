@@ -3,9 +3,12 @@ import Container from '@components/Container';
 import ViewCounter from '@components/ViewCounter';
 import type { FrontMatter } from 'types';
 import Badge from '@components/Badge';
-import { ClipboardEventHandler } from 'react';
+import { ClipboardEventHandler, MouseEventHandler } from 'react';
 import { BlogJsonLd } from 'next-seo';
 import { useRouter } from 'next/router';
+import { FaShareSquare } from 'react-icons/fa';
+import SuccessMessage from '@components/SuccessMessage';
+import React from 'react';
 
 interface Props {
   children: React.ReactNode;
@@ -24,6 +27,21 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
     e.preventDefault();
   };
   const router = useRouter();
+  const [isShared, setIsShared] = React.useState(false);
+  const handleShareButtonClick: MouseEventHandler<HTMLButtonElement> = async (
+    e
+  ) => {
+    navigator.clipboard.writeText(frontMatter.shortUrl).then(() => {
+      setIsShared(true);
+    });
+  };
+
+  setTimeout(() => {
+    if (isShared) {
+      setIsShared(false);
+    }
+  }, 2000);
+
   return (
     <Container
       title={`${frontMatter.title} – Amresh`}
@@ -54,11 +72,23 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
           <p className="text-sm text-gray-700 dark:text-gray-300">
             {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
           </p>
-          <p className="inline-flex gap-1 text-sm text-gray-500 min-w-32 mt-2 md:mt-0">
+          <div className="inline-flex gap-1 text-sm text-gray-500 min-w-32 mt-2 md:mt-0">
             <div>{frontMatter.readingTime.text}</div>
             {` • `}
             <ViewCounter slug={frontMatter.slug} />
-          </p>
+            <button
+              aria-label="Share this blog"
+              className="ml-1"
+              onClick={handleShareButtonClick}
+              title="Share this blog"
+            >
+              {isShared ? (
+                <SuccessMessage>Copied</SuccessMessage>
+              ) : (
+                <FaShareSquare />
+              )}
+            </button>
+          </div>
         </div>
         <div
           className="prose dark:prose-dark max-w-none w-full pt-8"

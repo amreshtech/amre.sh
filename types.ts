@@ -17,6 +17,7 @@ export type FrontMatter = {
   logo?: string;
   image?: string;
   tags: string[];
+  shortUrl: string;
 };
 
 export type MDXSource = {
@@ -29,7 +30,7 @@ export type Post = {
   publishedAt: string;
   summary: string;
   image: string;
-  slug: string;  
+  slug: string;
   tags: string[];
 };
 

@@ -1,9 +1,6 @@
 import Container from '@components/Container';
-import { getAllFilesFrontMatter } from '@lib/mdx';
-import type { Post, Tweet as TweetType } from '../types';
-import Button from '@components/Button';
+import type { Tweet as TweetType } from '../types';
 import Typewriter from 'typewriter-effect';
-import Link from 'next/link';
 import Map from '@components/widgets/Map';
 import { getTweet } from '@lib/twitter';
 import Tweet from '@components/widgets/Tweet';
@@ -16,7 +13,7 @@ interface Props {
   tweetData: TweetType;
 }
 
-const Blog: React.FC<Props> = ({ map_url, tweetData }) => {
+const Home: React.FC<Props> = ({ map_url, tweetData }) => {
   return (
     <Container>
       <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 z-10 w-full">
@@ -105,10 +102,9 @@ const Blog: React.FC<Props> = ({ map_url, tweetData }) => {
 };
 
 export async function getStaticProps() {
-  const posts = await getAllFilesFrontMatter('blog');
   const map_url = getMap();
   const tweetData = await getTweet();
-  return { props: { posts, map_url, tweetData } };
+  return { props: { map_url, tweetData } };
 }
 
-export default Blog;
+export default Home;
