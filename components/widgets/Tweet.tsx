@@ -30,7 +30,7 @@ const Tweet: React.FC<TweetType> = ({
   return (
     <button
       onClick={handleClick}
-      className="tweet rounded-2xl border border-gray-300 dark:border-gray-800 p-3 dark:bg-black z-10 flex flex-row items-start text-left"
+      className="tweet rounded-2xl border border-gray-300 dark:border-gray-800 p-3 dark:bg-black z-10 flex flex-row items-start text-left h-full"
     >
       <div className="w-11/12">
         <div className="mb-1 leading-normal whitespace-pre-wrap text-sm !text-gray-700 dark:!text-gray-300">

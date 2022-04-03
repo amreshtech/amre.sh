@@ -3,9 +3,12 @@ import Container from '@components/Container';
 import ViewCounter from '@components/ViewCounter';
 import type { FrontMatter } from 'types';
 import Badge from '@components/Badge';
-import { ClipboardEventHandler } from 'react';
+import { ClipboardEventHandler, MouseEventHandler } from 'react';
 import { BlogJsonLd } from 'next-seo';
 import { useRouter } from 'next/router';
+import { FaShareSquare } from 'react-icons/fa';
+import SuccessMessage from '@components/SuccessMessage';
+import React from 'react';
 
 interface Props {
   children: React.ReactNode;
@@ -24,6 +27,21 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
     e.preventDefault();
   };
   const router = useRouter();
+  const [isShared, setIsShared] = React.useState(false);
+  const handleShareButtonClick: MouseEventHandler<HTMLButtonElement> = async (
+    e
+  ) => {
+    navigator.clipboard.writeText(frontMatter.shortUrl).then(() => {
+      setIsShared(true);
+    });
+  };
+
+  setTimeout(() => {
+    if (isShared) {
+      setIsShared(false);
+    }
+  }, 2000);
+
   return (
     <Container
       title={`${frontMatter.title} – Amresh`}
@@ -58,6 +76,18 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
             <div>{frontMatter.readingTime.text}</div>
             {` • `}
             <ViewCounter slug={frontMatter.slug} />
+            <button
+              aria-label="Share this blog"
+              className="ml-1"
+              onClick={handleShareButtonClick}
+              title="Share this blog"
+            >
+              {isShared ? (
+                <SuccessMessage>Copied</SuccessMessage>
+              ) : (
+                <FaShareSquare />
+              )}
+            </button>
           </div>
         </div>
         <div

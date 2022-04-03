@@ -11,7 +11,7 @@ interface Props {
   frontMatter: FrontMatter;
 }
 
-const Blog: React.FC<Props> = ({ mdxSource, tweets, frontMatter }) => {
+const Blog: React.FC<Props> = ({ mdxSource, frontMatter }) => {
   return (
     <BlogLayout frontMatter={frontMatter}>
       <MDXRemote {...mdxSource} components={{ ...MDXComponents }} />
