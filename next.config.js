@@ -7,7 +7,9 @@ module.exports = withBundleAnalyzer({
   future: {
     strictPostcssConfiguration: true
   },
-  publicRuntimeConfig: {
+  env:{
+    UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL,
+    UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN,
     ALGOLIA_ADMIN_KEY: process.env.ALGOLIA_ADMIN_KEY,
     ALGOLIA_APPLICATION_ID: process.env.ALGOLIA_APPLICATION_ID
   },
