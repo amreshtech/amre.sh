@@ -30,7 +30,7 @@ const Chat: React.FC = () => {
       <PopupModal
         url="https://calendly.com/amreshm/consultation"
         pageSettings={pageSettings}
-        rootElement={document.getElementById('root')}
+        rootElement={document.getElementById('__next')}
         onModalClose={handleModalVisibility}
         open={isOpen}
       />

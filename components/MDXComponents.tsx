@@ -7,7 +7,11 @@ import Analytics from '@components/metrics/Analytics';
 import Step from '@components/Step';
 import Document from '@components/Document';
 import TldrCard from './TldrCard';
-import ConsultationCard from './ConsultationCard';
+import dynamic from 'next/dynamic';
+
+const ConsultationCard = dynamic(() => import('./ConsultationCard'), {
+  ssr: false
+});
 
 const CustomLink = (props) => {
   const href = props.href;

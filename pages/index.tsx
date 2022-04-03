@@ -5,9 +5,14 @@ import Map from '@components/widgets/Map';
 import { getTweet } from '@lib/twitter';
 import Tweet from '@components/widgets/Tweet';
 import { getMap } from '@lib/map';
-import Chat from '@components/widgets/Chat';
 import Image from 'next/image';
 import SelfDescription from '@components/SelfDescription';
+import dynamic from 'next/dynamic';
+
+const Chat = dynamic(() => import('@components/widgets/Chat'), {
+  ssr: false
+});
+
 interface Props {
   map_url: string;
   tweetData: TweetType;

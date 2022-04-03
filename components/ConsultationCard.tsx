@@ -19,7 +19,7 @@ const ConsultationCard: React.FC<Props> = ({ text }) => (
         hideGdprBanner: true
       }}
       className="text-white bg-gradient-to-tl from-rose-700 via-rose-600 to-rose-600 p-1 px-3 font-bold rounded-full"
-      rootElement={document.getElementById('root')}
+      rootElement={document.getElementById('__next')}
     />
   </div>
 );
