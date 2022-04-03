@@ -2,15 +2,9 @@ import '@styles/global.css';
 import { ThemeProvider } from 'next-themes';
 import Script from 'next/script';
 import SimpleReactLightbox from 'simple-react-lightbox';
-import flagsmith from 'flagsmith/isomorphic';
-import { NextPageContext } from 'next';
-import dynamic from 'next/dynamic';
 
 export default function App({ Component, pageProps, maintenance_mode }) {
-  const Maintenance = dynamic(() => import('../components/Maintenance'));
-  return maintenance_mode ? (
-    <Maintenance />
-  ) : (
+  return (
     <ThemeProvider attribute="class">
       <SimpleReactLightbox>
         <Component {...pageProps} />
@@ -36,15 +30,3 @@ export default function App({ Component, pageProps, maintenance_mode }) {
     </ThemeProvider>
   );
 }
-
-App.getInitialProps = async ({ res }: NextPageContext) => {
-  const environmentID = process.env.FLAGSMITH_ENV_ID;
-  await flagsmith.init({
-    environmentID
-  });
-  const data = flagsmith.getAllFlags();
-  const maintenance_mode = data?.maintenance_mode.enabled;
-  return {
-    maintenance_mode
-  };
-};

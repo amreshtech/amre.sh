@@ -9,7 +9,7 @@ const Maintenance = () => {
     animationData: rocket
   };
   return (
-    <Container title="Prepping to launch" hideNav>
+    <Container title="Prepping for launch" hideNav>
       <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 z-10">
         <Lottie options={lottieOptions} height={400} width={400} />
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
