@@ -17,7 +17,7 @@ const Chat: React.FC = () => {
   return (
     <button
       onClick={handleClick}
-      className="bg-gradient-to-r from-green-500 to-green-700 rounded-3xl w-48 h-48 text-5xl text-white py-6 px-8 font-bold text-left"
+      className="bg-gradient-to-r from-green-500 to-green-700 rounded-3xl text-5xl text-white px-4 md:py-6 md:px-8 font-bold text-left h-full"
     >
       Let&apos;s Chat
       <div className="flex">

@@ -62,11 +62,10 @@ const About = () => {
             little knowledge I have about finance!
           </p>
           <p>
-            I work with the brilliant minds at Overstock Labs and use React,
-            TypeScript, NextJS, GraphQL, Rebass/ThemeUI/Styled Components/Fela,
-            Webpack, NodeJS/ExpressJS, Jest, Storybook and Swagger. I have
-            always led the efforts in bringing new technologies to improve both
-            DX & UX of the apps we work in.
+            I work with the brilliant minds at Shutterstock and use React,
+            TypeScript, NextJS, GraphQL, MUI, Webpack, NodeJS/ExpressJS, Jest,
+            Storybook and Swagger. I have always led the efforts in bringing new
+            technologies to improve both DX & UX of the apps we work in.
           </p>
           <p>
             I grew up in a small town in Odisha in India and hold a Masters
