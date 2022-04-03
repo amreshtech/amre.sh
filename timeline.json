@@ -96,5 +96,14 @@
         "description": "I found my place. Amazing team and amazing work culture. Now I build resilient front-end apps that serve millions of customers with NextJS, Storybook, Fela and a lot more. "
       }
     ]
+  },
+  {
+    "year": "2022",
+    "content": [
+      {
+        "title": "Joined Shutterstock",
+        "description": "After working with amazing minds at Overstock, I decided to move on to help creators around the world rise and shine. Now I build enriched Search experiences at Shutterstock helping customers find the right assets to implement their beautiful ideas."
+      }
+    ]
   }
 ]

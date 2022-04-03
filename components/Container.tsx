@@ -14,11 +14,12 @@ export default function Container(props) {
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
 
-  const { children, hideNav, ...customMeta } = props;
+  const { children, hideNav = false, posts, ...customMeta } = props;
   const router = useRouter();
   const meta = {
-    title: 'Amresh – Developer, photographer, travel freak',
-    description: `Front-end developer`,
+    title: 'Amresh – Developer, photographer, travel freak, investor',
+    description:
+      'My thoughts on front end development, programming, tech, and my personal life.',
     type: 'website',
     ...customMeta
   };
@@ -71,7 +72,7 @@ export default function Container(props) {
         }`}
       >
         <div>
-          {!hideNav && (
+          {router.pathname !== '/' && (
             <NextLink href="/">
               <a>
                 <div className="font-qc text-4xl text-black dark:text-white font-bold hidden sm:block">
@@ -92,11 +93,11 @@ export default function Container(props) {
                   Blog
                 </a>
               </NextLink>
-              {/* <NextLink href="/travel">
+              <NextLink href="/travel">
                 <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">
                   Travel
                 </a>
-              </NextLink> */}
+              </NextLink>
               <NextLink href="/about">
                 <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100 mr-2">
                   About

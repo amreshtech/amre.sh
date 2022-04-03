@@ -7,7 +7,9 @@ module.exports = withBundleAnalyzer({
   future: {
     strictPostcssConfiguration: true
   },
-  publicRuntimeConfig: {
+  env:{
+    UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL,
+    UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN,
     ALGOLIA_ADMIN_KEY: process.env.ALGOLIA_ADMIN_KEY,
     ALGOLIA_APPLICATION_ID: process.env.ALGOLIA_APPLICATION_ID
   },
@@ -15,7 +17,8 @@ module.exports = withBundleAnalyzer({
     domains: [
       'i.scdn.co', // Spotify Album Art
       'pbs.twimg.com', // Twitter Profile Picture
-      'res.cloudinary.com' // Cloudinary image storage
+      'res.cloudinary.com', // Cloudinary image storage
+      'maps.googleapis.com' // Google Static Map
     ]
   },
   async headers() {
@@ -52,15 +55,15 @@ module.exports = withBundleAnalyzer({
 // https://securityheaders.com
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com *.vercel-insights.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com *.vercel-insights.com *.calendly.com *.googletagmanager.com;
   child-src *.youtube.com *.google.com *.twitter.com;
-  style-src 'self' 'unsafe-inline' *.googleapis.com *.gstatic.com;
+  style-src 'self' 'unsafe-inline' *.googleapis.com *.gstatic.com *.calendly.com;
   img-src * blob: data:;
   media-src 'none';
   connect-src *;
   font-src 'self' *.gstatic.com;
   object-src 'self' res.cloudinary.com;
-  frame-src 'self' res.cloudinary.com;
+  frame-src 'self' res.cloudinary.com https://calendly.com/;
 `;
 
 const securityHeaders = [

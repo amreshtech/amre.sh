@@ -1,10 +1,7 @@
 import Container from '@components/Container';
 import Timeline from '@components/Timeline';
 import Image from 'next/image';
-import { FaFacebook } from '@react-icons/all-files/fa/FaFacebook';
-import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram';
-import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin';
-import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const About = () => {
   return (
@@ -35,7 +32,7 @@ const About = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <FaTwitter className="text-blue-500 dark:text-white" size="1.3em" />
+            <FaTwitter className="text-sky-500 dark:text-white" size="1.3em" />
           </a>
           <a
             href="https://www.instagram.com/amresh.m"
@@ -65,11 +62,10 @@ const About = () => {
             little knowledge I have about finance!
           </p>
           <p>
-            I work with the brilliant minds at Overstock Labs and use React,
-            TypeScript, NextJS, GraphQL, Rebass/ThemeUI/Styled Components/Fela,
-            Webpack, NodeJS/ExpressJS, Jest, Storybook and Swagger. I have
-            always led the efforts in bringing new technologies to improve both
-            DX & UX of the apps we work in.
+            I work with the brilliant minds at Shutterstock and use React,
+            TypeScript, NextJS, GraphQL, MUI, Webpack, NodeJS/ExpressJS, Jest,
+            Storybook and Swagger. I have always led the efforts in bringing new
+            technologies to improve both DX & UX of the apps we work in.
           </p>
           <p>
             I grew up in a small town in Odisha in India and hold a Masters
