@@ -36,7 +36,7 @@ module.exports = withBundleAnalyzer({
 // https://securityheaders.com
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com *.vercel-insights.com *.calendly.com *.googletagmanager.com data: *.google-analytics.com *.plausible.io;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com *.vercel-insights.com *.calendly.com *.googletagmanager.com data: *.google-analytics.com plausible.io;
   child-src *.youtube.com *.google.com *.twitter.com;
   style-src 'self' 'unsafe-inline' *.googleapis.com *.gstatic.com *.calendly.com;
   img-src * blob: data:;
