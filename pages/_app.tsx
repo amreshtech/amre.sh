@@ -11,8 +11,8 @@ export default function App({ Component, pageProps }) {
       </SimpleReactLightbox>
       <Script
         defer={true}
-        src="https://static.cloudflareinsights.com/beacon.min.js"
-        data-cf-beacon={`{"token": "${process.env.NEXT_PUBLIC_CLOUDFLARE_ANALYTICS}"}`}
+        data-domain="amre.sh"
+        src="https://plausible.io/js/plausible.js"
       />
     </ThemeProvider>
   );
