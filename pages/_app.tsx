@@ -10,9 +10,10 @@ export default function App({ Component, pageProps }) {
         <Component {...pageProps} />
       </SimpleReactLightbox>
       <Script
-        defer={true}
-        data-domain="amre.sh"
-        src="https://plausible.io/js/plausible.js"
+        async
+        defer
+        data-website-id={process.env.NEXT_PUBLIC_ANALYTICS}
+        src={process.env.NEXT_PUBLIC_ANALYTICS_SCRIPT}
       />
     </ThemeProvider>
   );
