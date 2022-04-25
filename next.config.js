@@ -36,7 +36,7 @@ module.exports = withBundleAnalyzer({
 // https://securityheaders.com
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com *.vercel-insights.com *.calendly.com data:;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com *.vercel-insights.com *.calendly.com data: https://stats.amre.sh/umami.js;
   child-src *.youtube.com *.google.com *.twitter.com;
   style-src 'self' 'unsafe-inline' *.googleapis.com *.gstatic.com *.calendly.com;
   img-src * blob: data:;
