@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
         async
         defer
         data-website-id={process.env.NEXT_PUBLIC_ANALYTICS}
-        src={process.env.NEXT_PUBLIC_ANALYTICS_SCRIPT}
+        src="https://stats.amre.sh/umami.js"
       />
     </ThemeProvider>
   );
