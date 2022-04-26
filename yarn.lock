@@ -5878,6 +5878,11 @@ tsparticles@^1.42.4:
   resolved "https://registry.yarnpkg.com/tsparticles/-/tsparticles-1.42.4.tgz#63f0615c44d88c6e7d5e10e7ea1fb7eba1164b76"
   integrity sha512-tfjh6hZFID+5mIdqIvAvmpGymG5kFIxB2k1fs0SIDemo7iL9qnQyvI3HankxfRtCblcwRoEYj/g5phdIhqY8vA==
 
+tsparticles@^1.43.0:
+  version "1.43.1"
+  resolved "https://registry.yarnpkg.com/tsparticles/-/tsparticles-1.43.1.tgz#1f6b37ee41b6ab043d66a0e20bfe0855a1aea006"
+  integrity sha512-6EuHncwqzoyTlUxc11YH8LVlwVUgpYaZD0yMOeA2OvRqFZ9VQV8EjjQ6ZfXt6pfGA1ObPwU929jveFatxwTQkg==
+
 tsutils@^3.21.0:
   version "3.21.0"
   resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-3.21.0.tgz#b48717d394cea6c1e096983eed58e9d61715b623"
