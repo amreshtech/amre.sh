@@ -4165,10 +4165,10 @@ netmask@^2.0.1:
   resolved "https://registry.yarnpkg.com/netmask/-/netmask-2.0.2.tgz#8b01a07644065d536383835823bc52004ebac5e7"
   integrity sha512-dBpDMdxv9Irdq66304OLfEmQ9tbNRFnFTuZiLo+bD+r332bBmMJ8GBLXklIXXgxd3+v9+KUnZaUR5PJMa75Gsg==
 
-next-mdx-remote@4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/next-mdx-remote/-/next-mdx-remote-4.0.1.tgz#9dfdb2198cd139f8691e82912aa8125b5bf74ff1"
-  integrity sha512-voQce8q4uFAArDJYNvpgMcJi9KaWuXpaGKQvaBJGVSzmLGMSBZbM+3F7s8Iflg6o9phn+G0hUUpHKagbRa1BQA==
+next-mdx-remote@4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/next-mdx-remote/-/next-mdx-remote-4.0.2.tgz#56c315819e6704dfb1fe68ce2f5ed0d315c34528"
+  integrity sha512-1cZM2xm+G1FyYodGt92lCXisP0owPeppVHeH5TIaXUGdt6ENBZYOxLNFaVl9fkS9wP/s2sLcC9m2c1iLH2H4rA==
   dependencies:
     "@mdx-js/mdx" "^2.0.0"
     "@mdx-js/react" "^2.0.0"
@@ -4795,10 +4795,10 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-calendly@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/react-calendly/-/react-calendly-3.0.1.tgz#2be805dbd63640304f2b3e5459d9d8fa6e7e0241"
-  integrity sha512-O2tS5wQDshACj1S/QaeORG+Ds/UunubUNw01qIKloyMmrShX6JMUlgl5zP7LBQWC78uCaHjBh1twXRjbmngsZw==
+react-calendly@^3.0.2:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/react-calendly/-/react-calendly-3.0.3.tgz#b54eb8dd5a07fe0d12086f1bde910312a4e2466e"
+  integrity sha512-dUCFPGVcqs+KTZ/2f243RwKlo8XgluDJtr/HSKa91COtbIq7DatCcCyHWYCePKxFClX/PQToBOooNWR5jD0OxA==
 
 react-dom@^18.0.0:
   version "18.0.0"
@@ -4836,13 +4836,13 @@ react-swipeable@^6.2.0:
   resolved "https://registry.yarnpkg.com/react-swipeable/-/react-swipeable-6.2.1.tgz#7359fadda9917ee8b214e946447b56d3c7b0d314"
   integrity sha512-JpTj+tjJTDcIWtoMkab6zfwWD1T1tBzUyEfXsXnohnNkwA2dTuNS0gtN7HoxU1Qa+e3GDnfNYk2z7vwzfO4SoQ==
 
-react-tsparticles@^1.42.4:
-  version "1.42.4"
-  resolved "https://registry.yarnpkg.com/react-tsparticles/-/react-tsparticles-1.42.4.tgz#da35107241aaa7ed1936563bdeacafd63bb42539"
-  integrity sha512-+k9YII74PmgMXMi0Ei8A0O1e5g4zisF13Ux5TJWe0MQKUtjzt7Cf4dHd+HulxJMPRQ5W46z2F54f7k7VO4iPEg==
+react-tsparticles@^1.43.0:
+  version "1.43.1"
+  resolved "https://registry.yarnpkg.com/react-tsparticles/-/react-tsparticles-1.43.1.tgz#495c47814d79f512e222a138cab613fe2d5bff72"
+  integrity sha512-IWa33DP6CjcO+/upUqPhYpxduCFQvWXqCHV6rgvIPvmaqPqs8BkNbeBgBqcEPJRPzTluaD/+r9d7tDp2Uhd0uA==
   dependencies:
     fast-deep-equal "^3.1.3"
-    tsparticles "^1.42.4"
+    tsparticles "^1.43.1"
 
 react-universal-interface@^0.6.2:
   version "0.6.2"
@@ -5877,6 +5877,11 @@ tsparticles@^1.42.4:
   version "1.42.4"
   resolved "https://registry.yarnpkg.com/tsparticles/-/tsparticles-1.42.4.tgz#63f0615c44d88c6e7d5e10e7ea1fb7eba1164b76"
   integrity sha512-tfjh6hZFID+5mIdqIvAvmpGymG5kFIxB2k1fs0SIDemo7iL9qnQyvI3HankxfRtCblcwRoEYj/g5phdIhqY8vA==
+
+tsparticles@^1.43.1:
+  version "1.43.1"
+  resolved "https://registry.yarnpkg.com/tsparticles/-/tsparticles-1.43.1.tgz#1f6b37ee41b6ab043d66a0e20bfe0855a1aea006"
+  integrity sha512-6EuHncwqzoyTlUxc11YH8LVlwVUgpYaZD0yMOeA2OvRqFZ9VQV8EjjQ6ZfXt6pfGA1ObPwU929jveFatxwTQkg==
 
 tsutils@^3.21.0:
   version "3.21.0"
