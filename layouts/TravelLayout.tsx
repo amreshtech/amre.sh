@@ -1,17 +1,11 @@
 import Container from '@components/Container';
-import { SRLWrapper } from 'simple-react-lightbox';
+import ImageWrapper from '@components/ImageWrapper';
 
 interface Props {
   children: React.ReactNode;
 }
 
 const TravelLayout: React.FC<Props> = ({ children }) => {
-  const preventRightClick = () => {
-    const img = document.getElementById('SRLLightbox');
-    img.addEventListener('contextmenu', (e) => {
-      e.preventDefault();
-    });
-  };
   return (
     <Container
       title="Travel – Amresh"
@@ -23,19 +17,7 @@ const TravelLayout: React.FC<Props> = ({ children }) => {
           e.preventDefault();
         }}
       >
-        <SRLWrapper
-          options={{
-            settings: { disablePanzoom: true },
-            buttons: {
-              showDownloadButton: false
-            }
-          }}
-          callbacks={{
-            onLightboxOpened: preventRightClick
-          }}
-        >
-          {children}
-        </SRLWrapper>
+        <ImageWrapper>{children}</ImageWrapper>
       </article>
     </Container>
   );

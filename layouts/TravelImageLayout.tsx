@@ -2,6 +2,7 @@ import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import { SingleImage } from 'types';
 import Image from 'next/image';
 import Link from 'next/link';
+import { transformImageUrl } from '@utils/transformImageUrl';
 
 interface Props {
   location: string;
@@ -9,14 +10,6 @@ interface Props {
 }
 
 const TravelImageLayout: React.FC<Props> = ({ location, images }) => {
-  const transformImageUrl = (url: string) => {
-    const root = url.split('/private');
-    const suffix = url.split('/private')[1].split(/(?=\/v)/);
-    return (
-      root[0] + '/private/c_scale,e_anti_removal,l_watermark,w_450' + suffix[1]
-    );
-  };
-
   return (
     <>
       <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
