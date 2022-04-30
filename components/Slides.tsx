@@ -14,9 +14,8 @@ const Slides = ({ images }: { images: { path: string; title: string }[] }) => {
   const handleNextClick = () => {
     setActiveImageIndex(activeImageIndex + 1);
   };
-
   return (
-    <ImageWrapper>
+    <ImageWrapper options={{ thumbnails: { showThumbnails: false } }}>
       <div className="flex flex-row w-full items-center justify-center">
         <div className="w-7">
           {activeImageIndex !== 0 && (
@@ -38,6 +37,7 @@ const Slides = ({ images }: { images: { path: string; title: string }[] }) => {
             onContextMenu={(e) => {
               e.preventDefault();
             }}
+            priority
           />
           <figcaption className="text-lg text-center text-white bg-gray-800/50 z-10 absolute -mt-9 h-9 w-full py-1 bottom-0">
             {images[activeImageIndex].title}
