@@ -8,6 +8,7 @@ import Step from '@components/Step';
 import Document from '@components/Document';
 import TldrCard from './TldrCard';
 import dynamic from 'next/dynamic';
+import Slides from './Slides';
 
 const ConsultationCard = dynamic(() => import('./ConsultationCard'), {
   ssr: false
@@ -37,7 +38,8 @@ const MDXComponents = {
   Step,
   Document,
   TldrCard,
-  ConsultationCard
+  ConsultationCard,
+  Slides
 };
 
 export default MDXComponents;
