@@ -17,7 +17,7 @@ const Slides = ({ images }: { images: { path: string; title: string }[] }) => {
 
   return (
     <ImageWrapper>
-      <div className="flex flex-row w-full items-center">
+      <div className="flex flex-row w-full items-center justify-center">
         <div className="w-7">
           {activeImageIndex !== 0 && (
             <button onClick={handlePreviousClick}>
@@ -25,7 +25,7 @@ const Slides = ({ images }: { images: { path: string; title: string }[] }) => {
             </button>
           )}
         </div>
-        <figure className="h-64 w-64 relative">
+        <figure className="h-96 w-96 relative">
           <button className="absolute z-10 bg-slate-900/50 text-white rounded-full w-8 h-8 p-1 right-1 top-1 pointer-events-none cursor-pointer">
             <BiExpandAlt size={24} />
           </button>
@@ -33,14 +33,13 @@ const Slides = ({ images }: { images: { path: string; title: string }[] }) => {
             key={images[activeImageIndex].path}
             src={`${STATIC_CLOUDINARY_IMAGE_URL_SUFFIX}${images[activeImageIndex].path}`}
             alt={images[activeImageIndex].title}
-            height="320px"
-            width="320px"
-            layout="responsive"
+            layout="fill"
+            objectFit="cover"
             onContextMenu={(e) => {
               e.preventDefault();
             }}
           />
-          <figcaption className="text-md text-center text-white bg-gray-800/50 z-10 absolute -mt-9 h-9 w-full py-1">
+          <figcaption className="text-lg text-center text-white bg-gray-800/50 z-10 absolute -mt-9 h-9 w-full py-1 bottom-0">
             {images[activeImageIndex].title}
           </figcaption>
         </figure>
