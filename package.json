@@ -66,7 +66,7 @@
     "simple-react-lightbox": "^3.6.9-0",
     "swr": "1.2.2",
     "tailwindcss": "^3.0.23",
-    "tsparticles": "^1.42.4",
+    "tsparticles": "^1.43.1",
     "typewriter-effect": "^2.18.0"
   },
   "devDependencies": {
