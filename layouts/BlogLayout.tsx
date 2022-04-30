@@ -44,7 +44,7 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
 
   return (
     <Container
-      title={`${frontMatter.title} – Amresh`}
+      title={`${frontMatter.title} – Blog by Amresh`}
       description={frontMatter.summary}
       image={`https://amre.sh${frontMatter.image}`}
       date={new Date(frontMatter.publishedAt).toISOString()}
