@@ -15,7 +15,11 @@ const Slides = ({ images }: { images: { path: string; title: string }[] }) => {
     setActiveImageIndex(activeImageIndex + 1);
   };
   return (
-    <ImageWrapper options={{ thumbnails: { showThumbnails: false } }}>
+    <ImageWrapper
+      options={{
+        thumbnails: { showThumbnails: false }
+      }}
+    >
       <div className="flex flex-row w-full items-center justify-center">
         <div className="w-7">
           {activeImageIndex !== 0 && (

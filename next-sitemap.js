@@ -1,4 +1,4 @@
 module.exports = {
-  siteUrl: 'https://amre.sh',
+  siteUrl: 'https://www.amre.sh/',
   generateRobotsTxt: true
 };

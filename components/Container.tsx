@@ -77,13 +77,19 @@ export default function Container(props) {
           maxVideoPreview: -1
         }}
         description={meta.description}
-        canonical={`https://amre.sh${router.asPath}`}
+        canonical={`https://www.amre.sh/${router.asPath}`}
         openGraph={{
-          url: `https://amre.sh${router.asPath}`,
+          url: `https://www.amre.sh/${router.asPath}`,
           type: meta.type,
           site_name: 'Amresh Mishra',
           description: meta.description,
-          title: meta.title
+          title: meta.title,
+          images: [
+            {
+              url: `${meta.image}`,
+              alt: `${meta.title}`
+            }
+          ]
         }}
         twitter={{
           cardType: 'summary_large_image',

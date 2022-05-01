@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://amre.sh
+Host: https://www.amre.sh/
 
 # Sitemaps
-Sitemap: https://amre.sh/sitemap.xml
+Sitemap: https://www.amre.sh//sitemap.xml

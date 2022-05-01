@@ -4,7 +4,7 @@ import ViewCounter from '@components/ViewCounter';
 import type { FrontMatter } from 'types';
 import Badge from '@components/Badge';
 import { ClipboardEventHandler, MouseEventHandler } from 'react';
-import { ArticleJsonLd } from 'next-seo';
+import { ArticleJsonLd, NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 import { FaShareSquare } from 'react-icons/fa';
 import SuccessMessage from '@components/SuccessMessage';
@@ -22,7 +22,9 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
       `${document
         .getSelection()
         .toString()
-        .substring(0, 50)}...Visit https://amre.sh/blog/${frontMatter.slug}`
+        .substring(0, 50)}...Visit https://www.amre.sh//blog/${
+        frontMatter.slug
+      }`
     );
     e.preventDefault();
   };
@@ -44,21 +46,21 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
 
   return (
     <Container
-      title={`${frontMatter.title} – Amresh`}
+      title={`${frontMatter.title} – Blog by Amresh`}
       description={frontMatter.summary}
-      image={`https://amre.sh${frontMatter.image}`}
+      image={`${frontMatter.image}`}
       date={new Date(frontMatter.publishedAt).toISOString()}
       type="article"
     >
       <ArticleJsonLd
         type="Blog"
-        url={`https://amre.sh${router.asPath}`}
+        url={`https://www.amre.sh/${router.asPath}`}
         title={frontMatter.title}
         datePublished={new Date(frontMatter.publishedAt).toISOString()}
         dateModified={new Date(frontMatter.publishedAt).toISOString()}
         authorName="Amresh Mishra"
         description={frontMatter.summary}
-        images={[`https://amre.sh${frontMatter.image}`]}
+        images={[`${frontMatter.image}`]}
       />
       <article className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 w-full bg-white dark:bg-black z-10">
         <div className="flex flex-row items-center gap-2 pb-3">
