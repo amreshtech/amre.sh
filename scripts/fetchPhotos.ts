@@ -8,7 +8,7 @@ export const fetchPhotos = async (folderPath: string) => {
     .sort_by('public_id', 'desc')
     .execute();
 
-  const data = await response?.resources.map((imageAsset: CloudinaryImage) => ({
+  return response?.resources.map((imageAsset: CloudinaryImage) => ({
     folder: imageAsset.folder.split('/')[2],
     url: imageAsset.secure_url,
     width: imageAsset.width,
@@ -16,6 +16,4 @@ export const fetchPhotos = async (folderPath: string) => {
     nft: imageAsset?.context?.alt || '',
     title: imageAsset?.context?.caption || ''
   }));
-
-  return data;
 };

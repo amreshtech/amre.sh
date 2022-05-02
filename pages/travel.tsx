@@ -17,7 +17,7 @@ const Travel: React.FC<{
   </TravelLayout>
 );
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const result = await fetchPhotos('photos/Travel/*');
   return { props: { images: groupBy(result, (i: SingleImage) => i.folder) } };
 };
