@@ -6,7 +6,7 @@ const ErrorMessage: React.FC<Props> = ({ children }) => {
   return (
     <p className="flex items-center text-sm font-bold text-red-800 dark:text-red-400">
       <svg
-        xmlns="http://www.w3.org/2000/svg"
+        xmlns="https://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
         className="mr-2 h-4 w-4"

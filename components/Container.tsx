@@ -37,7 +37,7 @@ export default function Container(props) {
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
     >
       <svg
-        xmlns="http://www.w3.org/2000/svg"
+        xmlns="https://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="currentColor"
         stroke="currentColor"
@@ -100,7 +100,7 @@ export default function Container(props) {
       <SocialProfileJsonLd
         type="Person"
         name="Amresh Mishra"
-        url="http://amre.sh"
+        url="https://www.amre.sh"
         sameAs={[
           'https://www.facebook.com/amreshm/',
           'https://www.instagram.com/amresh.m',
