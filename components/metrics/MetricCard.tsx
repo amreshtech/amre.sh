@@ -17,7 +17,7 @@ const MetricCard: React.FC<Props> = ({ header, link, metric }) => {
           {header}
           <svg
             className="h-4 w-4 ml-1"
-            xmlns="http://www.w3.org/2000/svg"
+            xmlns="https://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
