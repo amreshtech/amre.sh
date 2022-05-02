@@ -1,4 +1,3 @@
-import NowPlaying from '@components/NowPlaying';
 import { useRouter } from 'next/router';
 
 interface Props {

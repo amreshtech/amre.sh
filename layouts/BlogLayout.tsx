@@ -3,12 +3,11 @@ import Container from '@components/Container';
 import ViewCounter from '@components/ViewCounter';
 import type { FrontMatter } from 'types';
 import Badge from '@components/Badge';
-import { ClipboardEventHandler, MouseEventHandler } from 'react';
+import React, { ClipboardEventHandler, MouseEventHandler } from 'react';
 import { ArticleJsonLd } from 'next-seo';
 import { useRouter } from 'next/router';
 import { FaShareSquare } from 'react-icons/fa';
 import SuccessMessage from '@components/SuccessMessage';
-import React from 'react';
 
 interface Props {
   children: React.ReactNode;
@@ -30,9 +29,9 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
   };
   const router = useRouter();
   const [isShared, setIsShared] = React.useState(false);
-  const handleShareButtonClick: MouseEventHandler<HTMLButtonElement> = async (
-    e
-  ) => {
+  const handleShareButtonClick: MouseEventHandler<
+    HTMLButtonElement
+  > = async () => {
     navigator.clipboard.writeText(frontMatter.shortUrl).then(() => {
       setIsShared(true);
     });

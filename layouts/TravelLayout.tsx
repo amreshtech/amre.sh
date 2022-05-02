@@ -8,7 +8,7 @@ interface Props {
 const TravelLayout: React.FC<Props> = ({ children }) => {
   return (
     <Container
-      title="Travel – Amresh"
+      title="Travel across the world with Amresh"
       description="My memories across the globe"
     >
       <article

@@ -1,15 +1,14 @@
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import NextLink from 'next/link';
 import Footer from '@components/Footer';
 import Particles from 'react-tsparticles';
 import particlesJson from '../particles.json';
 import { NextSeo, SocialProfileJsonLd } from 'next-seo';
-import React from 'react';
 
 export default function Container(props) {
-  const [mounted, setMounted] = useState(false);
+  const [, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
 
   // After mounting, we have access to the theme

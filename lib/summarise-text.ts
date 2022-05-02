@@ -5,4 +5,5 @@ export const summariseText = async (blogText: string) => {
     path: `http://api.meaningcloud.com/summarization-1.0?key=${process.env.MEANING_CLOUD_LICENSE_KEY}&txt=${blogText}&sentences=3`
   };
   const response = await fetch(config.path, config);
+  return response;
 };
