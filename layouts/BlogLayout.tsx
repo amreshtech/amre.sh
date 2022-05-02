@@ -4,7 +4,7 @@ import ViewCounter from '@components/ViewCounter';
 import type { FrontMatter } from 'types';
 import Badge from '@components/Badge';
 import { ClipboardEventHandler, MouseEventHandler } from 'react';
-import { ArticleJsonLd, NextSeo } from 'next-seo';
+import { ArticleJsonLd } from 'next-seo';
 import { useRouter } from 'next/router';
 import { FaShareSquare } from 'react-icons/fa';
 import SuccessMessage from '@components/SuccessMessage';
