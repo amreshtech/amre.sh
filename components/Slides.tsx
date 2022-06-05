@@ -3,9 +3,10 @@ import React from 'react';
 import ImageWrapper from './ImageWrapper';
 import { FcNext, FcPrevious } from 'react-icons/fc';
 import { BiExpandAlt } from 'react-icons/bi';
-import STATIC_CLOUDINARY_IMAGE_URL_SUFFIX from 'constants';
 
 const Slides = ({ images }: { images: { path: string; title: string }[] }) => {
+  const STATIC_CLOUDINARY_IMAGE_URL_SUFFIX =
+    'https://res.cloudinary.com/amreshtech/image/private/c_scale,e_anti_removal,f_auto,l_watermark,w_450/f_auto,q_auto:good';
   const [activeImageIndex, setActiveImageIndex] = React.useState(0);
   const handlePreviousClick = () => {
     setActiveImageIndex(activeImageIndex - 1);
