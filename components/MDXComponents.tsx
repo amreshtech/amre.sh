@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 import ProsCard from '@components/ProsCard';
 import ConsCard from '@components/ConsCard';
@@ -9,6 +8,7 @@ import Document from '@components/Document';
 import TldrCard from './TldrCard';
 import dynamic from 'next/dynamic';
 import Slides from './Slides';
+import SingleImage from './SingleImage';
 
 const ConsultationCard = dynamic(() => import('./ConsultationCard'), {
   ssr: false
@@ -30,7 +30,7 @@ const CustomLink = (props) => {
 };
 
 const MDXComponents = {
-  Image,
+  SingleImage,
   a: CustomLink,
   Analytics,
   ConsCard,
