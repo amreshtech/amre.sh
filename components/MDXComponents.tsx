@@ -30,7 +30,6 @@ const CustomLink = (props) => {
 };
 
 const MDXComponents = {
-  Image,
   a: CustomLink,
   Analytics,
   ConsCard,

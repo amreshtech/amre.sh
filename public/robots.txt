@@ -6,4 +6,4 @@ Allow: /
 Host: https://www.amre.sh/
 
 # Sitemaps
-Sitemap: https://www.amre.sh//sitemap.xml
+Sitemap: https://www.amre.sh/sitemap.xml
