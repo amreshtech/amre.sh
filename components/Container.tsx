@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import NextLink from 'next/link';
 import Footer from '@components/Footer';
-import Particles from 'react-tsparticles';
-import particlesJson from '../particles.json';
 import { NextSeo, SocialProfileJsonLd } from 'next-seo';
 
 export default function Container(props) {
@@ -63,7 +61,6 @@ export default function Container(props) {
 
   return (
     <div className="bg-white dark:bg-black">
-      <Particles options={particlesJson as any} />
       <NextSeo
         title={meta.title}
         robotsProps={{
@@ -76,9 +73,9 @@ export default function Container(props) {
           maxVideoPreview: -1
         }}
         description={meta.description}
-        canonical={`https://www.amre.sh/${router.asPath}`}
+        canonical={`https://www.amre.sh${router.asPath}`}
         openGraph={{
-          url: `https://www.amre.sh/${router.asPath}`,
+          url: `https://www.amre.sh${router.asPath}`,
           type: meta.type,
           site_name: 'Amresh Mishra',
           description: meta.description,
