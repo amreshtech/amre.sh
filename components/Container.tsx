@@ -64,6 +64,7 @@ export default function Container(props) {
       <NextSeo
         title={meta.title}
         noindex={shouldNotIndex}
+        nofollow={shouldNotIndex}
         robotsProps={{
           nosnippet: false,
           notranslate: false,

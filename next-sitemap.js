@@ -1,4 +1,5 @@
 module.exports = {
   siteUrl: 'https://www.amre.sh/',
-  generateRobotsTxt: true
+  generateRobotsTxt: true,
+  exclude: ['/maintenance']
 };

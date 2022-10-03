@@ -9,4 +9,10 @@ export async function middleware(req: NextRequest) {
     url.pathname = `/maintenance`;
     return NextResponse.rewrite(url);
   }
+
+  if (req.nextUrl.pathname === '/maintenance' && !Boolean(maintenance_mode)) {
+    const url = req.nextUrl;
+    url.pathname = `/`;
+    return NextResponse.redirect(url);
+  }
 }
