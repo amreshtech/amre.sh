@@ -58,11 +58,12 @@ export default function Container(props) {
       </svg>
     </button>
   );
-
+  const shouldNotIndex = router.asPath === '/maintenance' ? true : false;
   return (
     <div className="bg-white dark:bg-black">
       <NextSeo
         title={meta.title}
+        noindex={shouldNotIndex}
         robotsProps={{
           nosnippet: false,
           notranslate: false,
