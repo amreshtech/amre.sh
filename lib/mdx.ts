@@ -94,7 +94,7 @@ export async function getShortUrl(slug: string) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      originalURL: `https://www.amre.sh//blog/${slug}`,
+      originalURL: `https://www.amre.sh/blog/${slug}`,
       domain: 'blog.amre.sh'
     })
   };

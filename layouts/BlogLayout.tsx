@@ -21,9 +21,7 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
       `${document
         .getSelection()
         .toString()
-        .substring(0, 50)}...Visit https://www.amre.sh//blog/${
-        frontMatter.slug
-      }`
+        .substring(0, 50)}...Visit https://www.amre.sh/blog/${frontMatter.slug}`
     );
     e.preventDefault();
   };
@@ -53,7 +51,7 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
     >
       <ArticleJsonLd
         type="Blog"
-        url={`https://www.amre.sh/${router.asPath}`}
+        url={`https://www.amre.sh${router.asPath}`}
         title={frontMatter.title}
         datePublished={new Date(frontMatter.publishedAt).toISOString()}
         dateModified={new Date(frontMatter.publishedAt).toISOString()}
