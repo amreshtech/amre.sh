@@ -858,10 +858,10 @@
     "@typescript-eslint/types" "5.38.1"
     eslint-visitor-keys "^3.3.0"
 
-"@upstash/redis@^1.3.5":
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@upstash/redis/-/redis-1.6.1.tgz#5ce62e44d92ce1494a9df5385d814b5006346c9c"
-  integrity sha512-2SGkAzBewW8MoRT5YpypWxdxRdsX6ydCLktldDvGocCeSJcx00gj+sXi3WfRvVfXQS9EDR3cJVKoaBhbmn1IyA==
+"@upstash/redis@^1.13.1":
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/@upstash/redis/-/redis-1.13.1.tgz#c28982a1615ae240b1e1317a7b9b495e42beae97"
+  integrity sha512-ZuwUFuAH4GP8jCdmLtTQkEOjtspxXIo52FzwL/DqkQuFzhReKKazxEQe9s4hBCd1s4YeynjBIrl0HaqLlSjBwA==
   dependencies:
     isomorphic-fetch "^3.0.0"
 
