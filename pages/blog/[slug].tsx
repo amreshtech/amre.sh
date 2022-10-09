@@ -1,40 +1,58 @@
 import { MDXRemote } from 'next-mdx-remote';
-import { getFiles, getFileBySlug } from '@lib/mdx';
 import BlogLayout from '@layouts/BlogLayout';
 import MDXComponents from '@components/MDXComponents';
-import type { FrontMatter, MDXSource } from 'types';
+import type { MDXSource, ReadingTime } from 'types';
+import { getAllPostsWithSlug, getPostBySlug } from '@lib/contentful';
+import { serialize } from 'next-mdx-remote/serialize';
 
 interface Props {
-  mdxSource: MDXSource;
-  tweets: any;
-  frontMatter: FrontMatter;
+  publishedDate: string;
+  slug: string;
+  title: string;
+  summary: string;
+  tags: string[];
+  content: MDXSource;
+  shortUrl: string;
+  readingTime: ReadingTime;
 }
 
-const Blog: React.FC<Props> = ({ mdxSource, frontMatter }) => {
+const Blog: React.FC<Props> = ({
+  publishedDate,
+  slug,
+  title,
+  summary,
+  tags,
+  content,
+  shortUrl,
+  readingTime
+}) => {
   return (
-    <BlogLayout frontMatter={frontMatter}>
-      <MDXRemote {...mdxSource} components={{ ...MDXComponents }} />
+    <BlogLayout
+      publishedDate={publishedDate}
+      slug={slug}
+      title={title}
+      summary={summary}
+      tags={tags}
+      shortUrl={shortUrl}
+      readingTime={readingTime}
+    >
+      <MDXRemote {...content} components={{ ...MDXComponents }} />
     </BlogLayout>
   );
 };
 
 export async function getStaticPaths() {
-  const posts = await getFiles('blog');
-
+  const allPosts = await getAllPostsWithSlug();
   return {
-    paths: posts.map((p) => ({
-      params: {
-        slug: p.replace(/\.mdx/, '')
-      }
-    })),
-    fallback: false
+    paths: allPosts?.map(({ slug }) => `/blog/${slug}`) ?? [],
+    fallback: true
   };
 }
 
 export async function getStaticProps({ params }) {
-  const post = await getFileBySlug('blog', params.slug);
-
-  return { props: { ...post } };
+  const post = await getPostBySlug(params.slug);
+  const content = await serialize(post.content);
+  return { props: { ...post, content } };
 }
 
 export default Blog;
