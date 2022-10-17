@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 import Container from '@components/Container';
 import BlogPost from '@components/BlogPost';
-import { getAllFilesFrontMatter } from '@lib/mdx';
 import type { Post } from '../types';
 import { getSearchResults } from 'scripts/getSearchResults';
 import { getAllPostsForHome } from '@lib/contentful';
