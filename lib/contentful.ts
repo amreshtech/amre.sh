@@ -1,4 +1,10 @@
+import { serialize } from 'next-mdx-remote/serialize';
 import readingTime from 'reading-time';
+import remarkGfm from 'remark-gfm';
+import rehypeSlug from 'rehype-slug';
+import rehypeCodeTitles from 'rehype-code-titles';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypePrism from 'rehype-prism-plus';
 
 const BLOG_HOMEPAGE_GRAPHQL_FIELDS = `
 publishedDate
@@ -42,15 +48,32 @@ async function fetchGraphQL(query: string, preview = false) {
 
 const extractPost = async (fetchResponse: {
   data: { blogPostCollection: { items: { slug: string; content: string }[] } };
-}) => ({
-  ...fetchResponse?.data?.blogPostCollection?.items?.[0],
-  readingTime: readingTime(
-    fetchResponse?.data?.blogPostCollection?.items?.[0].content
-  ),
-  shortUrl: await getShortUrl(
-    fetchResponse?.data?.blogPostCollection?.items?.[0].slug
-  )
-});
+}) => {
+  const blogPost = fetchResponse?.data?.blogPostCollection?.items?.[0];
+  return {
+    ...blogPost,
+    readingTime: readingTime(blogPost.content),
+    shortUrl: await getShortUrl(blogPost.slug),
+    content: await serialize(blogPost.content, {
+      mdxOptions: {
+        remarkPlugins: [remarkGfm as any],
+        rehypePlugins: [
+          rehypeSlug,
+          rehypeCodeTitles,
+          rehypePrism as any,
+          [
+            rehypeAutolinkHeadings as any,
+            {
+              properties: {
+                className: ['anchor']
+              }
+            }
+          ]
+        ]
+      }
+    })
+  };
+};
 
 const extractPostEntries = (fetchResponse: {
   data: { blogPostCollection: { items: any } };

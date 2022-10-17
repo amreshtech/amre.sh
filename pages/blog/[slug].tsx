@@ -51,8 +51,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const post = await getPostBySlug(params.slug);
-  const content = await serialize(post.content);
-  return { props: { ...post, content } };
+  return { props: { ...post } };
 }
 
 export default Blog;
