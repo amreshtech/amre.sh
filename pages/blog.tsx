@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 import Container from '@components/Container';
 import BlogPost from '@components/BlogPost';
-import { getAllFilesFrontMatter } from '@lib/mdx';
 import type { Post } from '../types';
 import { getSearchResults } from 'scripts/getSearchResults';
+import { getAllPostsForHome } from '@lib/contentful';
 
 interface Props {
   posts: Post[];
@@ -65,8 +65,7 @@ const Blog: React.FC<Props> = ({ posts }) => {
 };
 
 export async function getStaticProps() {
-  const posts = await getAllFilesFrontMatter('blog');
-
+  const posts = await getAllPostsForHome();
   return { props: { posts } };
 }
 
