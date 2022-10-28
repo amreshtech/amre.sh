@@ -11,7 +11,8 @@ import SuccessMessage from '@components/SuccessMessage';
 
 interface Props {
   children: React.ReactNode;
-  publishedDate: string;
+  createdAt: string;
+  updatedAt: string;
   slug: string;
   title: string;
   summary: string;
@@ -22,7 +23,8 @@ interface Props {
 
 const BlogLayout: React.FC<Props> = ({
   children,
-  publishedDate,
+  createdAt,
+  updatedAt,
   slug,
   title,
   summary,
@@ -61,15 +63,15 @@ const BlogLayout: React.FC<Props> = ({
       title={`${title} – Blog by Amresh`}
       description={summary}
       image={`${image}`}
-      date={new Date(publishedDate).toISOString()}
+      date={createdAt}
       type="article"
     >
       <ArticleJsonLd
         type="Blog"
         url={`https://www.amre.sh${router.asPath}`}
         title={title}
-        datePublished={new Date(publishedDate).toISOString()}
-        dateModified={new Date(publishedDate).toISOString()}
+        datePublished={createdAt}
+        dateModified={updatedAt}
         authorName="Amresh Mishra"
         description={summary}
         images={[`${image}`]}
@@ -85,7 +87,7 @@ const BlogLayout: React.FC<Props> = ({
         </h1>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-2">
           <p className="text-sm text-gray-700 dark:text-gray-300">
-            {format(parseISO(publishedDate), 'MMMM dd, yyyy')}
+            {format(parseISO(createdAt), 'MMMM dd, yyyy')}
           </p>
           <div className="inline-flex gap-1 text-sm text-gray-500 min-w-32 mt-2 md:mt-0">
             <div>{readingTime.text}</div>

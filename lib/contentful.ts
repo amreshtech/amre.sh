@@ -8,6 +8,7 @@ import rehypePrism from 'rehype-prism-plus';
 
 const CONTENT_DELIVERY_BASE_URL = 'https://cdn.contentful.com';
 const preview = process.env.NODE_ENV === 'development';
+
 const headers = {
   'Content-Type': 'application/json',
   Authorization: `Bearer ${process.env.CONTENTFUL_DELIVERY_API}`
@@ -29,11 +30,16 @@ async function fetchData({
     {
       headers
     }
-  ).then((response) => response.json());
+  ).then((response) => {
+    return response.json();
+  });
 }
 
-const extractPost = async (entry: { items: { fields: any }[] }) => {
-  const blogPost = entry?.items?.map(({ fields }) => ({ ...fields }))[0];
+const extractPost = async (entry: { items: { fields: any; sys: any }[] }) => {
+  const blogPost = entry?.items?.map(({ fields, sys }) => ({
+    ...fields,
+    ...sys
+  }))[0];
   return {
     ...blogPost,
     readingTime: readingTime(blogPost.content),
@@ -59,8 +65,8 @@ const extractPost = async (entry: { items: { fields: any }[] }) => {
   };
 };
 
-const select = (fields: string[]) =>
-  `select=${fields.map((field: string) => `fields.${field}`).join(',')}`;
+const select = (key: string, attributes: string[]) =>
+  attributes.map((field: string) => `${key}.${field}`).join(',');
 const filter = (field: string, filterBy: string) =>
   `fields.${field}=${filterBy}`;
 
@@ -68,10 +74,14 @@ const extractPostEntries = (entries: { items: { fields: any }[] }) =>
   entries?.items.map(({ fields }) => ({ ...fields }));
 
 export const getPostBySlug = async (slug: any) => {
-  const requiredFields = ['title', 'publishedDate', 'content', 'tags', 'slug'];
+  const requiredFields = ['title', 'content', 'tags', 'slug'];
+  const requiredSysFields = ['createdAt', 'updatedAt'];
   const entry = await fetchData({
     preview,
-    path: `${filter('slug', slug)}&${select(requiredFields)}`
+    path: `${filter('slug', slug)}&select=${select(
+      'fields',
+      requiredFields
+    )},${select('sys', requiredSysFields)}`
   });
   return extractPost(entry);
 };
@@ -80,8 +90,9 @@ export const getAllPostsWithSlug = async () => {
   const requiredFields = ['slug'];
   const entries = await fetchData({
     preview,
-    path: select(requiredFields)
+    path: `select=${select('fields', requiredFields)}`
   });
+
   return extractPostEntries(entries);
 };
 
@@ -89,7 +100,7 @@ export const getAllPostsForHome = async () => {
   const requiredFields = ['title', 'tags', 'slug', 'summary'];
   const entries = await fetchData({
     preview,
-    path: select(requiredFields)
+    path: `select=${select('fields', requiredFields)}`
   });
   return extractPostEntries(entries);
 };

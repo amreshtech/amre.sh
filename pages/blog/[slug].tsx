@@ -3,10 +3,10 @@ import BlogLayout from '@layouts/BlogLayout';
 import MDXComponents from '@components/MDXComponents';
 import type { MDXSource, ReadingTime } from 'types';
 import { getAllPostsWithSlug, getPostBySlug } from '@lib/contentful';
-import { serialize } from 'next-mdx-remote/serialize';
 
 interface Props {
-  publishedDate: string;
+  createdAt: string;
+  updatedAt: string;
   slug: string;
   title: string;
   summary: string;
@@ -17,7 +17,8 @@ interface Props {
 }
 
 const Blog: React.FC<Props> = ({
-  publishedDate,
+  createdAt,
+  updatedAt,
   slug,
   title,
   summary,
@@ -28,7 +29,8 @@ const Blog: React.FC<Props> = ({
 }) => {
   return (
     <BlogLayout
-      publishedDate={publishedDate}
+      createdAt={createdAt}
+      updatedAt={updatedAt}
       slug={slug}
       title={title}
       summary={summary}
@@ -45,7 +47,7 @@ export async function getStaticPaths() {
   const allPosts = await getAllPostsWithSlug();
   return {
     paths: allPosts?.map(({ slug }) => `/blog/${slug}`) ?? [],
-    fallback: true
+    fallback: false
   };
 }
 
