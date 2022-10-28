@@ -6,50 +6,34 @@ import rehypeCodeTitles from 'rehype-code-titles';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrism from 'rehype-prism-plus';
 
-const BLOG_HOMEPAGE_GRAPHQL_FIELDS = `
-publishedDate
-slug
-title
-summary
-tags
-`;
-
-const BLOGPOST_GRAPHQL_FIELDS = `
-publishedDate
-slug
-title
-summary
-tags
-tldr
-content
-`;
-
+const CONTENT_DELIVERY_BASE_URL = 'https://cdn.contentful.com';
 const preview = process.env.NODE_ENV === 'development';
 const headers = {
   'Content-Type': 'application/json',
-  Authorization: `Bearer ${
-    preview
-      ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
-      : process.env.CONTENTFUL_ACCESS_TOKEN
-  }`
+  Authorization: `Bearer ${process.env.CONTENTFUL_DELIVERY_API}`
 };
-async function fetchGraphQL(query: string, preview = false) {
+
+async function fetchData({
+  preview = false,
+  path
+}: {
+  preview: boolean;
+  path: string;
+}) {
   return fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${
+    `${CONTENT_DELIVERY_BASE_URL}/spaces/${
       process.env.CONTENTFUL_SPACE_ID
-    }/environments/${preview ? 'dev' : 'master'}`,
+    }/environments/${
+      preview ? 'dev' : 'master'
+    }/entries/?content_type=blogPost&${path}`,
     {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({ query })
+      headers
     }
   ).then((response) => response.json());
 }
 
-const extractPost = async (fetchResponse: {
-  data: { blogPostCollection: { items: { slug: string; content: string }[] } };
-}) => {
-  const blogPost = fetchResponse?.data?.blogPostCollection?.items?.[0];
+const extractPost = async (entry: { items: { fields: any }[] }) => {
+  const blogPost = entry?.items?.map(({ fields }) => ({ ...fields }))[0];
   return {
     ...blogPost,
     readingTime: readingTime(blogPost.content),
@@ -75,49 +59,38 @@ const extractPost = async (fetchResponse: {
   };
 };
 
-const extractPostEntries = (fetchResponse: {
-  data: { blogPostCollection: { items: any } };
-}) => fetchResponse?.data?.blogPostCollection?.items;
+const select = (fields: string[]) =>
+  `select=${fields.map((field: string) => `fields.${field}`).join(',')}`;
+const filter = (field: string, filterBy: string) =>
+  `fields.${field}=${filterBy}`;
+
+const extractPostEntries = (entries: { items: { fields: any }[] }) =>
+  entries?.items.map(({ fields }) => ({ ...fields }));
 
 export const getPostBySlug = async (slug: any) => {
-  const entry = await fetchGraphQL(
-    `query {
-      blogPostCollection(where: { slug: "${slug}" }, preview: ${preview}, limit: 1) {
-        items {
-          ${BLOGPOST_GRAPHQL_FIELDS}
-        }
-      }
-    }`,
-    preview
-  );
+  const requiredFields = ['title', 'publishedDate', 'content', 'tags', 'slug'];
+  const entry = await fetchData({
+    preview,
+    path: `${filter('slug', slug)}&${select(requiredFields)}`
+  });
   return extractPost(entry);
 };
 
 export const getAllPostsWithSlug = async () => {
-  const entries = await fetchGraphQL(
-    `query {
-      blogPostCollection(where: { slug_exists: true }, order: publishedDate_DESC, preview: ${preview}) {
-        items {
-          ${BLOG_HOMEPAGE_GRAPHQL_FIELDS}
-        }
-      }
-    }`,
-    preview
-  );
+  const requiredFields = ['slug'];
+  const entries = await fetchData({
+    preview,
+    path: select(requiredFields)
+  });
   return extractPostEntries(entries);
 };
 
 export const getAllPostsForHome = async () => {
-  const entries = await fetchGraphQL(
-    `query {
-      blogPostCollection(order: publishedDate_DESC, preview: ${preview}) {
-        items {
-          ${BLOG_HOMEPAGE_GRAPHQL_FIELDS}
-        }
-      }
-    }`,
-    preview
-  );
+  const requiredFields = ['title', 'tags', 'slug', 'summary'];
+  const entries = await fetchData({
+    preview,
+    path: select(requiredFields)
+  });
   return extractPostEntries(entries);
 };
 
