@@ -54,7 +54,7 @@ const Subscribe: React.FC = () => {
         <p className="text-sm text-gray-800 dark:text-gray-200">
           {`${subscriberCount || '-'} subscribers – `}
           <Link href="/newsletter">
-            <a>29 issues</a>
+            29 issues
           </Link>
         </p>
       );

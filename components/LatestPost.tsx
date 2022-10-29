@@ -43,7 +43,7 @@ const LatestPost: React.FC<{ latestPosts: Post[] }> = ({ latestPosts }) => {
         {latestPosts.map((item: Post) => (
           <li key={item.slug}>
             <Link href={`/blog/${item.slug}`}>
-              <a>{item.title}</a>
+              {item.title}
             </Link>
           </li>
         ))}
