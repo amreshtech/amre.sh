@@ -23,8 +23,7 @@ const BlogPost: React.FC<Props> = ({
   const { data } = useSWR(`/api/views/${slug}`, fetcher);
   const views = data?.total;
   return (
-    (<Link href={`/blog/${slug}`} className="w-full">
-
+    <Link href={`/blog/${slug}`} className="w-full">
       <div className="mb-8 w-full">
         <div className="flex flex-col md:flex-row justify-between">
           <h4
@@ -49,8 +48,7 @@ const BlogPost: React.FC<Props> = ({
           ))}
         </div>
       </div>
-
-    </Link>)
+    </Link>
   );
 };
 
