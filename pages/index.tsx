@@ -4,7 +4,6 @@ import Typewriter from 'typewriter-effect';
 import Map from '@components/widgets/Map';
 import { getTweet } from '@lib/twitter';
 import Tweet from '@components/widgets/Tweet';
-import { getMap } from '@lib/map';
 import Image from 'next/image';
 import SelfDescription from '@components/SelfDescription';
 import dynamic from 'next/dynamic';
@@ -18,7 +17,7 @@ interface Props {
   tweetData: TweetType;
 }
 
-const Home: React.FC<Props> = ({ map_url, tweetData }) => {
+const Home: React.FC<Props> = ({ tweetData }) => {
   return (
     <Container>
       <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 z-10 w-full">
@@ -69,7 +68,7 @@ const Home: React.FC<Props> = ({ map_url, tweetData }) => {
         <SelfDescription />
         <div className="relative w-full mb-4 flex-row gap-2 hidden md:flex">
           <div className="w-1/4">
-            <Map url={map_url} />
+            <Map />
           </div>
           <div className="w-2/4">
             <Tweet
@@ -94,7 +93,7 @@ const Home: React.FC<Props> = ({ map_url, tweetData }) => {
           </div>
           <div className="flex flex-row gap-2">
             <div className="w-1/2">
-              <Map url={map_url} />
+              <Map />
             </div>
             <div className="w-1/2">
               <Chat />
@@ -107,9 +106,8 @@ const Home: React.FC<Props> = ({ map_url, tweetData }) => {
 };
 
 export async function getStaticProps() {
-  const map_url = getMap();
   const tweetData = await getTweet();
-  return { props: { map_url, tweetData } };
+  return { props: { tweetData } };
 }
 
 export default Home;
