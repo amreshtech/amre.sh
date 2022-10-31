@@ -3,7 +3,6 @@ import Image from 'next/image';
 
 import ProsCard from '@components/ProsCard';
 import ConsCard from '@components/ConsCard';
-import Analytics from '@components/metrics/Analytics';
 import Step from '@components/Step';
 import Document from '@components/Document';
 import TldrCard from './TldrCard';
@@ -27,7 +26,6 @@ const CustomLink = (props) => {
 
 const MDXComponents = {
   a: CustomLink,
-  Analytics,
   ConsCard,
   ProsCard,
   Step,
