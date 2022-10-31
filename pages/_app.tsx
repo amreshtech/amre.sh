@@ -1,6 +1,5 @@
 import '@styles/global.css';
 import { ThemeProvider } from 'next-themes';
-import Script from 'next/script';
 import SimpleReactLightbox from 'simple-react-lightbox';
 import { Analytics } from '@vercel/analytics/react';
 
