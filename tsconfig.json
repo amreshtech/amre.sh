@@ -48,7 +48,12 @@
         "./layouts/*"
       ]
     },
-    "incremental": true
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "exclude": [
     "node_modules"
@@ -58,6 +63,7 @@
     "**/*.tsx",
     "next-env.d.ts",
     "next.config.js",
-    "components/Track.tsx"
+    "components/Track.tsx",
+    ".next/types/**/*.ts"
   ]
 }

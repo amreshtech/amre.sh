@@ -36,8 +36,10 @@ const Slides = ({ images }: { images: { path: string; title: string }[] }) => {
             key={images[activeImageIndex].path}
             src={`${STATIC_CLOUDINARY_IMAGE_URL_SUFFIX}${images[activeImageIndex].path}`}
             alt={images[activeImageIndex].title}
-            layout="fill"
-            objectFit="cover"
+            style={{
+              objectFit: 'cover'
+            }}
+            fill
             onContextMenu={(e) => {
               e.preventDefault();
             }}
