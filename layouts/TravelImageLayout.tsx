@@ -28,7 +28,6 @@ const TravelImageLayout: React.FC<Props> = ({ location, images }) => {
                   height={height}
                   width={width}
                   alt={location}
-                  layout="responsive"
                   onContextMenu={(e) => {
                     e.preventDefault();
                   }}
