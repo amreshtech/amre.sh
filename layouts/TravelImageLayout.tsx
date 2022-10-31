@@ -28,7 +28,6 @@ const TravelImageLayout: React.FC<Props> = ({ location, images }) => {
                   height={height}
                   width={width}
                   alt={location}
-                  layout="responsive"
                   onContextMenu={(e) => {
                     e.preventDefault();
                   }}
@@ -36,7 +35,7 @@ const TravelImageLayout: React.FC<Props> = ({ location, images }) => {
                 {nft && (
                   <figcaption className="text-md text-center text-white bg-blue-600 z-10 absolute -mt-9 h-9 w-full py-1 hidden">
                     <Link href={nft} passHref>
-                      <a>Buy Now</a>
+                      Buy Now
                     </Link>
                   </figcaption>
                 )}

@@ -115,22 +115,27 @@ export default function Container(props) {
       >
         <div>
           {router.pathname !== '/' && (
-            <NextLink href="/">
-              <a className="flex flex-row font-qc text-4xl text-black dark:text-white font-bold gap-2">
-                <span>amresh</span>
-                <span className="hidden sm:block">mishra</span>
-              </a>
-            </NextLink>
+            (<NextLink
+              href="/"
+              className="flex flex-row font-qc text-4xl text-black dark:text-white font-bold gap-2">
+
+              <span>amresh</span>
+              <span className="hidden sm:block">mishra</span>
+
+            </NextLink>)
           )}
         </div>
         <div className="flex flex-row items-center">
           {!hideNav &&
             navLinks.map(({ label, link }) => (
-              <NextLink href={link} key={link}>
-                <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">
-                  {label}
-                </a>
-              </NextLink>
+              (<NextLink
+                href={link}
+                key={link}
+                className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">
+
+                {label}
+
+              </NextLink>)
             ))}
           <ThemeButton />
         </div>
