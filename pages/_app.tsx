@@ -11,12 +11,6 @@ export default function App({ Component, pageProps }) {
         <Component {...pageProps} />
         <Analytics />
       </SimpleReactLightbox>
-      <Script
-        async
-        defer
-        data-website-id={process.env.NEXT_PUBLIC_ANALYTICS}
-        src="https://stats.amre.sh/umami.js"
-      />
     </ThemeProvider>
   );
 }
