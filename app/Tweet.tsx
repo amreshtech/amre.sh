@@ -1,20 +1,27 @@
 import { format } from 'date-fns';
 import comma from 'comma-number';
-import type { Tweet as TweetType } from 'types';
 import { FaTwitter } from 'react-icons/fa';
+import React from 'react';
+import Link from 'next/link';
 
-/**
- * Supports plain text tweets.
- *
- * Styles use !important to override Tailwind .prose inside MDX.
- */
+const getTweet = async () => {
+  const baseUrl = 'https://api.twitter.com/2/users';
+  const query = 'tweet.fields=created_at,public_metrics&max_results=5';
+  const response = await fetch(
+    `${baseUrl}/${process.env.TWITTER_USER_ID}/tweets?${query}`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.TWITTER_API_KEY}`
+      },
+      cache: 'no-store'
+    }
+  );
+  const result = await response.json();
+  return result.data[0];
+};
 
-const Tweet: React.FC<TweetType> = ({
-  text,
-  id,
-  created_at,
-  public_metrics
-}) => {
+export default async function Tweet() {
+  const { text, id, created_at, public_metrics } = await getTweet();
   const likeUrl = `https://twitter.com/intent/like?tweet_id=${id}`;
   const retweetUrl = `https://twitter.com/intent/retweet?tweet_id=${id}`;
   const replyUrl = `https://twitter.com/intent/tweet?in_reply_to=${id}`;
@@ -23,13 +30,10 @@ const Tweet: React.FC<TweetType> = ({
 
   const formattedText = text.replace(/https:\/\/[\n\S]+/g, '');
 
-  const handleClick = () => {
-    window.open(tweetUrl, '_newtab');
-  };
-
   return (
-    <button
-      onClick={handleClick}
+    <Link
+      href={tweetUrl}
+      target="_blank"
       className="tweet rounded-2xl border border-gray-300 dark:border-gray-800 p-3 dark:bg-black z-10 flex flex-row items-start text-left h-full"
     >
       <div className="w-11/12">
@@ -89,8 +93,6 @@ const Tweet: React.FC<TweetType> = ({
         </div>
       </div>
       <FaTwitter className="text-sky-500 w-1/12" size="1.5em" />
-    </button>
+    </Link>
   );
-};
-
-export default Tweet;
+}

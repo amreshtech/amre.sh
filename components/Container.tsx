@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 import NextLink from 'next/link';
-import Footer from '@components/Footer';
+import Footer from 'app/Footer';
 import { NextSeo, SocialProfileJsonLd } from 'next-seo';
 
 export default function Container(props) {

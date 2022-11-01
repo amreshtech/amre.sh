@@ -6,7 +6,7 @@ const getMap = () => {
   return `${baseUrl}?${query}`;
 };
 
-const Map: React.FC = () => {
+export default function Map() {
   const url = getMap();
   return (
     <Image
@@ -17,6 +17,4 @@ const Map: React.FC = () => {
       className="rounded-2xl shadow-md"
     />
   );
-};
-
-export default Map;
+}

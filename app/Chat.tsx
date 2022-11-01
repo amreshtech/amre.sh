@@ -1,3 +1,5 @@
+'use client';
+
 import { TiArrowRightOutline } from 'react-icons/ti';
 import { PopupModal } from 'react-calendly';
 import React from 'react';
@@ -30,9 +32,9 @@ const Chat: React.FC = () => {
       <PopupModal
         url="https://calendly.com/amreshm/consultation"
         pageSettings={pageSettings}
-        rootElement={document.getElementById('__next')}
         onModalClose={handleModalVisibility}
         open={isOpen}
+        rootElement={document.getElementById('calendly')}
       />
     </>
   );

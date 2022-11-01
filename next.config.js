@@ -3,6 +3,12 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 module.exports = withBundleAnalyzer({
+  experimental:{
+    appDir: true,    
+    fontLoaders: [
+      { loader: '@next/font/google', options: { subsets: ['latin'] } },
+    ],
+  },
   swcMinify: true,
   publicRuntimeConfig: {
     ALGOLIA_ADMIN_KEY: process.env.ALGOLIA_ADMIN_KEY,
