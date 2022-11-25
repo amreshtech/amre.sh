@@ -7,6 +7,7 @@ import Tweet from '@components/widgets/Tweet';
 import Image from 'next/image';
 import SelfDescription from '@components/SelfDescription';
 import dynamic from 'next/dynamic';
+import { getMap } from '@lib/map';
 
 const Chat = dynamic(() => import('@components/widgets/Chat'), {
   ssr: false
@@ -17,7 +18,7 @@ interface Props {
   tweetData: TweetType;
 }
 
-const Home: React.FC<Props> = ({ tweetData }) => {
+const Home: React.FC<Props> = ({ map_url, tweetData }) => {
   return (
     <Container>
       <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 z-10 w-full">
@@ -68,7 +69,7 @@ const Home: React.FC<Props> = ({ tweetData }) => {
         <SelfDescription />
         <div className="relative w-full mb-4 flex-row gap-2 hidden md:flex">
           <div className="w-1/4">
-            <Map />
+          <Map url={map_url} />
           </div>
           <div className="w-2/4">
             <Tweet
@@ -93,7 +94,7 @@ const Home: React.FC<Props> = ({ tweetData }) => {
           </div>
           <div className="flex flex-row gap-2">
             <div className="w-1/2">
-              <Map />
+            <Map url={map_url} />
             </div>
             <div className="w-1/2">
               <Chat />
@@ -106,8 +107,9 @@ const Home: React.FC<Props> = ({ tweetData }) => {
 };
 
 export async function getStaticProps() {
+  const map_url = getMap();
   const tweetData = await getTweet();
-  return { props: { tweetData } };
+  return { props: { map_url, tweetData } };
 }
 
 export default Home;
