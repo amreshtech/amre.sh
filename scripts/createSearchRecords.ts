@@ -7,5 +7,7 @@ export const createSearchRecords = (records) => {
   );
   const index = client.initIndex('search-index');
   //@ts-ignore
-  index.replaceAllObjects(records, { autoGenerateObjectIDIfNotExist: true });
+  index.replaceAllObjects(records, {
+    autoGenerateObjectIDIfNotExist: true
+  });
 };

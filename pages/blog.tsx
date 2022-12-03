@@ -6,6 +6,7 @@ import type { Post } from '../types';
 import { getSearchResults } from 'scripts/getSearchResults';
 import { allPosts } from 'contentlayer/generated';
 import { GetStaticPropsResult } from 'next';
+import { createSearchRecords } from 'scripts/createSearchRecords';
 
 interface Props {
   posts: Post[];
@@ -15,7 +16,9 @@ const Blog: React.FC<Props> = ({ posts }) => {
   const [filteredBlogPosts, setFilteredBlogPosts] = useState(posts);
 
   const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFilteredBlogPosts((await getSearchResults(e.target.value)) as any);
+    const query = e.target.value;
+    const searchResults = await getSearchResults(query);
+    setFilteredBlogPosts(searchResults as any);
   };
 
   return (
@@ -31,7 +34,7 @@ const Blog: React.FC<Props> = ({ posts }) => {
           <input
             aria-label="Search articles"
             type="text"
-            onChange={handleSearch}
+            onInput={handleSearch}
             placeholder="Search articles"
             className="px-4 py-2 border border-gray-300 dark:border-gray-900 focus:ring-blue-500 focus:border-blue-500 block w-full rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
           />
@@ -75,6 +78,7 @@ const Blog: React.FC<Props> = ({ posts }) => {
 export async function getStaticProps(): Promise<
   GetStaticPropsResult<{ posts: Post[] }>
 > {
+  createSearchRecords(allPosts);
   return { props: { posts: allPosts } };
 }
 
