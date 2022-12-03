@@ -1,0 +1,35 @@
+---
+title: 'Intro'
+publishedAt: '2021-08-15'
+summary: 'A short introduction to this blog'
+tags: ['personal', 'tech']
+---
+
+## How this blog came to be ?
+
+It has been quite some time since I started conceptualising having a space for my thoughts on the internet. First I explored writing on Medium, Hashnode and dev.to. These are amazing platforms. They truly abstract away all the pain points of creating a website, setting up the infrastructure, getting a desired domain name and even getting the audience to visit your site.
+
+But I had very different requirements. Being a software developer myself, I was more keen into having a finer control, not too much, but much more than what these platforms offered. I made a few designs on Figma, tried a few sites with CRA, some with NextJS but I scrapped them all at the end because…
+
+…on a very fortunate day, I came across Lee Robinson’s open-sourced website and I forked it on GitHub. It was beautifully set up and with my professional knowledge in React I had the open playing field to tweak it however I wanted.
+
+## What purpose will this blog serve ?
+
+I wanted a very simple place where I could write unhindered, express my thoughts and opinions about tech, finance and travel. There is really nothing more it than that. These three topics are very close to my heart since I am a software developer, an avid investor and have a travel bug. And I want to condense all of my experiences in this blog.
+
+## How is this blog different from the original ?
+
+As soon as you open this website, it would appear to be a replica of Lee Rob’s website. But as soon as you deep dive into its source code ( available on GitHub here : https://github.com/amreshtech/amre.sh ), you will see a lot of stuff has changed underneath. My approach has been a bit of modular with an aim to keep view and data separate.
+
+Here are a few of the important ones :
+
+1. The search functionality uses Algolia instead of native JS.
+2. The blog posts like this one is sourced from a private repository in my GitHub instead of a local folder.
+3. All the images both the ones in the blog posts and my travel gallery are sourced from Cloudinary instead of a local folder.
+4. Each blog post has a badge to provide more context before you jump in.
+
+## Why not use a headless CMS ?
+
+Because, one word. Flexibility. I learnt this the hard way. Every new CMS I tried had a generous cap on number of posts or data usage, which was completely fine. But they were unnecessarily complex. Porting data from one CMS to another was difficult too because they applied their own model structure to it. I wanted to write simple MDX files. Nothing more nothing less. With GitHub, I got a free hand. I can use it as a source to not only my application, but anything out there, even Hashnode. With site being hosted on Vercel, it was extremely simple to use GitHub web hook to automatically trigger builds for this blog.
+
+I have always been an ardent believer of _Keep it Simple_ principle and this blog stands as a testimony to it. Hope you will enjoy the content here.

@@ -1,34 +1,5 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true'
-});
-
-module.exports = withBundleAnalyzer({
-  swcMinify: true,
-  publicRuntimeConfig: {
-    ALGOLIA_ADMIN_KEY: process.env.ALGOLIA_ADMIN_KEY,
-    ALGOLIA_APPLICATION_ID: process.env.ALGOLIA_APPLICATION_ID
-  },
-  env: {
-    UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL,
-    UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN
-  },
-  images: {
-    domains: [
-      'i.scdn.co', // Spotify Album Art
-      'pbs.twimg.com', // Twitter Profile Picture
-      'res.cloudinary.com', // Cloudinary image storage
-      'maps.googleapis.com' // Google Static Map
-    ]
-  },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: securityHeaders
-      }
-    ];
-  }
-});
+import { withContentlayer } from 'next-contentlayer';
+import withBundleAnalyzer from '@next/bundle-analyzer';
 
 // https://securityheaders.com
 const ContentSecurityPolicy = `
@@ -82,3 +53,36 @@ const securityHeaders = [
     value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()'
   }
 ];
+
+const nextConfig = {
+  swcMinify: true,
+  publicRuntimeConfig: {
+    ALGOLIA_ADMIN_KEY: process.env.ALGOLIA_ADMIN_KEY,
+    ALGOLIA_APPLICATION_ID: process.env.ALGOLIA_APPLICATION_ID
+  },
+  env: {
+    UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL,
+    UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN
+  },
+  images: {
+    domains: [
+      'pbs.twimg.com', // Twitter Profile Picture
+      'res.cloudinary.com', // Cloudinary image storage
+      'maps.googleapis.com' // Google Static Map
+    ]
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: securityHeaders
+      }
+    ];
+  }
+};
+
+const bundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true'
+});
+
+export default withContentlayer(bundleAnalyzer(nextConfig));

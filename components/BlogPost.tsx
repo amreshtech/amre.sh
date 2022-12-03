@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import useSWR from 'swr';
-import format from 'comma-number';
 import fetcher from '@lib/fetcher';
 import * as React from 'react';
 import Badge from './Badge';
+import ViewCounter from './ViewCounter';
 
 interface Props {
   title: string;
@@ -11,6 +11,7 @@ interface Props {
   slug: string;
   tags: string[];
   _highlightResult?: { title: any; summary: any; slug: any };
+  image?: string;
 }
 
 const BlogPost: React.FC<Props> = ({
@@ -23,7 +24,7 @@ const BlogPost: React.FC<Props> = ({
   const { data } = useSWR(`/api/views/${slug}`, fetcher);
   const views = data?.total;
   return (
-    <Link href={`/blog/${slug}`} className="w-full">
+    <Link href={slug} className="w-full">
       <div className="mb-8 w-full">
         <div className="flex flex-col md:flex-row justify-between">
           <h4
@@ -33,7 +34,7 @@ const BlogPost: React.FC<Props> = ({
             }}
           ></h4>
           <p className="text-gray-500 text-left md:text-right w-32 mb-4 md:mb-0">
-            {!!views && `${format(views)} views`}
+            {!!views && <ViewCounter slug={slug} />}
           </p>
         </div>
         <p
