@@ -45,6 +45,24 @@ const Slides = ({ images }: { images: { path: string; title: string }[] }) => {
             }}
             priority
           />
+          {activeImageIndex !== images.length - 1 && (
+            <Image
+              key={images[activeImageIndex + 1].path}
+              src={`${STATIC_CLOUDINARY_IMAGE_URL_SUFFIX}${
+                images[activeImageIndex + 1].path
+              }`}
+              alt={images[activeImageIndex + 1].title}
+              style={{
+                objectFit: 'cover'
+              }}
+              fill
+              onContextMenu={(e) => {
+                e.preventDefault();
+              }}
+              priority
+              className="hidden"
+            />
+          )}
           <figcaption className="text-lg text-center text-white bg-gray-800/50 z-10 absolute -mt-9 h-9 w-full py-1 bottom-0">
             {images[activeImageIndex].title}
           </figcaption>
