@@ -7,6 +7,6 @@ export const getSearchResults = async (query: string) => {
   const client = algoliasearch(ALGOLIA_APPLICATION_ID, ALGOLIA_ADMIN_KEY);
   const index = client.initIndex('search-index');
   const { hits } = await index.search(query);
-  console.log(query);
+
   return hits;
 };
