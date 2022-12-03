@@ -1,36 +1,40 @@
-import { MDXRemote } from 'next-mdx-remote';
 import BlogLayout from '@layouts/BlogLayout';
 import MDXComponents from '@components/MDXComponents';
-import type { MDXSource, ReadingTime } from 'types';
-import { getAllPostsWithSlug, getPostBySlug } from '@lib/contentful';
+import type { ReadingTime } from 'types';
+import { allPosts } from 'contentlayer/generated';
+import { useMDXComponent } from 'next-contentlayer/hooks';
+import {
+  GetStaticPathsResult,
+  GetStaticPropsContext,
+  GetStaticPropsResult
+} from 'next';
 
 interface Props {
-  createdAt: string;
-  updatedAt: string;
-  slug: string;
   title: string;
+  slug: string;
   summary: string;
-  tags: string[];
-  content: MDXSource;
-  shortUrl: string;
   readingTime: ReadingTime;
+  shortUrl: string;
+  body: { code: string };
+  tags: string[];
+  publishedAt: string;
 }
 
 const Blog: React.FC<Props> = ({
-  createdAt,
-  updatedAt,
-  slug,
   title,
+  slug,
   summary,
-  tags,
-  content,
+  readingTime,
   shortUrl,
-  readingTime
+  body: { code },
+  tags,
+  publishedAt
 }) => {
+  const MDXContent = useMDXComponent(code);
   return (
     <BlogLayout
-      createdAt={createdAt}
-      updatedAt={updatedAt}
+      createdAt={publishedAt}
+      updatedAt={publishedAt}
       slug={slug}
       title={title}
       summary={summary}
@@ -38,22 +42,49 @@ const Blog: React.FC<Props> = ({
       shortUrl={shortUrl}
       readingTime={readingTime}
     >
-      <MDXRemote {...content} components={{ ...MDXComponents }} />
+      <MDXContent components={MDXComponents} />
     </BlogLayout>
   );
 };
 
-export async function getStaticPaths() {
-  const allPosts = await getAllPostsWithSlug();
+export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+  const paths = allPosts.map((post) => post.slug);
   return {
-    paths: allPosts?.map(({ slug }) => `/blog/${slug}`) ?? [],
+    paths,
     fallback: false
   };
 }
 
-export async function getStaticProps({ params }) {
-  const post = await getPostBySlug(params.slug);
-  return { props: { ...post } };
+export async function getStaticProps({
+  params
+}: GetStaticPropsContext): Promise<GetStaticPropsResult<Props>> {
+  const post = allPosts.find(
+    (post) => post._raw.flattenedPath === params?.slug
+  );
+
+  const {
+    title,
+    slug,
+    summary,
+    readingTime,
+    shortUrl,
+    body: { code },
+    tags,
+    publishedAt
+  } = post;
+
+  return {
+    props: {
+      title,
+      slug,
+      summary,
+      readingTime,
+      shortUrl,
+      body: { code },
+      tags,
+      publishedAt
+    }
+  };
 }
 
 export default Blog;

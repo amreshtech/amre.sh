@@ -4,7 +4,8 @@ import Container from '@components/Container';
 import BlogPost from '@components/BlogPost';
 import type { Post } from '../types';
 import { getSearchResults } from 'scripts/getSearchResults';
-import { getAllPostsForHome } from '@lib/contentful';
+import { allPosts } from 'contentlayer/generated';
+import { GetStaticPropsResult } from 'next';
 
 interface Props {
   posts: Post[];
@@ -55,8 +56,15 @@ const Blog: React.FC<Props> = ({ posts }) => {
               Searching...
             </p>
           )}
-          {filteredBlogPosts.map((frontMatter) => (
-            <BlogPost key={frontMatter.title} {...frontMatter} />
+          {filteredBlogPosts.map(({ title, summary, tags, image, slug }) => (
+            <BlogPost
+              key={title}
+              title={title}
+              summary={summary}
+              tags={tags}
+              image={image}
+              slug={slug}
+            />
           ))}
         </div>
       </div>
@@ -64,9 +72,10 @@ const Blog: React.FC<Props> = ({ posts }) => {
   );
 };
 
-export async function getStaticProps() {
-  const posts = await getAllPostsForHome();
-  return { props: { posts } };
+export async function getStaticProps(): Promise<
+  GetStaticPropsResult<{ posts: Post[] }>
+> {
+  return { props: { posts: allPosts } };
 }
 
 export default Blog;

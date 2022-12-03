@@ -1,0 +1,134 @@
+---
+title: How strong is your bond?
+publishedAt: 2022-10-17
+summary: This is your chance to be a bank!
+tags: [finance, bond, investments]
+---
+
+At some point of your life either you or someone you know would have definitely knocked at the
+doors of a bank asking for a loan to fund your or their dreams. Have you ever wondered if the power
+dynamics could be changed ? Could you become the bank, lending out money and charging interest for it ?
+
+That is exactly what a bond is. A loan, that you as a bond holder get paid interest for.
+This might sound very similar to putting some money into your savings account or fixed deposit,
+and you would be right, except, you are a lender here,so, there is some risk involved.
+
+Let's deconstruct how bonds really work...
+
+## But first textbook definition
+
+A bond is a debt instrument in which an investor loans money to an entity (typically corporate or government)
+which borrows the funds for a defined period of time at a variable or fixed interest rate.
+
+## Let's look at the key terms that you need to understand ( hint: you already know almost all of this )
+
+Assume that you applied for a `loan` of €100. The bank A agrees to give you the loan at 7% per annum `interest rate` for a term of 3 years with annual installment plan.
+Let's forget compound interest and ammortization for a moment, because understanding the term and concept are important here, not the numbers. So, every year
+you will pay back the bank €7 with a total interest amount of €21 paid by the end of your term.
+
+Let's tabulate it to keep things clear and simple.
+
+| Key Terms        | Specifics |
+| ---------------- | --------- |
+| Loan Amount      | 100       |
+| Rate of Interest | 7%        |
+| Term of Loan     | 3 years   |
+| Year 1 payback   | 7         |
+| Year 2 payback   | 7         |
+| Year 3 payback   | 107       |
+
+So at the end of 1st year, an interest of €7 is due. Unfortunately, this bank A goes bankrupt and it has to transfer its loan book to a bank B, which means on record
+it is Bank B that has lent you the money and not Bank A from 2nd year onwards. For you, its simple, you continue paying your interest to this new bank B.
+But, it was Bank A that took the risk for year 1, why would bank B pocket the `interest money`? That does not sound fair, does it ? Now bank A will demand that `interest payment` from bank B.
+Bank B, instead of doing messy mediation, can just by-out your loan risk from bank A at €100 (`actual loaned amount`) + €7 (`interest money`) = €107 (`total loan amount`).
+
+Let's tabulate how your record looks like on Bank B's loan book.
+
+| Key Terms        | Specifics |
+| ---------------- | --------- |
+| Loan Amount      | 107       |
+| Rate of Interest | 7%        |
+| Term of Loan     | 2 years   |
+| Year 2 payback   | 7         |
+| Year 3 payback   | 107       |
+
+Did you realise what went wrong ? On paper Bank B lent you €107 and deserves to be paid approximately €115 back, considering 7% x 107 = 7.49. Instead bank B got back
+a total sum of €114, earning an `effective rate of interest` of 6.5% and not 7% as seen in the table!
+
+Now, let's rewrite the above statement and reverse the roles. You are the bank now!
+
+So, the government/corporate entity sold a `bond` of €100. You, the bank, agrees to buy the bond at 7% per annum `coupon rate` for a term of 3 years with annual payout plan.
+
+Let's tabulate it keep things clear and simple.
+
+| Key Terms                | Specifics |
+| ------------------------ | --------- |
+| Bond Amount              | 100       |
+| Rate of Interest         | 7%        |
+| Term of Bond             | 3 years   |
+| Year 1 interest amount   | 7         |
+| Year 2 interest amount   | 7         |
+| Year 3 interest Amount   | 7         |
+| Prinicpal Amount payback | 100       |
+
+So, at the end of 1st year, an interest of €7 is due. Unfortunately, you want to sell this bond and move on with your life. So, you sell it on the secondary market
+to person B, which means on record it is person B that has lent the money to government/corporate entity and not you from 2nd year onwards. For the government/corporate entity,
+it is simple, it will continue to pay the interest to this new person B. But, it was you who took the risk for year 1, why would person B pocket the `accrued interest`?
+That does not sound fair, does it ? Now you will demand that `accrued interest` from person B. So, person B will buy the bond from you at €100 (`face value/clean price`) + €7 (`accrued interest`) = €107 (`dirty price`).
+
+Let's tabulate how the bond looks like for person B.
+
+| Key Terms              | Specifics |
+| ---------------------- | --------- |
+| Bond Amount            | 107       |
+| Rate of Interest       | 7%        |
+| Term of Bond           | 2 years   |
+| Year 2 interest amount | 7         |
+| Year 3 interest Amount | 7         |
+| Maturity Amount        | 100       |
+
+Did you realise that the same phenomenon happening again ? On paper person B bought the bond at €107 and deserves to be paid approximately €115 back, considering 7% x 107 = 7.49. Instead person B got back
+a total sum of €114, earning an `yield to maturity (YTM)` of 6.5% and not 7% as seen in the table!
+
+Of course this is like comparing apples to oranges and not a perfect analogy. But, I hope this clears the air around every term you will ever need to understand for Bonds.
+
+Here is a how a typical bond listing looks like. It of course changes from entity to entity and exchange to exchange.
+
+<Slides
+  images={[
+    {
+      path: '/v1651490021/blog/bond_sample_lqh25m.png',
+      title: 'Source: EuroNext'
+    }
+  ]}
+/>
+
+Note that `Issue Price or face value` is lower than actual price, which signifies that `YTM` would be lower than `coupon interest rate`.
+
+## How bond YTMs predict your future ?
+
+Bonds come in a wide variety of shapes and sizes. Government securities, Treasury Bills, ultra short term bonds (3M bonds), long term bonds (30Y bonds) etc. But what's common among them is that their YTM is
+co-related with Central Bank's interest rates. Consider this, if Central Bank of a country sets the interest rate at 5%, the bonds won't be selling at YTM 4% or YTM 7%, right ? They have to adjust themselves
+to match the interest rate set by the Central Bank for the economy.
+
+Bond prices are related inversely to Central Bank's interest rates. Hence the general rule is as follows:
+
+When interest rates are higher than the when the bond was issued, the bond sells at a discount to its face value.
+
+Consider you bought a bond at face value of €100 with a coupon rate of 5%. Central Bank increases the interest rate to 7%. Now a buyer can get new bonds from the government at 7% coupon rate, why would they buy from you ?
+Hence, you have to sell it at a lower face value of €91 wherein YTM would match the prevailing 7% interest rate.
+
+When interest rates are lower than the when the bond was issued, the bond sells above its face value.
+
+Consider you bought a bond at face value of €100 with a coupon rate of 5%. Central Bank reduces the interest rate to 3%. Now a buyer can get new bonds from the government at 3% coupon rate, but he could buy from you to get the same 5% coupon rate.
+But, why would you want to sell your bond at face value of €100 ? Hence, you will ideally sell it at a higher face value of €104 wherein YTM would match the prevailing 3% interest rate.
+
+Now how this all this dance predict the future of a economy and in turn yours ?
+A central bank usually lowers the interest rate (quantitative easing) to allow businesses to borrow more money and rebuild economy ( like after Covid-19 hit or a war or a natural disaster ) and increases interest rates (quantitative tightening)
+to prevent business from splurging cash (like the startup boom and crypto mania). Now, market is a beast that knows it all, way before you can get a sense of anything at all. When you see the long term bonds selling at higher YTMs,
+it means the market believes the central banks have gone too far with quantitative easing which could quickly turn into a monster called inflation, like the one we are facing now! And market demands YTMs higher to keep pace with inflation.
+
+And you very well know how inflation erodes wealth.
+
+Not to end this post with all doom and gloom, bonds are some of the safest financial instruments out there, especially those issued by sovereign governments.
+And your portfolio should have some exposure to debt instruments like these. Just keep an eye on ratings while investing in bonds, higher the better.

@@ -1,0 +1,111 @@
+---
+title: 'The Conundrum of Atomic CSS'
+publishedAt: '2021-10-17'
+summary: "CSS frameworks are cluttering the frontend landscape. Let's clean it up!"
+tags: ['css', 'tech', 'frontend']
+---
+
+<TldrCard>
+  Different libraries have taken different paths to a singular goal of atomic
+  CSS. While Bootstrap sparked the widespread revolution, Tailwind has been
+  riding the wave recently. But not one is perfect for every use case. But as
+  far as enterprise application goes, there exists only one scalable solution
+  that presents no ecosystem lock-in - Fela.
+</TldrCard>
+
+You sure know about atomic css, don't you ? The small bits of CSS classes we write with an aim to reuse them later. It has been pretty common. You might not have basically written them with your own hand but it is out there in CSS frameworks you use. Bootstrap CSS, Tailwind CSS and the likes.
+
+Can you recall now ? How the following code could result in a big green button in [Bootstrap](https://getbootstrap.com/)?
+
+```html
+<button type="button" class="btn btn-success">Success</button>
+```
+
+The `btn btn-success` part is actually atomic CSS in action. The basic concept is that each CSS class represents only a single CSS rule. That is the single time a class exists in the project level CSS file. So, every single button refers to same CSS rule. We are not writing new CSS rules repeatedly for each button. So, as you can imagine, the CSS file size is constant.
+
+It's nice, except it's not. You start conforming to a predefined standard and throw out your CSS freedom out of the window. So let's bring back that freedom. We create our own CSS ruleset and refer to it from a single file. You know, [ThemeUI](https://theme-ui.com/) style. Beautiful framework. Go, take a look at it and try it if you have never before. But, also while you are there, take a moment to think about its scalability in an enterprise environment, where you are working with multiple devs.
+Imagine how big that single theme file can become.
+
+## Can we just get rid of writing CSS ?
+
+Yes, says Tailwind CSS! A very hyped utility. It allows extremely granular styling of HTML without ever writing a single line of CSS. The big promise is that you have a pre-defined set of rules and you can then use them, just like bootstrap across your application. But it also differs to Bootstrap in lot of ways. It doesn't advocate for a pre-defined element shape and size. For example, unlike Bootstrap, your button need not have rounded corners. It also has an utility to purge all unused styles from the application build file, thus reducing the CSS footprint in the final build. It looks something like this.
+
+```html
+<h4
+  className="text-lg md:text-xl font-medium mb-2 w-full text-gray-900 dark:text-gray-100"
+>
+  Hello World
+</h4>
+```
+
+But, you are just a mere mortal. How can you even remember all of these classes ? Fans of Tailwind CSS say you get used to it and VSCode IntelliSense would help you as well.
+
+Well, I have got designs here on Figma, I have to translate these designs into actual stuff. Do I go searching and learning all these make-no-sense kind of CSS rules ?
+
+Don't get me wrong. This website is built with Tailwind CSS. It is a cool little utility for smaller websites like these, but for a production website where many developers collaborate, it is the worst possible solution you can have. It is a typical _solution looking for a problem_ library in my opinion.
+
+## So what is the solution ?
+
+Let's list out what an ideal solution would be.
+
+1. Developers need not remember obscure classed or re-learn CSS upon which they have built their expertise over the years.
+2. The library/utility/framework should atomise the CSS developers write so as to reduce the build footprint.
+
+Take a look at this beauty - [Fela](https://fela.js.org). This nifty utility satisfies both of the above conditions as well as allows to write plugins to add super-powers to CSS you write. This is not a sponsored post. I have personally used Fela in a production environment serving millions of customers. Fela closely follows Facebook's Stylex but has been in public domain for far longer.
+
+You can just write your CSS as usual, and Fela does its own job of atomising CSS rules. No need to remember classnames or get into ecosystem lock-in like Tailwind, confirm to a pre-defined style like Bootstrap or put everything in a single theme file like ThemeUI.
+
+With Fela, two different CSS rulesets like the following:
+
+```css
+.someStyle {
+  font-size: '14px';
+  color: 'black';
+  background-color: 'white';
+  border-radius: '4px';
+}
+
+.anotherStyle {
+  font-size: '14px';
+  color: 'black';
+  text-align: 'center';
+}
+```
+
+for two different HTML elements as follows:
+
+```html
+<p class="someStyle">Hello</p>
+<p class="anotherStyle">World</p>
+```
+
+will generate the following classes:
+
+```css
+.a {
+  font-size: '14px';
+}
+.b {
+  color: 'black';
+}
+.c {
+  background-color: 'white';
+}
+.d {
+  border-radius: '4px';
+}
+.e {
+  text-align: 'center';
+}
+```
+
+and applied to HTML elements as follows:
+
+```html
+<p class="a b c d">Hello</p>
+<p class="a b d">World</p>
+```
+
+As you can see for yourself, Fela has drastically reduced the CSS footprint. Take a look at it and convince your team to dig deeper into it. I assure you, you will be saving hundreds of man-hours with a simpler CSS architecture.
+
+<ConsultationCard text="Want to super-charge your CSS architecture ?" />

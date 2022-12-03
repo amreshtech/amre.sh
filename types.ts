@@ -29,7 +29,7 @@ export type Post = {
   title: string;
   publishedAt: string;
   summary: string;
-  image: string;
+  image?: string;
   slug: string;
   tags: string[];
 };
