@@ -558,10 +558,10 @@
   dependencies:
     glob "7.1.7"
 
-"@next/mdx@12.3.2":
-  version "12.3.2"
-  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-12.3.2.tgz#7becd3cf2843ee8bc402b679e3149b1d838cc2c9"
-  integrity sha512-oFOEfMLTXGzThstNd5ptxa2e024hw7QndBGPrmuCotBgWNxVn70B6tGxpHkfdP0prc3IH6+5dPBpaVIpt1EWvg==
+"@next/mdx@12.3.3":
+  version "12.3.3"
+  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-12.3.3.tgz#27a65b4e60752ddf859273afe2f55e4005e7abfc"
+  integrity sha512-pmxhmj6Nkc2x9ZjDCa8gaBBvZOXvTXiQmMksN/5L5ELYXWU4P++lC6HQ9Rlmvfwifdg3Aj7WxEr3caZLTELsXA==
 
 "@next/swc-android-arm-eabi@13.0.5":
   version "13.0.5"
