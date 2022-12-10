@@ -64,7 +64,7 @@ const BlogLayout: React.FC<Props> = ({
 
   return (
     <Container
-      title={`${title} – Blog by Amresh`}
+      title={`${title}`}
       description={summary}
       image={ogImageUrl}
       date={createdAt}
