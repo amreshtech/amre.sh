@@ -8,7 +8,8 @@ export const config = {
 export default async function handler(req: NextRequest) {
   const { searchParams } = req.nextUrl;
   const backgroundImage = searchParams.get('image');
-  const backgroundImageUrl = `https://source.unsplash.com/random/630x1200/?${backgroundImage}`;
+  const backgroundImageUrl = `https://images.unsplash.com/photo-${backgroundImage}?w=1200&h=630&fit=max`;
+  console.log(backgroundImageUrl);
 
   return new ImageResponse(
     (
