@@ -58,13 +58,13 @@ export default function Container(props) {
       </svg>
     </button>
   );
-  const shouldNotIndex = router.asPath === '/maintenance' ? true : false;
+
   return (
     <div className="bg-white dark:bg-black">
       <NextSeo
         title={meta.title}
-        noindex={shouldNotIndex}
-        nofollow={shouldNotIndex}
+        noindex={false}
+        nofollow={false}
         robotsProps={{
           nosnippet: false,
           notranslate: false,
@@ -84,7 +84,7 @@ export default function Container(props) {
           title: meta.title,
           images: [
             {
-              url: `${meta.image}`,
+              url: `${customMeta.image}`,
               alt: `${meta.title}`
             }
           ]
@@ -115,27 +115,25 @@ export default function Container(props) {
       >
         <div>
           {router.pathname !== '/' && (
-            (<NextLink
+            <NextLink
               href="/"
-              className="flex flex-row font-qc text-4xl text-black dark:text-white font-bold gap-2">
-
+              className="flex flex-row font-qc text-4xl text-black dark:text-white font-bold gap-2"
+            >
               <span>amresh</span>
               <span className="hidden sm:block">mishra</span>
-
-            </NextLink>)
+            </NextLink>
           )}
         </div>
         <div className="flex flex-row items-center">
           {!hideNav &&
             navLinks.map(({ label, link }) => (
-              (<NextLink
+              <NextLink
                 href={link}
                 key={link}
-                className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">
-
+                className="p-1 sm:p-4 text-gray-900 dark:text-gray-100"
+              >
                 {label}
-
-              </NextLink>)
+              </NextLink>
             ))}
           <ThemeButton />
         </div>

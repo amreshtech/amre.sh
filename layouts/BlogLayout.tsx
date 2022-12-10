@@ -19,6 +19,7 @@ interface Props {
   tags: string[];
   shortUrl: string;
   readingTime: ReadingTime;
+  image: string;
 }
 
 const BlogLayout: React.FC<Props> = ({
@@ -30,7 +31,8 @@ const BlogLayout: React.FC<Props> = ({
   summary,
   tags,
   shortUrl,
-  readingTime
+  readingTime,
+  image
 }) => {
   const preventPlagiarism: ClipboardEventHandler<HTMLDivElement> = (e) => {
     e.clipboardData.setData(
@@ -57,12 +59,14 @@ const BlogLayout: React.FC<Props> = ({
       setIsShared(false);
     }
   }, 2000);
-  const image = '';
+
+  const ogImageUrl = `https://www.amre.sh/api/og?image=${image}`;
+
   return (
     <Container
       title={`${title} – Blog by Amresh`}
       description={summary}
-      image={`${image}`}
+      image={ogImageUrl}
       date={createdAt}
       type="article"
     >
@@ -74,7 +78,7 @@ const BlogLayout: React.FC<Props> = ({
         dateModified={updatedAt}
         authorName="Amresh Mishra"
         description={summary}
-        images={[`${image}`]}
+        images={[`${ogImageUrl}`]}
       />
       <article className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 w-full bg-white dark:bg-black z-10">
         <div className="flex flex-row items-center gap-2 pb-3">
