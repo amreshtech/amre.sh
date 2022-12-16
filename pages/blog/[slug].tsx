@@ -18,6 +18,7 @@ interface Props {
   body: { code: string };
   tags: string[];
   publishedAt: string;
+  image: string;
 }
 
 const Blog: React.FC<Props> = ({
@@ -28,7 +29,8 @@ const Blog: React.FC<Props> = ({
   shortUrl,
   body: { code },
   tags,
-  publishedAt
+  publishedAt,
+  image
 }) => {
   const MDXContent = useMDXComponent(code);
   return (
@@ -41,6 +43,7 @@ const Blog: React.FC<Props> = ({
       tags={tags}
       shortUrl={shortUrl}
       readingTime={readingTime}
+      image={image}
     >
       <MDXContent components={MDXComponents} />
     </BlogLayout>
@@ -70,7 +73,8 @@ export async function getStaticProps({
     shortUrl,
     body: { code },
     tags,
-    publishedAt
+    publishedAt,
+    image
   } = post;
 
   return {
@@ -82,7 +86,8 @@ export async function getStaticProps({
       shortUrl,
       body: { code },
       tags,
-      publishedAt
+      publishedAt,
+      image
     }
   };
 }
