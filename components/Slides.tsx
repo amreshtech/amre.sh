@@ -36,7 +36,10 @@ const Slides = ({ images }: { images: { path: string; title: string }[] }) => {
           className="flex flex-row h-96 w-96 overflow-hidden scroll-smooth snap-x snap-mandatory"
         >
           {images.map(({ title, path }) => (
-            <figure className="relative h-96 w-96 flex-shrink-0 snap-center m-0">
+            <figure
+              className="relative h-96 w-96 flex-shrink-0 snap-center m-0"
+              key={title}
+            >
               <button className="absolute z-10 bg-slate-900/50 text-white rounded-full w-8 h-8 p-1 right-1 top-1 pointer-events-none cursor-pointer">
                 <BiExpandAlt size={24} />
               </button>
