@@ -1,7 +1,6 @@
 import { parseISO, format } from 'date-fns';
 import Container from '@components/Container';
-import ViewCounter from '@components/ViewCounter';
-import type { FrontMatter, ReadingTime } from 'types';
+import type { ReadingTime } from 'types';
 import Badge from '@components/Badge';
 import React, { ClipboardEventHandler, MouseEventHandler } from 'react';
 import { ArticleJsonLd } from 'next-seo';
@@ -95,8 +94,6 @@ const BlogLayout: React.FC<Props> = ({
           </p>
           <div className="inline-flex gap-1 text-sm text-gray-500 min-w-32 mt-2 md:mt-0">
             <div>{readingTime.text}</div>
-            {` • `}
-            <ViewCounter slug={slug} />
             <button
               aria-label="Share this blog"
               className="ml-1"
