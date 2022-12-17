@@ -59,7 +59,9 @@ const BlogLayout: React.FC<Props> = ({
     }
   }, 2000);
 
-  const ogImageUrl = `https://www.amre.sh/api/og?title=${title}&image=${image}`;
+  const ogImageUrl = `https://www.amre.sh/api/og?title=${encodeURIComponent(
+    title
+  )}&image=${image}`;
 
   return (
     <Container

@@ -11,7 +11,7 @@ const quicksand = fetch(
 
 export default async function handler(req: NextRequest) {
   const { searchParams } = req.nextUrl;
-  const title = searchParams.get('title');
+  const title = decodeURIComponent(searchParams.get('title'));
   const backgroundImage = searchParams.get('image');
   const imageUrl = `https://images.unsplash.com/photo-${backgroundImage}`;
   const quicksandData = await quicksand;
