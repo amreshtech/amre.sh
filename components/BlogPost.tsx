@@ -1,9 +1,6 @@
 import Link from 'next/link';
-import useSWR from 'swr';
-import fetcher from '@lib/fetcher';
 import * as React from 'react';
 import Badge from './Badge';
-import ViewCounter from './ViewCounter';
 
 interface Props {
   title: string;
