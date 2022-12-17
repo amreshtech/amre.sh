@@ -55,7 +55,6 @@ const securityHeaders = [
 ];
 
 const nextConfig = {
-  swcMinify: true,
   publicRuntimeConfig: {
     ALGOLIA_ADMIN_KEY: process.env.ALGOLIA_ADMIN_KEY,
     ALGOLIA_APPLICATION_ID: process.env.ALGOLIA_APPLICATION_ID
