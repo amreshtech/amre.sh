@@ -16,6 +16,8 @@ export default async function handler(req: NextRequest) {
   const imageUrl = `https://images.unsplash.com/photo-${backgroundImage}`;
   const quicksandData = await quicksand;
 
+  console.log('TEST OG', title, imageUrl);
+
   return new ImageResponse(
     (
       <div
