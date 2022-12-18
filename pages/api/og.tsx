@@ -30,7 +30,7 @@ export default async function handler(req: NextRequest) {
           justifyContent: 'center',
           alignItems: 'center',
           position: 'relative',
-          background:
+          backgroundImage:
             'linear-gradient(126deg, rgba(43,14,110,1) 56%, rgba(152,32,142,1) 100%)'
         }}
       >
