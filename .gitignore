@@ -9,3 +9,5 @@ public/feed.xml
 .vscode
 .contentlayer
 tsconfig.tsbuildinfo
+pnpm-lock.yaml
+.idea
