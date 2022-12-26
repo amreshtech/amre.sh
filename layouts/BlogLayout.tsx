@@ -1,5 +1,5 @@
-import { parseISO, format } from 'date-fns';
-import Container from '@components/Container';
+import { format, parseISO } from 'date-fns';
+import RootLayout from '@components/RootLayout';
 import type { ReadingTime } from 'types';
 import Badge from '@components/Badge';
 import React, { ClipboardEventHandler, MouseEventHandler } from 'react';
@@ -64,7 +64,7 @@ const BlogLayout: React.FC<Props> = ({
   )}&image=${image}`;
 
   return (
-    <Container
+    <RootLayout
       title={`${title}`}
       description={summary}
       image={ogImageUrl}
@@ -117,7 +117,7 @@ const BlogLayout: React.FC<Props> = ({
           {children}
         </div>
       </article>
-    </Container>
+    </RootLayout>
   );
 };
 

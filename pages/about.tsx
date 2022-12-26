@@ -1,11 +1,11 @@
-import Container from '@components/Container';
+import RootLayout from '@components/RootLayout';
 import Timeline from '@components/Timeline';
 import Image from 'next/image';
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const About = () => {
   return (
-    <Container title="About – Amresh">
+    <RootLayout title="About – Amresh">
       <div className="max-w-3xl mx-auto mb-16 z-10">
         <div className="flex justify-center items-center">
           <Image
@@ -77,7 +77,7 @@ const About = () => {
           <Timeline />
         </div>
       </div>
-    </Container>
+    </RootLayout>
   );
 };
 

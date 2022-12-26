@@ -1,4 +1,5 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
+import { Container, CssBaseline } from '@mui/material';
 
 class MyDocument extends Document {
   render() {
@@ -53,10 +54,11 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body className="bg-white dark:bg-black text-white dark:text-black">
+        <Container component={'body'} maxWidth={false} disableGutters>
+          <CssBaseline />
           <Main />
           <NextScript />
-        </body>
+        </Container>
       </Html>
     );
   }

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Container from '@components/Container';
+import RootLayout from '@components/RootLayout';
 import Lottie from 'react-lottie';
 import * as spaceman from 'public/spaceman.json';
 
@@ -10,7 +10,7 @@ const NotFound = () => {
     animationData: spaceman
   };
   return (
-    <Container title="404 – Amresh">
+    <RootLayout title="404 – Amresh">
       <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 z-10">
         <Lottie options={lottieOptions} height={400} width={400} />
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
@@ -23,7 +23,7 @@ const NotFound = () => {
           Return to Base Station
         </Link>
       </div>
-    </Container>
+    </RootLayout>
   );
 };
 

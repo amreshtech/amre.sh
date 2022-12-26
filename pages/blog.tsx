@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Container from '@components/Container';
+import RootLayout from '@components/RootLayout';
 import BlogPost from '@components/BlogPost';
 import type { Post } from '../types';
 import { getSearchResults } from 'scripts/getSearchResults';
@@ -22,7 +22,7 @@ const Blog: React.FC<Props> = ({ posts }) => {
   };
 
   return (
-    <Container
+    <RootLayout
       title="Blog – Amresh"
       description="Thoughts on the software industry, programming, tech, and my personal life."
     >
@@ -71,7 +71,7 @@ const Blog: React.FC<Props> = ({ posts }) => {
           ))}
         </div>
       </div>
-    </Container>
+    </RootLayout>
   );
 };
 

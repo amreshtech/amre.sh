@@ -1,4 +1,4 @@
-import Container from '@components/Container';
+import RootLayout from '@components/RootLayout';
 import ImageWrapper from '@components/ImageWrapper';
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 
 const TravelLayout: React.FC<Props> = ({ children }) => {
   return (
-    <Container
+    <RootLayout
       title="Travel across the world with Amresh"
       description="My memories across the globe"
     >
@@ -19,7 +19,7 @@ const TravelLayout: React.FC<Props> = ({ children }) => {
       >
         <ImageWrapper>{children}</ImageWrapper>
       </article>
-    </Container>
+    </RootLayout>
   );
 };
 
