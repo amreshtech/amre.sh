@@ -14,7 +14,7 @@ const getShortUrl = async (slug: string) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      originalURL: `https://www.amre.sh/blog/${slug}`,
+      originalURL: `https://www.amre.sh${slug}`,
       domain: 'blog.amre.sh'
     })
   };
@@ -67,7 +67,8 @@ export const Post = defineDocumentType(() => ({
     },
     shortUrl: {
       type: 'string',
-      resolve: (post) => getShortUrl(`/blog/${post._raw.flattenedPath}`)
+      resolve: async (post) =>
+        await getShortUrl(`/blog/${post._raw.flattenedPath}`)
     }
   }
 }));

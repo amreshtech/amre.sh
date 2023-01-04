@@ -1,5 +1,7 @@
-import RootLayout from '@components/RootLayout';
+import { RootLayout } from '@components/RootLayout';
 import ImageWrapper from '@components/ImageWrapper';
+import { SeoHead } from '@components/SeoHead';
+import { Box } from '@mui/material';
 
 interface Props {
   children: React.ReactNode;
@@ -7,18 +9,16 @@ interface Props {
 
 const TravelLayout: React.FC<Props> = ({ children }) => {
   return (
-    <RootLayout
-      title="Travel across the world with Amresh"
-      description="My memories across the globe"
-    >
-      <article
-        className="max-w-3xl mx-auto mb-16 w-full"
+    <RootLayout>
+      <SeoHead title="Travel across the world with Amresh" />
+      <Box
+        component={'article'}
         onContextMenu={(e) => {
           e.preventDefault();
         }}
       >
         <ImageWrapper>{children}</ImageWrapper>
-      </article>
+      </Box>
     </RootLayout>
   );
 };

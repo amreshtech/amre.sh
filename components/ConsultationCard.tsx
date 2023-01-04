@@ -1,13 +1,15 @@
 import { PopupButton } from 'react-calendly';
+import { Box, Chip } from '@mui/material';
 
 interface Props {
   text: string;
 }
 
 const ConsultationCard: React.FC<Props> = ({ text }) => (
-  <div className="text-black dark:text-white z-10">
-    {text}{' '}
-    <PopupButton
+  <Box>
+    {text}
+    <Chip
+      component={PopupButton}
       text={`Let's chat`}
       url="https://calendly.com/amreshm/consultation"
       pageSettings={{
@@ -18,10 +20,17 @@ const ConsultationCard: React.FC<Props> = ({ text }) => (
         textColor: '4d5055',
         hideGdprBanner: true
       }}
-      className="text-white bg-gradient-to-tl from-rose-700 via-rose-600 to-rose-600 p-1 px-3 font-bold rounded-full"
+      sx={{
+        p: 1,
+        mx: 1,
+        color: '#ffffff',
+        fontWeight: 'bold',
+        background: 'linear-gradient(to top left,#be123c,#e11d48,#e11d48)',
+        cursor: 'pointer'
+      }}
       rootElement={document.getElementById('__next')}
     />
-  </div>
+  </Box>
 );
 
 export default ConsultationCard;

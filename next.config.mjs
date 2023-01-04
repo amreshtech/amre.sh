@@ -4,7 +4,7 @@ import withBundleAnalyzer from '@next/bundle-analyzer';
 // https://securityheaders.com
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com *.vercel-insights.com *.calendly.com data: https://stats.amre.sh/umami.js;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com *.vercel-insights.com *.calendly.com data:;
   child-src *.youtube.com *.google.com *.twitter.com;
   style-src 'self' 'unsafe-inline' *.googleapis.com *.gstatic.com *.calendly.com;
   img-src * blob: data:;
@@ -59,10 +59,6 @@ const nextConfig = {
   publicRuntimeConfig: {
     ALGOLIA_ADMIN_KEY: process.env.ALGOLIA_ADMIN_KEY,
     ALGOLIA_APPLICATION_ID: process.env.ALGOLIA_APPLICATION_ID
-  },
-  env: {
-    UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL,
-    UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN
   },
   images: {
     domains: [

@@ -1,8 +1,4 @@
 import Link from 'next/link';
-
-import ProsCard from '@components/ProsCard';
-import ConsCard from '@components/ConsCard';
-import Step from '@components/Step';
 import Document from '@components/Document';
 import TldrCard from './TldrCard';
 import dynamic from 'next/dynamic';
@@ -25,9 +21,6 @@ const CustomLink = (props) => {
 
 const MDXComponents = {
   a: CustomLink,
-  ConsCard,
-  ProsCard,
-  Step,
   Document,
   TldrCard,
   ConsultationCard,

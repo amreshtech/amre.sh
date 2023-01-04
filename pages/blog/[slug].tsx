@@ -64,7 +64,6 @@ export async function getStaticProps({
   const post = allPosts.find(
     (post) => post._raw.flattenedPath === params?.slug
   );
-
   const {
     title,
     slug,

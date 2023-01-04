@@ -1,15 +1,21 @@
+import { Box } from '@mui/material';
+
 interface Props {
   file: string;
 }
 
 const Document: React.FC<Props> = ({ file }) => (
-  <object
+  <Box
+    component={'object'}
     width="100%"
-    height="800"
+    height="600px"
     data={file}
     type="application/pdf"
-    className="z-10 py-5"
-  ></object>
+    sx={{
+      zIndex: 10,
+      py: 5
+    }}
+  ></Box>
 );
 
 export default Document;

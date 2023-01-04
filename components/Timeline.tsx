@@ -1,64 +1,65 @@
 import { useState } from 'react';
-import { FaChevronDown } from 'react-icons/fa';
-import { FcOk } from 'react-icons/fc';
 import timeline from 'timeline.json';
+import {
+  Box,
+  Divider,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Typography
+} from '@mui/material';
+import { CheckCircle, ExpandMore } from '@mui/icons-material';
+import Button from '@mui/material/Button';
 
-const Divider = () => {
-  return (
-    <div className="border border-gray-200 dark:border-gray-600 w-full my-8" />
-  );
-};
-
-const Year: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return (
-    <h3 className="text-lg md:text-xl font-bold mb-4 tracking-tight text-gray-900 dark:text-gray-100">
-      {children}
-    </h3>
-  );
-};
-
-interface Props {
-  title: React.ReactNode;
-  children?: React.ReactNode;
-}
-
-const Step: React.FC<Props> = ({ title, children }) => {
-  return (
-    <li className="mb-4 ml-2">
-      <div className="flex items-center mb-2 text-green-700 dark:text-green-300">
-        <span className="sr-only">Check</span>
-        <FcOk />
-        <p className="font-medium text-gray-900 dark:text-gray-100 pl-2">
-          {title}
-        </p>
-      </div>
-      <p className="text-gray-700 dark:text-gray-400 ml-6">{children}</p>
-    </li>
-  );
-};
 const reversedTimeline = [...timeline].reverse();
 const getTimeline = (start: number, end: number = timeline.length) =>
   reversedTimeline.slice(start, end).map(
-    ({
-      year,
-      content
-    }: {
-      year: string;
-      content: {
-        title: string;
-        description: string;
-      }[];
-    }) => (
+    (
+      {
+        year,
+        content
+      }: {
+        year: string;
+        content: {
+          title: string;
+          description: string;
+        }[];
+      },
+      index
+    ) => (
       <div key={year}>
-        <Year>{year}</Year>
-        <ul>
+        <Typography variant={'h6'} sx={{ fontWeight: 'bold', mb: 1 }}>
+          {year}
+        </Typography>
+        <List>
           {[...content].reverse().map(({ title, description = '' }) => (
-            <Step title={title} key={title}>
-              {description}
-            </Step>
+            <ListItem sx={{ alignItems: 'start' }}>
+              <ListItemIcon sx={{ alignItems: 'flex-start' }}>
+                <CheckCircle fontSize={'small'} sx={{ color: '#00ff5c' }} />
+              </ListItemIcon>
+              <ListItemText
+                primary={title}
+                secondary={description}
+                primaryTypographyProps={{
+                  color: '#ffffff',
+                  gutterBottom: true,
+                  lineHeight: 1.4
+                }}
+                secondaryTypographyProps={{ color: '#ffffff' }}
+                sx={{ margin: 0 }}
+              />
+            </ListItem>
           ))}
-        </ul>
-        <Divider />
+        </List>
+        {index !== timeline.length - 4 && (
+          <Divider
+            sx={{
+              my: 3,
+              borderColor: '#1f2937'
+            }}
+          />
+        )}
       </div>
     )
   );
@@ -67,21 +68,30 @@ export default function Timeline() {
   const [isShowingFullTimeline, showFullTimeline] = useState(false);
   return (
     <>
-      <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
+      <Typography variant={'h4'} sx={{ mt: 4, mb: 3, fontWeight: 'bold' }}>
         Timeline
-      </h3>
+      </Typography>
       {getTimeline(0, 3)}
       {isShowingFullTimeline ? (
         getTimeline(3)
       ) : (
-        <button
-          type="button"
-          className="flex gap-2 items-center text-sm my-4 mx-auto px-4 py-2 rounded-md font-medium text-gray-900 dark:text-gray-100"
-          onClick={() => showFullTimeline(true)}
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center'
+          }}
         >
-          See More
-          <FaChevronDown />
-        </button>
+          <Button
+            onClick={() => showFullTimeline(true)}
+            endIcon={<ExpandMore />}
+            sx={{
+              color: '#ffffff',
+              textTransform: 'none'
+            }}
+          >
+            See More
+          </Button>
+        </Box>
       )}
     </>
   );
