@@ -19,7 +19,7 @@ const TravelImageLayout: React.FC<Props> = ({ location, images }) => {
         {images[location].map(({ width, height, url }) => (
           <Image
             src={transformImageUrl(url)}
-            height={height}
+            height={height / 5}
             width={width}
             alt={location}
             onContextMenu={(e) => {
