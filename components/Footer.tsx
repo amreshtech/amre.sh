@@ -1,17 +1,28 @@
-import { useRouter } from 'next/router';
+import { Divider, Typography } from '@mui/material';
 
-const Footer = () => {
-  const router = useRouter();
+const Footer = ({ route }) => {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="flex flex-col justify-center items-center max-w-3xl mx-auto w-full mb-8">
-      {router.pathname !== '/' && (
-        <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
+    <>
+      {route !== '/' && (
+        <Divider
+          sx={{
+            mt: 8,
+            borderColor: '#1f2937'
+          }}
+        />
       )}
-      <div className="text-sm text-black dark:text-white">
+      <Typography
+        variant={'body2'}
+        sx={{
+          color: '#ffffff',
+          mt: { xs: 6, md: 8 },
+          textAlign: 'center'
+        }}
+      >
         &copy; {currentYear} Amresh Mishra
-      </div>
-    </footer>
+      </Typography>
+    </>
   );
 };
 

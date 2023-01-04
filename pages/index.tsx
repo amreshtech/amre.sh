@@ -1,115 +1,56 @@
-import Container from '@components/Container';
-import type { Tweet as TweetType } from '../types';
-import Typewriter from 'typewriter-effect';
-import Map from '@components/widgets/Map';
-import { getTweet } from '@lib/twitter';
-import Tweet from '@components/widgets/Tweet';
+import { RootLayout } from '@components/RootLayout';
 import Image from 'next/image';
+import Grid from '@mui/material/Unstable_Grid2';
+import { Typography } from '@mui/material';
 import SelfDescription from '@components/SelfDescription';
-import dynamic from 'next/dynamic';
-import { getMap } from '@lib/map';
-
-const Chat = dynamic(() => import('@components/widgets/Chat'), {
-  ssr: false
-});
+import { GetServerSideProps } from 'next';
 
 interface Props {
-  map_url: string;
-  tweetData: TweetType;
+  route: string;
 }
 
-const Home: React.FC<Props> = ({ map_url, tweetData }) => {
+const Home: React.FC<Props> = ({ route }) => {
   return (
-    <Container>
-      <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 z-10 w-full">
-        <div className="flex flex-row w-full gap-4">
-          <div className="w-2/3">
-            <h1 className="font-bold text-2xl pt-24 md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-              Hey, I&apos;m Amresh 👋
-            </h1>
-            <div className="relative w-full mb-4">
-              <h1 className="flex gap-2 pb-12 font-bold text-2xl md:text-5xl tracking-tight text-black dark:text-white">
-                I&apos;m
-                <Typewriter
-                  options={{ loop: true }}
-                  onInit={(typewriter) => {
-                    typewriter
-                      .typeString('a Developer')
-                      .pauseFor(1000)
-                      .deleteAll()
-                      .typeString('an Investor')
-                      .pauseFor(1000)
-                      .deleteAll()
-                      .typeString('a Travel Freak')
-                      .pauseFor(1000)
-                      .deleteAll()
-                      .typeString('a Foodie')
-                      .pauseFor(1000)
-                      .deleteAll()
-                      .typeString('a Photographer')
-                      .pauseFor(1000)
-                      .deleteAll()
-                      .typeString('a GraphQL Dev')
-                      .pauseFor(1000)
-                      .start();
-                  }}
-                />
-              </h1>
-            </div>
-          </div>
-          <div className="w-1/3 pt-8">
-            <Image
-              src="/static/author.png"
-              alt="author-image"
-              width={180}
-              height={230}
-            />
-          </div>
-        </div>
-        <SelfDescription />
-        <div className="relative w-full mb-4 flex-row gap-2 hidden md:flex">
-          <div className="w-1/4">
-          <Map url={map_url} />
-          </div>
-          <div className="w-2/4">
-            <Tweet
-              id={tweetData.id}
-              created_at={tweetData.created_at}
-              text={tweetData.text}
-              public_metrics={tweetData.public_metrics}
-            />
-          </div>
-          <div className="w-1/4">
-            <Chat />
-          </div>
-        </div>
-        <div className="relative w-full mb-4 flex flex-col gap-2 md:hidden">
-          <div className="w-full">
-            <Tweet
-              id={tweetData.id}
-              created_at={tweetData.created_at}
-              text={tweetData.text}
-              public_metrics={tweetData.public_metrics}
-            />
-          </div>
-          <div className="flex flex-row gap-2">
-            <div className="w-1/2">
-            <Map url={map_url} />
-            </div>
-            <div className="w-1/2">
-              <Chat />
-            </div>
-          </div>
-        </div>
-      </div>
-    </Container>
+    <RootLayout route={route}>
+      <Grid
+        container
+        sx={{
+          mt: { xs: 5, md: 12 }
+        }}
+        alignItems={'center'}
+      >
+        <Grid xs={8}>
+          <Typography
+            sx={{
+              typography: { xs: 'h4', md: 'h3' },
+              fontWeight: { xs: '700', md: '700' }
+            }}
+          >
+            Hey, I&apos;m Amresh 👋
+          </Typography>
+        </Grid>
+        <Grid
+          xs={4}
+          sx={{
+            pb: { xs: 1, md: 0 }
+          }}
+        >
+          <Image
+            src="/static/author.png"
+            alt="author-image"
+            width={180}
+            height={230}
+          />
+        </Grid>
+        <Grid xs={12} md={8}>
+          <SelfDescription />
+        </Grid>
+      </Grid>
+    </RootLayout>
   );
 };
 
-export async function getStaticProps() {
-  const map_url = getMap();
-  const tweetData = await getTweet();
-  return { props: { map_url, tweetData } };
-}
-
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  return { props: { route: ctx.resolvedUrl } };
+};
 export default Home;

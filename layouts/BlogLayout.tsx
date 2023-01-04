@@ -1,12 +1,17 @@
-import { parseISO, format } from 'date-fns';
-import Container from '@components/Container';
+import { format, parseISO } from 'date-fns';
+import { RootLayout } from '@components/RootLayout';
 import type { ReadingTime } from 'types';
-import Badge from '@components/Badge';
-import React, { ClipboardEventHandler, MouseEventHandler } from 'react';
+import React, {
+  ClipboardEventHandler,
+  MouseEventHandler,
+  useCallback
+} from 'react';
 import { ArticleJsonLd } from 'next-seo';
 import { useRouter } from 'next/router';
-import { FaShareSquare } from 'react-icons/fa';
-import SuccessMessage from '@components/SuccessMessage';
+import { SeoHead } from '@components/SeoHead';
+import { BlogTags } from '@components/BlogTags';
+import { Alert, Box, IconButton, Snackbar, Typography } from '@mui/material';
+import { Share } from '@mui/icons-material';
 
 interface Props {
   children: React.ReactNode;
@@ -33,25 +38,27 @@ const BlogLayout: React.FC<Props> = ({
   readingTime,
   image
 }) => {
-  const preventPlagiarism: ClipboardEventHandler<HTMLDivElement> = (e) => {
-    e.clipboardData.setData(
-      'text/plain',
-      `${document
-        .getSelection()
-        .toString()
-        .substring(0, 50)}...Visit https://www.amre.sh/blog/${slug}`
-    );
-    e.preventDefault();
-  };
+  const preventPlagiarism: ClipboardEventHandler<HTMLDivElement> = useCallback(
+    (e) => {
+      e.clipboardData.setData(
+        'text/plain',
+        `${document
+          .getSelection()
+          .toString()
+          .substring(0, 50)}...Visit https://www.amre.sh${slug}`
+      );
+      e.preventDefault();
+    },
+    []
+  );
   const router = useRouter();
   const [isShared, setIsShared] = React.useState(false);
-  const handleShareButtonClick: MouseEventHandler<
-    HTMLButtonElement
-  > = async () => {
-    navigator.clipboard.writeText(shortUrl).then(() => {
-      setIsShared(true);
-    });
-  };
+  const handleShareButtonClick: MouseEventHandler<HTMLButtonElement> =
+    useCallback(async () => {
+      navigator.clipboard.writeText(shortUrl).then(() => {
+        setIsShared(true);
+      });
+    }, []);
 
   setTimeout(() => {
     if (isShared) {
@@ -64,60 +71,81 @@ const BlogLayout: React.FC<Props> = ({
   )}&image=${image}`;
 
   return (
-    <Container
-      title={`${title}`}
-      description={summary}
-      image={ogImageUrl}
-      date={createdAt}
-      type="article"
-    >
+    <RootLayout>
+      <SeoHead
+        title={title}
+        description={summary}
+        image={ogImageUrl}
+        type={'article'}
+      />
       <ArticleJsonLd
         type="Blog"
         url={`https://www.amre.sh${router.asPath}`}
         title={title}
         datePublished={createdAt}
         dateModified={updatedAt}
-        authorName="Amresh Mishra"
+        authorName={[{ name: 'Amresh Mishra', url: 'https://amre.sh' }]}
         description={summary}
         images={[`${ogImageUrl}`]}
       />
-      <article className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 w-full bg-white dark:bg-black z-10">
-        <div className="flex flex-row items-center gap-2 pb-3">
-          {tags?.map((tag: string, index: number) => (
-            <Badge text={tag} key={tag} index={index} />
-          ))}
-        </div>
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+      <Box component={'article'}>
+        <BlogTags tags={tags} />
+        <Typography variant={'h3'} sx={{ fontWeight: 'bold', mt: 2 }}>
           {title}
-        </h1>
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-2">
-          <p className="text-sm text-gray-700 dark:text-gray-300">
+        </Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            justifyContent: 'space-between',
+            alignItems: 'start',
+            mt: 2
+          }}
+        >
+          <Typography variant={'body2'} sx={{ color: '#cbd5db' }}>
             {format(parseISO(createdAt), 'MMMM dd, yyyy')}
-          </p>
-          <div className="inline-flex gap-1 text-sm text-gray-500 min-w-32 mt-2 md:mt-0">
-            <div>{readingTime.text}</div>
-            <button
+          </Typography>
+          <Box
+            sx={{
+              display: 'inline-flex',
+              mt: { xs: 2, md: 0 },
+              alignItems: 'start'
+            }}
+          >
+            <Typography variant={'body2'} sx={{ color: '#6b7280', pr: 1 }}>
+              {readingTime.text}
+            </Typography>
+            <IconButton
               aria-label="Share this blog"
               className="ml-1"
               onClick={handleShareButtonClick}
               title="Share this blog"
+              sx={{ padding: '2px' }}
             >
-              {isShared ? (
-                <SuccessMessage>Copied</SuccessMessage>
-              ) : (
-                <FaShareSquare />
-              )}
-            </button>
-          </div>
-        </div>
-        <div
-          className="prose dark:prose-dark max-w-none w-full pt-8"
+              <Share sx={{ color: '#6b7280', fontSize: 'medium' }} />
+            </IconButton>
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            pt: 8
+          }}
           onCopy={preventPlagiarism}
+          className="prose"
         >
           {children}
-        </div>
-      </article>
-    </Container>
+        </Box>
+      </Box>
+      <Snackbar
+        open={isShared}
+        autoHideDuration={2000}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      >
+        <Alert severity="success" sx={{ width: '100%' }}>
+          Copied!
+        </Alert>
+      </Snackbar>
+    </RootLayout>
   );
 };
 

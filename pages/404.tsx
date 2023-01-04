@@ -1,7 +1,8 @@
-import Link from 'next/link';
-import Container from '@components/Container';
+import { RootLayout } from '@components/RootLayout';
 import Lottie from 'react-lottie';
 import * as spaceman from 'public/spaceman.json';
+import { SeoHead } from '@components/SeoHead';
+import { Box, Button, Typography } from '@mui/material';
 
 const NotFound = () => {
   const lottieOptions = {
@@ -10,20 +11,18 @@ const NotFound = () => {
     animationData: spaceman
   };
   return (
-    <Container title="404 – Amresh">
-      <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 z-10">
-        <Lottie options={lottieOptions} height={400} width={400} />
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-          You are in a galaxy far... far away!
-        </h1>
-        <Link
-          href="/"
-          className="p-1 sm:p-4 w-64 font-bold mx-auto bg-gray-100 dark:bg-gray-900 text-center rounded-md text-black dark:text-white"
-        >
+    <RootLayout>
+      <SeoHead title="404 – Amresh Mishra" />
+      <Lottie options={lottieOptions} height={400} width={400} />
+      <Typography variant={'h4'} sx={{ fontWeight: 'bold', mb: 4 }}>
+        You are in a galaxy far... far away!
+      </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <Button variant={'contained'} href="/">
           Return to Base Station
-        </Link>
-      </div>
-    </Container>
+        </Button>
+      </Box>
+    </RootLayout>
   );
 };
 

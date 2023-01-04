@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import * as React from 'react';
-import Badge from './Badge';
+import { Box, Typography } from '@mui/material';
+import { BlogTags } from '@components/BlogTags';
 
 interface Props {
   title: string;
@@ -12,20 +13,23 @@ interface Props {
 
 const BlogPost: React.FC<Props> = ({ title, summary, slug, tags }) => {
   return (
-    <Link href={slug} className="w-full">
-      <div className="mb-8 w-full">
-        <div className="flex flex-col md:flex-row justify-between">
-          <h4 className="text-lg md:text-xl font-medium mb-2 w-full text-gray-900 dark:text-gray-100">
+    <Link href={slug}>
+      <Box sx={{ mb: 3 }}>
+        <div>
+          <Typography variant={'h6'} gutterBottom sx={{ fontWeight: 'bold' }}>
             {title}
-          </h4>
+          </Typography>
         </div>
-        <p className="text-gray-600 dark:text-gray-400">{summary}</p>
-        <div className="flex flex-row items-center gap-2 pt-2">
-          {tags?.map((tag, index) => (
-            <Badge text={tag} key={tag} index={index} />
-          ))}
-        </div>
-      </div>
+        <Typography
+          variant={'body1'}
+          sx={{
+            color: '#9ca3af'
+          }}
+        >
+          {summary}
+        </Typography>
+        <BlogTags tags={tags} />
+      </Box>
     </Link>
   );
 };

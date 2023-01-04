@@ -1,22 +1,11 @@
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
 
-export const config = {
-  runtime: 'experimental-edge'
-};
-
-const quicksand = fetch(
-  new URL('../../styles/quicksand.ttf', import.meta.url)
-).then((res) => res.arrayBuffer());
-
 export default async function handler(req: NextRequest) {
   const { searchParams } = req.nextUrl;
   const title = decodeURIComponent(searchParams.get('title'));
   const backgroundImage = searchParams.get('image');
   const imageUrl = `https://images.unsplash.com/photo-${backgroundImage}`;
-  const quicksandData = await quicksand;
-
-  console.log('TEST OG', title, imageUrl);
 
   return new ImageResponse(
     (
@@ -49,6 +38,7 @@ export default async function handler(req: NextRequest) {
               width: '100%',
               height: '100%'
             }}
+            alt={title}
           />
         </div>
         <div
@@ -72,8 +62,7 @@ export default async function handler(req: NextRequest) {
             width: '60%',
             display: 'flex',
             left: 0,
-            top: '130px',
-            fontFamily: '"Quicksand"'
+            top: '130px'
           }}
         >
           {title}
@@ -82,15 +71,7 @@ export default async function handler(req: NextRequest) {
     ),
     {
       width: 1200,
-      height: 630,
-      fonts: [
-        {
-          name: 'Quicksand',
-          data: quicksandData,
-          style: 'normal',
-          weight: 900
-        }
-      ]
+      height: 630
     }
   );
 }
