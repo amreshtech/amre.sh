@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { RootLayout } from '@components/RootLayout';
 import BlogPost from '@components/BlogPost';
@@ -24,11 +24,14 @@ interface Props {
 const Blog: React.FC<Props> = ({ posts }) => {
   const [filteredBlogPosts, setFilteredBlogPosts] = useState(posts);
 
-  const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value;
-    const searchResults = await getSearchResults(query);
-    setFilteredBlogPosts(searchResults as any);
-  };
+  const handleSearch = useCallback(
+    async (e: React.ChangeEvent<HTMLInputElement>) => {
+      const query = e.target.value;
+      const searchResults = await getSearchResults(query);
+      setFilteredBlogPosts(searchResults as any);
+    },
+    []
+  );
 
   return (
     <RootLayout>

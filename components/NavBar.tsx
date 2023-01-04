@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useCallback } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,12 +15,12 @@ const pages = ['Blog', 'Travel', 'About'];
 
 export const NavBar = ({ route }) => {
   const [open, setOpen] = React.useState(false);
-  const handleDrawerOpen = () => {
+  const handleDrawerOpen = useCallback(() => {
     setOpen(true);
-  };
-  const handleDrawerClose = () => {
+  }, []);
+  const handleDrawerClose = useCallback(() => {
     setOpen(false);
-  };
+  }, []);
 
   return (
     <AppBar

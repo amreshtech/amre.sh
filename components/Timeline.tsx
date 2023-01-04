@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import timeline from 'timeline.json';
 import {
   Box,
@@ -34,7 +34,7 @@ const getTimeline = (start: number, end: number = timeline.length) =>
         </Typography>
         <List>
           {[...content].reverse().map(({ title, description = '' }) => (
-            <ListItem sx={{ alignItems: 'start' }}>
+            <ListItem sx={{ alignItems: 'start' }} key={title}>
               <ListItemIcon sx={{ alignItems: 'flex-start' }}>
                 <CheckCircle fontSize={'small'} sx={{ color: '#00ff5c' }} />
               </ListItemIcon>
@@ -65,7 +65,8 @@ const getTimeline = (start: number, end: number = timeline.length) =>
   );
 
 export default function Timeline() {
-  const [isShowingFullTimeline, showFullTimeline] = useState(false);
+  const [isShowingFullTimeline, setIsShowingFullTimeline] = useState(false);
+  const handleClick = useCallback(() => setIsShowingFullTimeline(true), []);
   return (
     <>
       <Typography variant={'h4'} sx={{ mt: 4, mb: 3, fontWeight: 'bold' }}>
@@ -82,7 +83,7 @@ export default function Timeline() {
           }}
         >
           <Button
-            onClick={() => showFullTimeline(true)}
+            onClick={handleClick}
             endIcon={<ExpandMore />}
             sx={{
               color: '#ffffff',

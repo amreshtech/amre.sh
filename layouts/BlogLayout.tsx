@@ -1,7 +1,11 @@
 import { format, parseISO } from 'date-fns';
 import { RootLayout } from '@components/RootLayout';
 import type { ReadingTime } from 'types';
-import React, { ClipboardEventHandler, MouseEventHandler } from 'react';
+import React, {
+  ClipboardEventHandler,
+  MouseEventHandler,
+  useCallback
+} from 'react';
 import { ArticleJsonLd } from 'next-seo';
 import { useRouter } from 'next/router';
 import { SeoHead } from '@components/SeoHead';
@@ -34,25 +38,27 @@ const BlogLayout: React.FC<Props> = ({
   readingTime,
   image
 }) => {
-  const preventPlagiarism: ClipboardEventHandler<HTMLDivElement> = (e) => {
-    e.clipboardData.setData(
-      'text/plain',
-      `${document
-        .getSelection()
-        .toString()
-        .substring(0, 50)}...Visit https://www.amre.sh${slug}`
-    );
-    e.preventDefault();
-  };
+  const preventPlagiarism: ClipboardEventHandler<HTMLDivElement> = useCallback(
+    (e) => {
+      e.clipboardData.setData(
+        'text/plain',
+        `${document
+          .getSelection()
+          .toString()
+          .substring(0, 50)}...Visit https://www.amre.sh${slug}`
+      );
+      e.preventDefault();
+    },
+    []
+  );
   const router = useRouter();
   const [isShared, setIsShared] = React.useState(false);
-  const handleShareButtonClick: MouseEventHandler<
-    HTMLButtonElement
-  > = async () => {
-    navigator.clipboard.writeText(shortUrl).then(() => {
-      setIsShared(true);
-    });
-  };
+  const handleShareButtonClick: MouseEventHandler<HTMLButtonElement> =
+    useCallback(async () => {
+      navigator.clipboard.writeText(shortUrl).then(() => {
+        setIsShared(true);
+      });
+    }, []);
 
   setTimeout(() => {
     if (isShared) {

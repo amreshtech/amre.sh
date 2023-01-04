@@ -25,6 +25,7 @@ const TravelImageLayout: React.FC<Props> = ({ location, images }) => {
             onContextMenu={(e) => {
               e.preventDefault();
             }}
+            key={url}
           />
         ))}
       </Masonry>

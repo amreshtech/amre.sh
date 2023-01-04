@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import ImageWrapper from './ImageWrapper';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -19,17 +19,18 @@ const Slides = ({ images }: { images: { path: string; title: string }[] }) => {
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = images.length;
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
+  }, []);
 
-  const handleBack = () => {
+  const handleBack = useCallback(() => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+  }, []);
 
-  const handleStepChange = (step: number) => {
+  const handleStepChange = useCallback((step: number) => {
     setActiveStep(step);
-  };
+  }, []);
+
   return (
     <ImageWrapper
       options={{
