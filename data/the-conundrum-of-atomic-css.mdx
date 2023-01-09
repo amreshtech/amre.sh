@@ -1,15 +1,16 @@
 ---
-title: 'The Conundrum of Atomic CSS'
-publishedAt: '2021-10-17'
-summary: "CSS frameworks are cluttering the frontend landscape. Let's clean it up!"
-tags: ['css', 'tech', 'frontend']
-image: '1542831371-29b0f74f9713'
+title: The Conundrum of Atomic CSS
+publishedAt: 2021-10-17
+summary: CSS frameworks are cluttering the frontend landscape. Let's clean it up!
+tags: [css, tech, frontend]
+image: 1542831371-29b0f74f9713
+description: While Bootstrap sparked the widespread revolution, Tailwind has been riding the wave recently. But no one is perfect for every use case.
 ---
 
 <TldrCard>
   Different libraries have taken different paths to a singular goal of atomic
   CSS. While Bootstrap sparked the widespread revolution, Tailwind has been
-  riding the wave recently. But not one is perfect for every use case. But as
+  riding the wave recently. But no one is perfect for every use case. But as
   far as enterprise application goes, there exists only one scalable solution
   that presents no ecosystem lock-in - Fela.
 </TldrCard>
@@ -19,7 +20,7 @@ You sure know about atomic css, don't you ? The small bits of CSS classes we wri
 Can you recall now ? How the following code could result in a big green button in [Bootstrap](https://getbootstrap.com/)?
 
 ```html
-<button type="button" class="btn btn-success">Success</button>
+<button type='button' class='btn btn-success'>Success</button>
 ```
 
 The `btn btn-success` part is actually atomic CSS in action. The basic concept is that each CSS class represents only a single CSS rule. That is the single time a class exists in the project level CSS file. So, every single button refers to same CSS rule. We are not writing new CSS rules repeatedly for each button. So, as you can imagine, the CSS file size is constant.
@@ -33,7 +34,7 @@ Yes, says Tailwind CSS! A very hyped utility. It allows extremely granular styli
 
 ```html
 <h4
-  className="text-lg md:text-xl font-medium mb-2 w-full text-gray-900 dark:text-gray-100"
+  className='text-lg md:text-xl font-medium mb-2 w-full text-gray-900 dark:text-gray-100'
 >
   Hello World
 </h4>
@@ -76,8 +77,8 @@ With Fela, two different CSS rulesets like the following:
 for two different HTML elements as follows:
 
 ```html
-<p class="someStyle">Hello</p>
-<p class="anotherStyle">World</p>
+<p class='someStyle'>Hello</p>
+<p class='anotherStyle'>World</p>
 ```
 
 will generate the following classes:
@@ -103,8 +104,8 @@ will generate the following classes:
 and applied to HTML elements as follows:
 
 ```html
-<p class="a b c d">Hello</p>
-<p class="a b d">World</p>
+<p class='a b c d'>Hello</p>
+<p class='a b d'>World</p>
 ```
 
 As you can see for yourself, Fela has drastically reduced the CSS footprint. Take a look at it and convince your team to dig deeper into it. I assure you, you will be saving hundreds of man-hours with a simpler CSS architecture.

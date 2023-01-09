@@ -24,6 +24,7 @@ interface Props {
   shortUrl: string;
   readingTime: ReadingTime;
   image: string;
+  description: string;
 }
 
 const BlogLayout: React.FC<Props> = ({
@@ -36,7 +37,8 @@ const BlogLayout: React.FC<Props> = ({
   tags,
   shortUrl,
   readingTime,
-  image
+  image,
+  description
 }) => {
   const preventPlagiarism: ClipboardEventHandler<HTMLDivElement> = useCallback(
     (e) => {
@@ -74,7 +76,7 @@ const BlogLayout: React.FC<Props> = ({
     <RootLayout>
       <SeoHead
         title={title}
-        description={summary}
+        description={description}
         image={ogImageUrl}
         type={'article'}
         route={pathname}
@@ -91,7 +93,10 @@ const BlogLayout: React.FC<Props> = ({
       />
       <Box component={'article'}>
         <BlogTags tags={tags} />
-        <Typography variant={'h3'} sx={{ fontWeight: 'bold', mt: 2 }}>
+        <Typography
+          variant={'h1'}
+          sx={{ fontWeight: 'bold', mt: 2, fontSize: '3rem' }}
+        >
           {title}
         </Typography>
         <Box

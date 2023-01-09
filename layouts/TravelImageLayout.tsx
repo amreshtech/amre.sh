@@ -12,7 +12,10 @@ interface Props {
 const TravelImageLayout: React.FC<Props> = ({ location, images }) => {
   return (
     <>
-      <Typography variant={'h3'} sx={{ fontWeight: 'bold', mb: 1 }}>
+      <Typography
+        variant={'h1'}
+        sx={{ fontWeight: 'bold', mb: 1, fontSize: '3rem' }}
+      >
         {location}
       </Typography>
       <Masonry columns={{ xs: 1, md: 3 }} spacing={1} sx={{ width: 'auto' }}>
