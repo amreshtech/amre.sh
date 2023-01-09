@@ -53,7 +53,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
           ]
         }}
         twitter={{
-          cardType: 'summary_large_image',
+          cardType: `${image}`,
           site: '@amreshtech',
           handle: '@amreshtech'
         }}

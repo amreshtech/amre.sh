@@ -7,11 +7,11 @@ import React, {
   useCallback
 } from 'react';
 import { ArticleJsonLd } from 'next-seo';
-import { useRouter } from 'next/router';
 import { SeoHead } from '@components/SeoHead';
 import { BlogTags } from '@components/BlogTags';
 import { Alert, Box, IconButton, Snackbar, Typography } from '@mui/material';
 import { Share } from '@mui/icons-material';
+import { usePathname } from 'next/navigation';
 
 interface Props {
   children: React.ReactNode;
@@ -51,7 +51,7 @@ const BlogLayout: React.FC<Props> = ({
     },
     []
   );
-  const router = useRouter();
+  const pathname = usePathname();
   const [isShared, setIsShared] = React.useState(false);
   const handleShareButtonClick: MouseEventHandler<HTMLButtonElement> =
     useCallback(async () => {
@@ -77,10 +77,11 @@ const BlogLayout: React.FC<Props> = ({
         description={summary}
         image={ogImageUrl}
         type={'article'}
+        route={pathname}
       />
       <ArticleJsonLd
         type="Blog"
-        url={`https://www.amre.sh${router.asPath}`}
+        url={`https://www.amre.sh${pathname}`}
         title={title}
         datePublished={createdAt}
         dateModified={updatedAt}
