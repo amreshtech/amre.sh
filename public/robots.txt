@@ -1,6 +1,5 @@
 # *
 User-agent: *
-Allow: /
 Disallow: /*.json$
 Disallow: /*_buildManifest.js$
 Disallow: /*_middlewareManifest.js$
