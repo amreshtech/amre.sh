@@ -14,7 +14,7 @@ const TravelLayout: React.FC<Props> = ({ children }) => {
   }, []);
   return (
     <RootLayout>
-      <SeoHead title="Travel across the world with Amresh" />
+      <SeoHead title="Travel across the world with Amresh" noindex nofollow />
       <Box component={'article'} onContextMenu={handleContext}>
         <ImageWrapper>{children}</ImageWrapper>
       </Box>

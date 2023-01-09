@@ -2,33 +2,25 @@ import { NextSeo, SocialProfileJsonLd } from 'next-seo';
 import React from 'react';
 
 type SeoHeadProps = {
-  title?: string;
-  image?: string;
-  route?: string;
-  description?: string;
-  type?: string;
+  [x: string]: string | boolean;
 };
 
-export const SeoHead: React.FC<SeoHeadProps> = ({
-  title,
-  image,
-  route,
-  description,
-  type
-}) => {
-  const meta = {
-    title: title || 'Amresh – Developer, photographer, travel freak, investor',
+export const SeoHead: React.FC<SeoHeadProps> = (props) => {
+  const meta: SeoHeadProps = {
+    title: 'Amresh – Developer, photographer, travel freak, investor',
     description:
-      description ||
-      'My thoughts on front end development, programming, tech, and my personal life.',
-    type: type || 'website'
+      'I regularly pen down my thoughts on front end development, programming, tech, and finance and how each of them enrich the world around us.',
+    type: 'website',
+    noindex: false,
+    nofollow: false,
+    ...props
   };
   return (
     <>
       <NextSeo
-        title={meta.title}
-        noindex={false}
-        nofollow={false}
+        title={meta.title as string}
+        noindex={meta.noindex as boolean}
+        nofollow={meta.nofollow as boolean}
         robotsProps={{
           nosnippet: false,
           notranslate: false,
@@ -38,16 +30,16 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
           maxImagePreview: 'none',
           maxVideoPreview: -1
         }}
-        description={meta.description}
-        canonical={`https://www.amre.sh${route}`}
+        description={meta.description as string}
+        canonical={`https://www.amre.sh${meta.route}`}
         openGraph={{
-          url: `https://www.amre.sh${route}`,
-          type: meta.type,
-          description: meta.description,
-          title: meta.title,
+          url: `https://www.amre.sh${meta.route}`,
+          type: meta.type as string,
+          description: meta.description as string,
+          title: meta.title as string,
           images: [
             {
-              url: `${image}`,
+              url: `${meta.image}`,
               alt: `${meta.title}`
             }
           ]

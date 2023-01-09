@@ -7,11 +7,11 @@ import React, {
   useCallback
 } from 'react';
 import { ArticleJsonLd } from 'next-seo';
-import { useRouter } from 'next/router';
 import { SeoHead } from '@components/SeoHead';
 import { BlogTags } from '@components/BlogTags';
 import { Alert, Box, IconButton, Snackbar, Typography } from '@mui/material';
 import { Share } from '@mui/icons-material';
+import { usePathname } from 'next/navigation';
 
 interface Props {
   children: React.ReactNode;
@@ -24,6 +24,7 @@ interface Props {
   shortUrl: string;
   readingTime: ReadingTime;
   image: string;
+  description: string;
 }
 
 const BlogLayout: React.FC<Props> = ({
@@ -36,7 +37,8 @@ const BlogLayout: React.FC<Props> = ({
   tags,
   shortUrl,
   readingTime,
-  image
+  image,
+  description
 }) => {
   const preventPlagiarism: ClipboardEventHandler<HTMLDivElement> = useCallback(
     (e) => {
@@ -51,7 +53,7 @@ const BlogLayout: React.FC<Props> = ({
     },
     []
   );
-  const router = useRouter();
+  const pathname = usePathname();
   const [isShared, setIsShared] = React.useState(false);
   const handleShareButtonClick: MouseEventHandler<HTMLButtonElement> =
     useCallback(async () => {
@@ -74,13 +76,14 @@ const BlogLayout: React.FC<Props> = ({
     <RootLayout>
       <SeoHead
         title={title}
-        description={summary}
+        description={description}
         image={ogImageUrl}
         type={'article'}
+        route={pathname}
       />
       <ArticleJsonLd
         type="Blog"
-        url={`https://www.amre.sh${router.asPath}`}
+        url={`https://www.amre.sh${pathname}`}
         title={title}
         datePublished={createdAt}
         dateModified={updatedAt}
@@ -90,7 +93,10 @@ const BlogLayout: React.FC<Props> = ({
       />
       <Box component={'article'}>
         <BlogTags tags={tags} />
-        <Typography variant={'h3'} sx={{ fontWeight: 'bold', mt: 2 }}>
+        <Typography
+          variant={'h1'}
+          sx={{ fontWeight: 'bold', mt: 2, fontSize: '3rem' }}
+        >
           {title}
         </Typography>
         <Box

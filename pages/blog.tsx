@@ -37,10 +37,11 @@ const Blog: React.FC<Props> = ({ posts }) => {
     <RootLayout>
       <SeoHead title={'Blog – Amresh Mishra '} />
       <Typography
-        variant={'h3'}
+        variant={'h1'}
         gutterBottom
         sx={{
-          fontWeight: 'bold'
+          fontWeight: 'bold',
+          fontSize: '3rem'
         }}
       >
         Blog

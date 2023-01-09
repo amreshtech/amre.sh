@@ -22,8 +22,9 @@ const Home: React.FC<Props> = ({ route }) => {
         <Grid xs={8}>
           <Typography
             sx={{
-              typography: { xs: 'h4', md: 'h3' },
-              fontWeight: { xs: '700', md: '700' }
+              typography: { xs: 'h1', md: 'h1' },
+              fontWeight: { xs: '700', md: '700' },
+              fontSize: { xs: '2.125rem', md: '3rem' }
             }}
           >
             Hey, I&apos;m Amresh 👋
