@@ -13,6 +13,7 @@ export const SeoHead: React.FC<SeoHeadProps> = (props) => {
     type: 'website',
     noindex: false,
     nofollow: false,
+    route: '',
     ...props
   };
   return (

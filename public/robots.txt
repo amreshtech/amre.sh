@@ -1,17 +1,14 @@
 # *
 User-agent: *
-Allow: /
-
-# Host
-Host: https://www.amre.sh/
-
-# Sitemaps
-Sitemap: https://www.amre.sh/sitemap.xml
-
-# Next Static assets except CSS
 Disallow: /*.json$
 Disallow: /*_buildManifest.js$
 Disallow: /*_middlewareManifest.js$
 Disallow: /*_ssgManifest.js$
 Disallow: /*.js$
 Disallow: /_next/image
+
+# Host
+Host: https://www.amre.sh/
+
+# Sitemaps
+Sitemap: https://www.amre.sh/sitemap.xml
